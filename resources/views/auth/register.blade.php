@@ -9,7 +9,7 @@
                     <div class="rk-register-icon">
                         <i class="fas fa-user-plus"></i>
                     </div>
-                    <h3>Buat Akun Baru</h3>
+                    <h2>Buat Akun Baru</h2>
                     <p class="mb-0">Bergabunglah dengan komunitas Ruang Kelas dan mulai belajar</p>
                 </div>
                 
@@ -34,7 +34,7 @@
                             <div class="input-group">
                                 <span class="input-group-text rk-input-group-text"><i class="fas fa-envelope"></i></span>
                                 <input id="email" type="email" class="form-control rk-form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="nama@contoh.com">
+                                    name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="nama@gmail.com">
                             </div>
                             @error('email')
                                 <div class="invalid-feedback d-block mt-2">{{ $message }}</div>
@@ -106,6 +106,18 @@
         text-align: center;
     }
     
+    /* Tambahan styling judul & keterangan */
+    .rk-register-header h2 {
+        color: #ffffff; /* putih bersih */
+        font-weight: 600;
+    }
+
+    .rk-register-header p {
+        color: rgba(255, 255, 255, 0.85); /* putih lembut/transparan */
+        font-weight: 400;
+    }
+
+
     .rk-register-icon {
         width: 80px;
         height: 80px;
@@ -188,6 +200,18 @@
         color: #3a0ca3;
         text-decoration: underline;
     }
+
+    /* Tambahan revisi warna label & placeholder */
+    .rk-register-body label {
+        color: #212529;  /* lebih gelap */
+        font-weight: 600;
+    }
+
+    .rk-form-control::placeholder {
+        color: #6c757d;  /* abu-abu lembut */
+        font-weight: 400;
+    }
+
     
     @media (max-width: 767.98px) {
         .rk-register-header {
