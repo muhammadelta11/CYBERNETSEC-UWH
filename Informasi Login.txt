@@ -1,0 +1,11 @@
+1. Admin
+user	: admin@gmail.com
+pass	: admin
+
+2. Premium User
+user	: suheri@gmail.com
+pass	: premium
+
+3. Regular User
+user	: tes@gmail.com
+pass	: regular
