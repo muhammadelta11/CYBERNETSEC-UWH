@@ -19,7 +19,7 @@
                     <div class="col-md-6">
                         <table>
                             <tr>
-                                <td style="vertical-align: top">Deskripsi Podcast</td>
+                                <td style="vertical-align: top">Deskripsi Event</td>
                                 <td style="vertical-align: top" class="py-2 px-3">:</td>
                                 <td>{!! $podcast->description_podcast !!}</td>
                             </tr>

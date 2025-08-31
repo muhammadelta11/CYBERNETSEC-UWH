@@ -33,7 +33,7 @@
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
-                <img src="{{ asset('frontemplate') }}/img/learning_img.png" alt="About Us" class="img-fluid rounded-3 shadow">
+                <img src="{{ asset('frontemplate') }}/img/pak-ardian.png" alt="About Us" class="img-fluid rounded-3 shadow">
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="ps-lg-5">
@@ -117,8 +117,8 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Muhammad Mas'ud</h5>
-                        <p class="text-primary mb-3">Founder & CEO</p>
-                        <p class="card-text text-muted">Pengembang platform dengan pengalaman 10+ tahun di industri edukasi teknologi</p>
+                        <p class="text-primary mb-3">Web Developer & AI</p>
+                        <p class="card-text text-muted">Fokus pada pengembangan aplikasi web yang scalable dan user-friendly. Mulai dari frontend, backend, database, hingga integrasi Artificial Intelligence untuk solusi inovatif di bidang edukasi dan teknologi.</p>
                     </div>
                 </div>
             </div>
@@ -138,8 +138,8 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Muhammad Nur Haromaen</h5>
-                        <p class="text-primary mb-3">Head of Education</p>
-                        <p class="card-text text-muted">Spesialis kurikulum dengan latar belakang pendidikan dan teknologi pembelajaran</p>
+                        <p class="text-primary mb-3">Cyber Scurity</p>
+                        <p class="card-text text-muted">bertugas melindungi platform dari ancaman digital. Mulai dari penetration testing, analisis kerentanan, hingga menerapkan standar keamanan global (OWASP, Zero Trust). Dengan kemampuan defensive dan offensive, tim ini memastikan setiap sistem berjalan dengan aman.</p>
                     </div>
                 </div>
             </div>
@@ -159,8 +159,8 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Muhammad Arief Maulana</h5>
-                        <p class="text-primary mb-3">Tech Lead</p>
-                        <p class="card-text text-muted">Ahli pengembangan platform dengan fokus pada user experience dan skalabilitas</p>
+                        <p class="text-primary mb-3">Networking</p>
+                        <p class="card-text text-muted">Berperan dalam merancang, mengatur, dan memelihara infrastruktur jaringan baik on-premise maupun berbasis cloud. Fokus pada kecepatan, kestabilan, dan skalabilitas jaringan, tim ini memastikan layanan dapat diakses dengan lancar oleh pengguna.</p>
                     </div>
                 </div>
             </div>
@@ -178,8 +178,8 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Nanda Bagus Ramadhani</h5>
-                        <p class="text-primary mb-3">Tech Lead</p>
-                        <p class="card-text text-muted">Ahli pengembangan platform dengan fokus pada user experience dan skalabilitas</p>
+                        <p class="text-primary mb-3">Cyber Scurity</p>
+                        <p class="card-text text-muted">bertugas melindungi platform dari ancaman digital. Mulai dari penetration testing, analisis kerentanan, hingga menerapkan standar keamanan global (OWASP, Zero Trust). Dengan kemampuan defensive dan offensive, tim ini memastikan setiap sistem berjalan dengan aman.</p>
                     </div>
                 </div>
             </div>
@@ -197,8 +197,8 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Arvian Raditya Pratama</h5>
-                        <p class="text-primary mb-3">Tech Lead</p>
-                        <p class="card-text text-muted">Ahli pengembangan platform dengan fokus pada user experience dan skalabilitas</p>
+                        <p class="text-primary mb-3">Networking</p>
+                        <p class="card-text text-muted">Berperan dalam merancang, mengatur, dan memelihara infrastruktur jaringan baik on-premise maupun berbasis cloud. Fokus pada kecepatan, kestabilan, dan skalabilitas jaringan, tim ini memastikan layanan dapat diakses dengan lancar oleh pengguna.</p>
                     </div>
                 </div>
             </div>
@@ -216,8 +216,8 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Mala Fillatunnida</h5>
-                        <p class="text-primary mb-3">Tech Lead</p>
-                        <p class="card-text text-muted">Ahli pengembangan platform dengan fokus pada user experience dan skalabilitas</p>
+                        <p class="text-primary mb-3">Web Developer</p>
+                        <p class="card-text text-muted">Fokus pada pengembangan aplikasi web yang scalable dan user-friendly. Mulai dari frontend, backend, database, hingga integrasi Artificial Intelligence untuk solusi inovatif di bidang edukasi dan teknologi.<</p>
                     </div>
                 </div>
             </div>
@@ -235,8 +235,8 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Nadia Rizky Chairunnisa</h5>
-                        <p class="text-primary mb-3">Tech Lead</p>
-                        <p class="card-text text-muted">Ahli pengembangan platform dengan fokus pada user experience dan skalabilitas</p>
+                        <p class="text-primary mb-3">Cyber security</p>
+                        <p class="card-text text-muted">Fokus pada pengembangan aplikasi web yang scalable dan user-friendly. Mulai dari frontend, backend, database, hingga integrasi Artificial Intelligence untuk solusi inovatif di bidang edukasi dan teknologi.<</p>
                     </div>
                 </div>
             </div>
@@ -254,8 +254,8 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Dwi Putri</h5>
-                        <p class="text-primary mb-3">Tech Lead</p>
-                        <p class="card-text text-muted">Ahli pengembangan platform dengan fokus pada user experience dan skalabilitas</p>
+                        <p class="text-primary mb-3">Web Developer</p>
+                        <p class="card-text text-muted">Fokus pada pengembangan aplikasi web yang scalable dan user-friendly. Mulai dari frontend, backend, database, hingga integrasi Artificial Intelligence untuk solusi inovatif di bidang edukasi dan teknologi.<</p>
                     </div>
                 </div>
             </div>
@@ -273,8 +273,8 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Rizky Subekti</h5>
-                        <p class="text-primary mb-3">Tech Lead</p>
-                        <p class="card-text text-muted">Ahli pengembangan platform dengan fokus pada user experience dan skalabilitas</p>
+                        <p class="text-primary mb-3">Photogrhaphy</p>
+                        <p class="card-text text-muted">mendukung branding dengan visual kreatif. Hasil fotografi digunakan untuk mendukung identitas, promosi, dan dokumentasi setiap kegiatan agar lebih menarik, estetik, dan berkesan.</p>
                     </div>
                 </div>
             </div>
