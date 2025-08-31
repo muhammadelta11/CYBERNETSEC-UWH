@@ -7,8 +7,8 @@
         <div class="row align-items-center py-5">
             <div class="col-lg-8 mx-auto text-center">
                 <div data-aos="fade-up">
-                    <h1 class="display-5 fw-bold mb-3 rk-heading">Kursus</h1>
-                    <p class="lead text-muted">Temukan kelas terbaik yang sesuai dengan minat dan kebutuhan belajar Anda</p>
+                    <h1 class="display-5 fw-bold mb-3 rk-heading">Up Skill</h1>
+                    <p class="lead text-muted">Temukan Up Skill terbaik yang sesuai dengan minat dan kebutuhan belajar Anda</p>
                     
                     <!-- Search Form -->
                     <div class="rk-kelas-search mt-4" data-aos="fade-up" data-aos-delay="100">

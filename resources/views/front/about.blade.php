@@ -106,9 +106,9 @@
             <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="rk-card rk-team-card h-100 border-0 rk-shadow-hover">
                     <div class="rk-team-img-wrapper position-relative">
-                        <img src="{{ asset('frontemplate') }}/img/no.png" class="card-img-top" alt="Team Member">
+                        <img src="{{ asset('frontemplate') }}/img/masud.png" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
-                            <div class="rk-social-icons">
+                            <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-twitter"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-instagram"></i></a>
@@ -127,9 +127,9 @@
             <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="rk-card rk-team-card h-100 border-0 rk-shadow-hover">
                     <div class="rk-team-img-wrapper position-relative">
-                        <img src="{{ asset('frontemplate') }}/img/haro.png" class="card-img-top" alt="Team Member">
+                        <img src="{{ asset('frontemplate') }}/img/haromain.png" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
-                            <div class="rk-social-icons">
+                            <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-twitter"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-instagram"></i></a>
@@ -148,9 +148,9 @@
             <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="rk-card rk-team-card h-100 border-0 rk-shadow-hover">
                     <div class="rk-team-img-wrapper position-relative">
-                        <img src="{{ asset('frontemplate') }}/img/arip.png" class="card-img-top" alt="Team Member">
+                        <img src="{{ asset('frontemplate') }}/img/arief.png" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
-                            <div class="rk-social-icons">
+                            <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-twitter"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-instagram"></i></a>
@@ -167,9 +167,9 @@
             <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="rk-card rk-team-card h-100 border-0 rk-shadow-hover">
                     <div class="rk-team-img-wrapper position-relative">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Team Member">
+                        <img src="{{ asset('frontemplate') }}/img/nanda.jpg" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
-                            <div class="rk-social-icons">
+                            <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-twitter"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-instagram"></i></a>
@@ -186,9 +186,9 @@
             <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="rk-card rk-team-card h-100 border-0 rk-shadow-hover">
                     <div class="rk-team-img-wrapper position-relative">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Team Member">
+                        <img src="{{ asset('frontemplate') }}/img/vian.jpg" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
-                            <div class="rk-social-icons">
+                            <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-twitter"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-instagram"></i></a>
@@ -207,7 +207,7 @@
                     <div class="rk-team-img-wrapper position-relative">
                         <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
-                            <div class="rk-social-icons">
+                            <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-twitter"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-instagram"></i></a>
@@ -226,7 +226,7 @@
                     <div class="rk-team-img-wrapper position-relative">
                         <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
-                            <div class="rk-social-icons">
+                            <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-twitter"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-instagram"></i></a>
@@ -245,7 +245,7 @@
                     <div class="rk-team-img-wrapper position-relative">
                         <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
-                            <div class="rk-social-icons">
+                            <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-twitter"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-instagram"></i></a>
@@ -264,7 +264,7 @@
                     <div class="rk-team-img-wrapper position-relative">
                         <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
-                            <div class="rk-social-icons">
+                            <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-twitter"></i></a>
                                 <a href="#" class="rk-social-icon"><i class="fab fa-instagram"></i></a>
@@ -289,7 +289,7 @@
     <div class="container py-5">
         <div class="row justify-content-center mb-5">
             <div class="col-lg-8 text-center" data-aos="fade-up">
-                <h2 class="fw-bold mb-3 rk-heading">Jenis Kelas yang Kami Tawarkan</h2>
+                <h2 class="fw-bold mb-3 rk-heading">Jenis Up Skill yang Kami Tawarkan</h2>
                 <p class="text-muted">Pilih metode belajar yang paling sesuai dengan kebutuhan dan preferensi Anda</p>
             </div>
         </div>
@@ -300,7 +300,7 @@
                         <div class="rk-icon-wrapper bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4">
                             <i class="fas fa-layer-group fs-3 text-primary"></i>
                         </div>
-                        <h4 class="fw-bold mb-3 rk-heading">Kelas Gratis</h4>
+                        <h4 class="fw-bold mb-3 rk-heading">Up Skill Gratis</h4>
                         <p class="text-muted">Akses materi pembelajaran dasar tanpa biaya untuk semua pengunjung website</p>
                         <div class="mt-4">
                             <span class="badge bg-primary bg-opacity-10 text-primary py-2 px-3">Tanpa Registrasi</span>
@@ -314,8 +314,8 @@
                         <div class="rk-icon-wrapper bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4">
                             <i class="fas fa-user-plus fs-3 text-success"></i>
                         </div>
-                        <h4 class="fw-bold mb-3 rk-heading">Kelas Regular</h4>
-                        <p class="text-muted">Kelas eksklusif untuk anggota terdaftar dengan materi lebih lengkap dan terstruktur</p>
+                        <h4 class="fw-bold mb-3 rk-heading">Up Skill Regular</h4>
+                        <p class="text-muted">Up Skill eksklusif untuk anggota terdaftar dengan materi lebih lengkap dan terstruktur</p>
                         <div class="mt-4">
                             <span class="badge bg-success bg-opacity-10 text-success py-2 px-3">Free Membership</span>
                         </div>
@@ -328,7 +328,7 @@
                         <div class="rk-icon-wrapper bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4">
                             <i class="fas fa-crown fs-3 text-warning"></i>
                         </div>
-                        <h4 class="fw-bold mb-3 rk-heading">Kelas Premium</h4>
+                        <h4 class="fw-bold mb-3 rk-heading">Up Skill Premium</h4>
                         <p class="text-muted">Pengalaman belajar premium dengan mentor dedicated, sertifikat, dan konsultasi privat</p>
                         <div class="mt-4">
                             <span class="badge bg-warning bg-opacity-10 text-warning py-2 px-3">Fitur Eksklusif</span>
@@ -347,7 +347,7 @@
             <div class="col-md-3 col-6 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="100">
                 <div class="rk-stat-item">
                     <h2 class="display-4 fw-bold text-white mb-2" data-count="500">0</h2>
-                    <p class="text-light mb-0">Kelas Online</p>
+                    <p class="text-light mb-0">Up Skill Online</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="200">
@@ -429,6 +429,65 @@
     .rk-page-hero .breadcrumb-item + .breadcrumb-item::before {
         color: rgba(255, 255, 255, 0.8);
     }
+    /* Perbaikan untuk Team Card */
+.rk-team-card .card-body {
+    min-height: 150px; /* Menjaga tinggi card body agar konsisten */
+}
+.rk-team-card img {
+    height: 300px; /* Mengatur tinggi gambar agar seragam */
+    object-fit: cover; /* Memastikan gambar mengisi area tanpa distorsi */
+    object-position: top; /* Mengatur fokus gambar di bagian atas */
+}
+
+/* Overlay untuk efek hover */
+.rk-team-social-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.6); /* Warna overlay lebih solid */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.rk-team-card:hover .rk-team-social-overlay {
+    opacity: 1;
+}
+
+.rk-social-icons2 {
+    display: flex;
+    gap: 15px;
+}
+
+.rk-social-icon2 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background: var(--rk-primary);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.rk-social-icon2:hover {
+    background: white;
+    color: var(--rk-primary);
+    transform: translateY(-3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .rk-team-card img {
+        height: 250px; /* Mengurangi tinggi gambar di layar mobile */
+    }
+}
     
     /* Feature Cards */
     .rk-feature-card {
@@ -486,31 +545,6 @@
     
     .rk-team-card:hover .rk-team-social-overlay {
         opacity: 1;
-    }
-    
-    .rk-social-icons {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-    
-    .rk-social-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 35px;
-        height: 35px;
-        background: var(--rk-primary);
-        color: white;
-        border-radius: 50%;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-    
-    .rk-social-icon:hover {
-        background: white;
-        color: var(--rk-primary);
-        transform: translateY(-3px);
     }
     
     /* Stats Section */

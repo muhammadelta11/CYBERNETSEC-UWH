@@ -7,8 +7,8 @@
         <div class="row align-items-center py-5">
             <div class="col-lg-8 mx-auto text-center">
                 <div data-aos="fade-up">
-                    <h1 class="display-5 fw-bold mb-3 rk-heading">Video & Podcast</h1>
-                    <p class="lead text-muted">Temukan konten video pembelajaran dan podcast inspiratif untuk meningkatkan skill dan pengetahuan Anda</p>
+                    <h1 class="display-5 fw-bold mb-3 rk-heading">Jadwal Event</h1>
+                    <p class="lead text-muted">Temukan Jadwal Event inspiratif untuk meningkatkan skill dan pengetahuan Anda</p>
                     
                     <!-- Search Form -->
                     <div class="rk-podcast-search mt-4" data-aos="fade-up" data-aos-delay="100">
