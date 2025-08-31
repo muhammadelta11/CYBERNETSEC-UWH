@@ -18,15 +18,15 @@
                     <div class="d-flex flex-wrap gap-4 justify-content-center justify-content-lg-start"> {{-- Ganti mb-4 dengan gap-4 dan responsive justify --}}
                         <div class="text-center text-lg-start">
                             <h4 class="fw-bold mb-0 rk-heading">8+</h4>
-                            <p class="text-muted mb-0">Proyek Riset</p>
+                            <p class="text-muted mb-0"> Proyek Riset</p>
                         </div>
                         <div class="text-center text-lg-start">
                             <h4 class="fw-bold mb-0 rk-heading">7+</h4>
-                            <p class="text-muted mb-0">Anggota Aktif</p>
+                            <p class="text-muted mb-0">, Anggota Aktif </p>
                         </div>
                         <div class="text-center text-lg-start">
                             <h4 class="fw-bold mb-0 rk-heading">5+</h4>
-                            <p class="text-muted mb-0">Kolaborasi Industri</p>
+                            <p class="text-muted mb-0">, Kolaborasi Industri .</p>
                         </div>
                     </div>
                 </div>

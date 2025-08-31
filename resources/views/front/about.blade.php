@@ -8,10 +8,10 @@
             <div class="col-lg-6" data-aos="fade-right">
                 <div class="rk-hero-content">
                     <h1 class="display-4 fw-bold text-white mb-4 rk-heading">Tentang <span class="text-warning">Ceybernetsec ID</span></h1>
-                    <p class="lead text-light mb-4">Kami adalah komunitas teknologi yang berfokus pada pembelajaran modern di bidang Web Programming, Networking, dan Cyber Security.
-Dengan semangat kolaborasi dan inovasi, kami hadir untuk menjadi ruang belajar, berbagi, dan berkembang bersama.
-
-Kami percaya bahwa teknologi bukan hanya tentang alat, tetapi juga tentang bagaimana membangun masa depan yang lebih aman, kreatif, dan berdaya guna. Oleh karena itu, setiap kelas, workshop, maupun program yang kami rancang selalu berorientasi pada praktik nyata yang bisa langsung diterapkan di dunia kerja maupun proyek pribadi.</p>
+                    <p class="lead text-light mb-4">
+                    Unwahas Cybernetsec Lab adalah pusat riset dan pengembangan di bidang Network Security, Artificial Intelligence, dan Cloud Computing. Berbasis di Universitas Wahid Hasyim Semarang, kami berkomitmen menghadirkan inovasi digital yang memberi dampak nyata bagi kampus, masyarakat, dan dunia industri. <br>
+<br>
+Kami percaya bahwa teknologi bukan hanya sekadar alat, tetapi juga pondasi untuk membangun masa depan yang lebih aman, kreatif, dan berdaya guna. Oleh karena itu, setiap kelas, workshop, maupun program yang kami rancang selalu berorientasi pada praktik nyata yang dapat langsung diterapkan baik di dunia kerja maupun dalam proyek pribadi.</p>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('welcome') }}" class="text-light">Home</a></li>
@@ -41,11 +41,11 @@ Kami percaya bahwa teknologi bukan hanya tentang alat, tetapi juga tentang bagai
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="ps-lg-5">
                     <h6 class="text-primary mb-2">Visi & Misi</h6>
-                    <h2 class="fw-bold mb-4 rk-heading">Belajar Online Dimanapun & Kapanpun</h2>
+                    <h2 class="fw-bold mb-4 rk-heading">Riset, Pengembangan dan edukasi.</h2>
                     @php
                     $setting = \App\Setting::first()
                     @endphp
-                    {!! $setting->about ?? '<p>Selamat datang di platform e-learning kami. Platform ini dirancang untuk membantu Anda belajar secara online dengan mudah dan fleksibel.</p>' !!}
+                    {!! $setting->about ?? '<p>Selamat datang di platform e-learning kami. Platform ini.</p>' !!}
                     <div class="row mt-4">
                         <div class="col-md-6">
                             <div class="d-flex align-items-center mb-3">
@@ -140,7 +140,7 @@ Kami percaya bahwa teknologi bukan hanya tentang alat, tetapi juga tentang bagai
                         </div>
                     </div>
                     <div class="card-body text-center">
-                        <h5 class="card-title fw-bold mb-1 rk-heading">Muhammad Nur Haromaen</h5>
+                        <h5 class="card-title fw-bold mb-1 rk-heading">M. Nur Haromain</h5>
                         <p class="text-primary mb-3">Cyber Scurity</p>
                         <p class="card-text text-muted">bertugas melindungi platform dari ancaman digital. Mulai dari penetration testing, analisis kerentanan, hingga menerapkan standar keamanan global (OWASP, Zero Trust). Dengan kemampuan defensive dan offensive, tim ini memastikan setiap sistem berjalan dengan aman.</p>
                     </div>
@@ -182,7 +182,7 @@ Kami percaya bahwa teknologi bukan hanya tentang alat, tetapi juga tentang bagai
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Nanda Bagus Ramadhani</h5>
                         <p class="text-primary mb-3">Cyber Scurity</p>
-                        <p class="card-text text-muted">bertugas melindungi platform dari ancaman digital. Mulai dari penetration testing, analisis kerentanan, hingga menerapkan standar keamanan global (OWASP, Zero Trust). Dengan kemampuan defensive dan offensive, tim ini memastikan setiap sistem berjalan dengan aman.</p>
+                        <p class="card-text text-muted">Mengembangkan strategi pertahanan siber melalui monitoring, analisis ancaman, serta pelatihan keamanan. Berusaha aktif membangun kesadaran keamanan di organisasi agar setiap lapisan mampu mendeteksi dan merespons insiden dengan cepat.</p>
                     </div>
                 </div>
             </div>
@@ -220,7 +220,7 @@ Kami percaya bahwa teknologi bukan hanya tentang alat, tetapi juga tentang bagai
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Mala Fillatunnida</h5>
                         <p class="text-primary mb-3">Web Developer</p>
-                        <p class="card-text text-muted">Fokus pada pengembangan aplikasi web yang scalable dan user-friendly. Mulai dari frontend, backend, database, hingga integrasi Artificial Intelligence untuk solusi inovatif di bidang edukasi dan teknologi.<</p>
+                        <p class="card-text text-muted">Fokus pada pengembangan aplikasi web yang scalable dan user-friendly. Mulai dari frontend, backend, database, hingga integrasi Artificial Intelligence untuk solusi inovatif di bidang edukasi dan teknologi.</p>
                     </div>
                 </div>
             </div>
@@ -239,7 +239,7 @@ Kami percaya bahwa teknologi bukan hanya tentang alat, tetapi juga tentang bagai
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Nadia Rizky Chairunnisa</h5>
                         <p class="text-primary mb-3">Cyber security</p>
-                        <p class="card-text text-muted">Fokus pada pengembangan aplikasi web yang scalable dan user-friendly. Mulai dari frontend, backend, database, hingga integrasi Artificial Intelligence untuk solusi inovatif di bidang edukasi dan teknologi.<</p>
+                        <p class="card-text text-muted">Fokus untuk riset dalam merancang strategi uji ketahanan sistem melalui pendekatan Red Team. Mulai dari simulasi serangan, analisis kerentanan, hingga pelatihan terstruktur untuk meningkatkan kesiapan organisasi menghadapi ancaman siber.</p>
                     </div>
                 </div>
             </div>
@@ -258,7 +258,7 @@ Kami percaya bahwa teknologi bukan hanya tentang alat, tetapi juga tentang bagai
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Dwi Putri</h5>
                         <p class="text-primary mb-3">Web Developer</p>
-                        <p class="card-text text-muted">Fokus pada pengembangan aplikasi web yang scalable dan user-friendly. Mulai dari frontend, backend, database, hingga integrasi Artificial Intelligence untuk solusi inovatif di bidang edukasi dan teknologi.<</p>
+                        <p class="card-text text-muted">Fokus pada pengembangan aplikasi web yang scalable dan user-friendly. Mulai dari frontend, backend, database, hingga integrasi Artificial Intelligence untuk solusi inovatif di bidang edukasi dan teknologi.</p>
                     </div>
                 </div>
             </div>
@@ -276,8 +276,8 @@ Kami percaya bahwa teknologi bukan hanya tentang alat, tetapi juga tentang bagai
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold mb-1 rk-heading">Rizky Subekti, S.Kom</h5>
-                        <p class="text-primary mb-3">Photogrhaphy</p>
-                        <p class="card-text text-muted">mendukung branding dengan visual kreatif. Hasil fotografi digunakan untuk mendukung identitas, promosi, dan dokumentasi setiap kegiatan agar lebih menarik, estetik, dan berkesan.</p>
+                        <p class="text-primary mb-3">multimedia Business Design</p>
+                        <p class="card-text text-muted">Bertugas merancang konten visual dan multimedia yang mendukung strategi bisnis. Mulai dari desain grafis, presentasi corporate, hingga materi promosi digital, guna memperkuat branding dan profesionalitas.</p>
                     </div>
                 </div>
             </div>
@@ -349,25 +349,25 @@ Kami percaya bahwa teknologi bukan hanya tentang alat, tetapi juga tentang bagai
         <div class="row text-center">
             <div class="col-md-3 col-6 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="100">
                 <div class="rk-stat-item">
-                    <h2 class="display-4 fw-bold text-white mb-2" data-count="500">0</h2>
+                    <h2 class="display-4 fw-bold text-white mb-2" data-count="5">0</h2>
                     <p class="text-light mb-0">Up Skill Online</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="200">
                 <div class="rk-stat-item">
-                    <h2 class="display-4 fw-bold text-white mb-2" data-count="25000">0</h2>
-                    <p class="text-light mb-0">Siswa Aktif</p>
+                    <h2 class="display-4 fw-bold text-white mb-2" data-count="109">0</h2>
+                    <p class="text-light mb-0">Gabung Bersama Kami</p>
                 </div>
             </div>
             <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="rk-stat-item">
-                    <h2 class="display-4 fw-bold text-white mb-2" data-count="98">0</h2>
-                    <p class="text-light mb-0">Kepuasan Siswa</p>
+                    <h2 class="display-4 fw-bold text-white mb-2" data-count="89">0</h2>
+                    <p class="text-light mb-0">Kepuasan Pengguna</p>
                 </div>
             </div>
             <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="400">
                 <div class="rk-stat-item">
-                    <h2 class="display-4 fw-bold text-white mb-2" data-count="50">0</h2>
+                    <h2 class="display-4 fw-bold text-white mb-2" data-count="9">0</h2>
                     <p class="text-light mb-0">Mentor Expert</p>
                 </div>
             </div>
