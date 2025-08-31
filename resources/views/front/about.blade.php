@@ -19,7 +19,7 @@
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="rk-hero-image text-center">
-                    <img src="{{ asset('frontemplate') }}/img/about-hero.svg" alt="About Us" class="img-fluid">
+                    <img src="{{ asset('frontemplate') }}/img/gallery/wel.png" alt="About Us" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -205,7 +205,7 @@
             <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="rk-card rk-team-card h-100 border-0 rk-shadow-hover">
                     <div class="rk-team-img-wrapper position-relative">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Team Member">
+                        <img src="{{ asset('frontemplate') }}/img/mala.png" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
                             <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>

@@ -33,7 +33,7 @@
             </div>
             <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
                 <div class="rk-hero-image position-relative text-center"> {{-- Tambah text-center untuk responsivitas --}}
-                    <img src="{{ asset('frontemplate') }}/img/gallery/fotbar.png" alt="Hero Image" class="img-fluid rounded-3 shadow">
+                    <img src="{{ asset('frontemplate') }}/img/gallery/utama.png" alt="Hero Image" class="img-fluid rounded-3 shadow">
                 </div>
             </div>
         </div>
@@ -190,7 +190,7 @@
                     <div class="card-footer bg-transparent border-0 pt-0">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <span class="text-primary fw-bold">Rp {{ number_format($item->harga_kelas, 0, ',', '.') }}</span>
+                                <span class="text-primary fw-bold"> </span>
                             </div>
                             <a href="{{ route('kelas.detail', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-outline-primary">Lihat Detail</a>
                         </div>
