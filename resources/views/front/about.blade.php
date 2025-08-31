@@ -8,7 +8,10 @@
             <div class="col-lg-6" data-aos="fade-right">
                 <div class="rk-hero-content">
                     <h1 class="display-4 fw-bold text-white mb-4 rk-heading">Tentang <span class="text-warning">Ceybernetsec ID</span></h1>
-                    <p class="lead text-light mb-4">Platform belajar online terdepan yang menghubungkan mentor berkualitas dengan pelajar passionate di seluruh Indonesia</p>
+                    <p class="lead text-light mb-4">Kami adalah komunitas teknologi yang berfokus pada pembelajaran modern di bidang Web Programming, Networking, dan Cyber Security.
+Dengan semangat kolaborasi dan inovasi, kami hadir untuk menjadi ruang belajar, berbagi, dan berkembang bersama.
+
+Kami percaya bahwa teknologi bukan hanya tentang alat, tetapi juga tentang bagaimana membangun masa depan yang lebih aman, kreatif, dan berdaya guna. Oleh karena itu, setiap kelas, workshop, maupun program yang kami rancang selalu berorientasi pada praktik nyata yang bisa langsung diterapkan di dunia kerja maupun proyek pribadi.</p>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('welcome') }}" class="text-light">Home</a></li>
@@ -224,7 +227,7 @@
             <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="rk-card rk-team-card h-100 border-0 rk-shadow-hover">
                     <div class="rk-team-img-wrapper position-relative">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Team Member">
+                        <img src="{{ asset('frontemplate') }}/img/nadia.png" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
                             <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>
@@ -243,7 +246,7 @@
             <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="rk-card rk-team-card h-100 border-0 rk-shadow-hover">
                     <div class="rk-team-img-wrapper position-relative">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Team Member">
+                        <img src="{{ asset('frontemplate') }}/img/putri.png" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
                             <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>
@@ -262,7 +265,7 @@
             <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="rk-card rk-team-card h-100 border-0 rk-shadow-hover">
                     <div class="rk-team-img-wrapper position-relative">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Team Member">
+                        <img src="{{ asset('frontemplate') }}/img/rizki.png" class="card-img-top" alt="Team Member">
                         <div class="rk-team-social-overlay">
                             <div class="rk-social-icons2">
                                 <a href="#" class="rk-social-icon"><i class="fab fa-linkedin-in"></i></a>
@@ -272,7 +275,7 @@
                         </div>
                     </div>
                     <div class="card-body text-center">
-                        <h5 class="card-title fw-bold mb-1 rk-heading">Rizky Subekti</h5>
+                        <h5 class="card-title fw-bold mb-1 rk-heading">Rizky Subekti, S.Kom</h5>
                         <p class="text-primary mb-3">Photogrhaphy</p>
                         <p class="card-text text-muted">mendukung branding dengan visual kreatif. Hasil fotografi digunakan untuk mendukung identitas, promosi, dan dokumentasi setiap kegiatan agar lebih menarik, estetik, dan berkesan.</p>
                     </div>

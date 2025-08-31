@@ -121,8 +121,8 @@
                     <div class="single-footer-widget footer_2">
                         <h4>Kontak Kami</h4>
                         <div class="contact_info rk-contact-info">
-                            <p><span>Address :</span> Indonesia</p>
-                            <p><span>Phone :</span> +62 8123 1234 567</p>
+                            <p><span>Address :</span> Jl. Raya Manyaran-Gunungpati, Nongkosawit, Kec. Gn. Pati, Kota Semarang, Jawa Tengah 50224</p>
+                            <p><span>Phone :</span> +62 85647121046</p>
                             <p><span>Email : </span>cybernetsec@gmail.com</p>
                         </div>
                     </div>

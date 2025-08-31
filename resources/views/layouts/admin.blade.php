@@ -131,7 +131,7 @@
             </div>
             <footer class="main-footer">
                 <div class="footer-left">
-                    Copyright &copy; 2020 <div class="bullet"></div> Design Template By <a
+                    Copyright &copy; 2025 <div class="bullet"></div> Design Template By <a
                         href="https://nauval.in/">CEYBERNETSEC.ID</a> And Developed App By <a
                         href="https://github.com/fikrisuheri">MUHAMMAD MAS'UD</a>
                 </div>
