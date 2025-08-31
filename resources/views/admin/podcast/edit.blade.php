@@ -15,7 +15,7 @@
                 <form action="{{ route('admin.podcast.update',$id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="">Judul Podcast</label>
+                        <label for="">Judul Event</label>
                         <input type="text" name="name_podcast"
                             class="form-control @error('name_podcast') is-invalid @enderror"
                             value="{{ $podcast->name_podcast }}">

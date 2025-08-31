@@ -15,7 +15,7 @@
                 <form action="{{ route('admin.podcast.simpan') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="">Judul Podcast</label>
+                        <label for="">Judul Event</label>
                         <input type="text" name="name_podcast"
                             class="form-control @error('name_podcast') is-invalid @enderror"
                             value="{{ old('name_podcast') }}">
@@ -33,7 +33,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Deskripsi Podcast</label>
+                        <label for="">Deskripsi Event</label>
                         <textarea name="description_podcast"
                             class="ckeditor @error('description_podcast') is-invalid @enderror" id="ckeditor">
                         {{ old('description_podcast') }}

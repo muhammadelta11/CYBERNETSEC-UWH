@@ -17,8 +17,8 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>No</th>
-                                <th>Nama Podcast</th>
-                                <th>URL Podcast</th>
+                                <th>Nama Event</th>
+                                <th>URL Event</th>
                                 <th>Thumbnail</th>
                                 <th width="10%">Aksi</th>
                             </tr>

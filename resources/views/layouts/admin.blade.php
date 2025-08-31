@@ -83,7 +83,7 @@
                         </li>
                         <li class="{{Request::path() == 'admin/podcast' ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.podcast') }}">
-                                <i class="fas fa-microphone"></i><span>Podcast</span>
+                                <i class="fas fa-microphone"></i><span>Jadwal Event</span>
                             </a>
                         </li>
                         <li class="{{Request::path() == 'admin/blog' ? 'active' : '' }}">

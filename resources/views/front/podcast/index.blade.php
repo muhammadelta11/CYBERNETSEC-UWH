@@ -43,8 +43,8 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-lg-8 text-center" data-aos="fade-up">
-                <h2 class="fw-bold mb-3 rk-heading">Koleksi Video Kami</h2>
-                <p class="text-muted">Jelajahi berbagai video pembelajaran yang dirancang khusus untuk membantu perkembangan karir Anda</p>
+                <h2 class="fw-bold mb-3 rk-heading">Jadwal Event Kami</h2>
+                <p class="text-muted">Jadwal Event yang dirancang khusus untuk membantu perkembangan karir Anda</p>
             </div>
         </div>
         
