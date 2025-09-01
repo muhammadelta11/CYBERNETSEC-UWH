@@ -6,3 +6,16 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+// Custom styles
+// =============================
+// Custom Styles
+// =============================
+
+// Warna khusus untuk teks UNWAHAS
+.rk-unwahas {
+    color: #000 !important; // tetap hitam walau dark mode
+}
+
+body.dark-mode .rk-unwahas {
+    color: #000 !important; // override kalau ada class dark-mode di body
+}
