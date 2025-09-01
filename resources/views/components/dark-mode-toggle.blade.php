@@ -131,6 +131,34 @@
             height: 45px;
         }
     }
+
+    /* ================================
+   Footer Styling
+    ================================ */
+
+    /* Default (Light Mode) */
+    .rk-footer-area,
+    .rk-footer-area p,
+    .rk-footer-area a,
+    .rk-footer-area h4 {
+        color: #f9fafb;
+        background: #000000;
+        transition: all 0.3s ease; /* biar smooth */
+    }
+
+    /* Dark Mode */
+    [data-theme="dark"] .rk-footer-area,
+    [data-theme="dark"] .rk-footer-area p,
+    [data-theme="dark"] .rk-footer-area a,
+    [data-theme="dark"] .rk-footer-area h4 {
+        color: #f9fafb !important;  /* teks jadi terang */
+        background: #1f2937;        /* latar jadi gelap */
+    }
+
+    [data-theme="dark"] .rk-footer-area a:hover {
+        color: #60a5fa; /* biru terang saat hover */
+    }
+
 </style>
 
 <script>
