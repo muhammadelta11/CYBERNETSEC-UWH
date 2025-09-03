@@ -28,7 +28,9 @@
     <header class="main_menu home_menu">
         <nav class="navbar navbar-expand-lg navbar-light rk-navbar">
             <div class="container">
-                <a class="navbar-brand rk-navbar-brand" href="{{ route('welcome') }}">CYBERNETSEC.ID</a>
+                <a class="navbar-brand rk-navbar-brand" href="{{ route('welcome') }}">
+                    <img src="{{ asset('frontemplate') }}/img/icon/logo2.png" alt=" Logo" style="height: 40px; margin-right: 10px;">CYBERNETSEC.ID
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
