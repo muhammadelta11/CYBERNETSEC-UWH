@@ -4,7 +4,7 @@
 <section class="rk-hero-section">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="100">
+            <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-light" data-aos-delay="100">
                 <div class="rk-hero-content">
                     <h6 class="rk-text-accent mb-2"><i class="fas fa-graduation-cap me-2"></i>Official Research Hub</h6>
                     <h1 class="display-4 fw-bold mb-4 rk-heading">UNWAHAS <span class="rk-text-primary">CYBERNETSEC LABORATORY</span></h1>

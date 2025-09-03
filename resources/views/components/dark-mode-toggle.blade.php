@@ -72,6 +72,11 @@
         background: rgba(17, 24, 39, 0.95) !important;
         backdrop-filter: blur(10px);
     }
+
+    [data-theme="dark"] .rk-hero-section {
+        background: rgba(17, 24, 39, 0.95) !important;
+        backdrop-filter: blur(10px);
+    }
     
     [data-theme="dark"] .rk-nav-link {
         color: #e5e7eb !important;
@@ -82,7 +87,10 @@
         color: #e5e7eb;
     }
     
-    [data-theme="dark"] .rk-heading h1,
+    [data-theme="dark"] .rk-heading h1
+    {
+        color: #000000;
+    },
     [data-theme="dark"] .rk-heading h2,
     [data-theme="dark"] .rk-heading h3,
     [data-theme="dark"] .rk-heading h4,
