@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{ asset('frontemplate') }}/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+
+
     {{-- Custom Styles --}}
     <style>
         body {
@@ -74,10 +76,50 @@
     {{-- Topbar --}}
     <div class="topbar">
         <span>@yield('title', 'Dashboard')</span>
-        <div>
-            <i class="fas fa-user-circle me-2"></i> {{ Auth::user()->name ?? 'Guest' }}
+        <div class="collapse navbar-collapse main-menu-item justify-content-end rk-navbar-collapse"
+            id="navbarSupportedContent">
+            <ul class="navbar-nav align-items-center">
+                    @guest
+                    <li class="nav-item rk-nav-item">
+                        <a class="nav-link rk-nav-link {{ request()->routeIs('login') ? 'active' : '' }}" href="{{ route('login') }}">Masuk</a>
+                    </li>
+                    <li class="d-none d-lg-block">
+                        <a class="rk-btn-primary" href="{{ route('register') }}">Daftar</a>
+                    </li>
+                @else
+                <li class="nav-item dropdown rk-nav-item">
+                    <a class="nav-link dropdown-toggle rk-nav-link" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle me-1"></i> Hi {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu rk-dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item rk-dropdown-item" href="{{ route('akun') }}"><i class="fas fa-user me-2"></i>Akun</a>
+                            @if (Auth::user()->role == 'regular')
+                        <a class="dropdown-item rk-dropdown-item" href="{{ route('upgradepremium') }}"><i class="fas fa-crown me-2"></i>Upgrade Premium</a>
+                        @endif
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item rk-dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt me-2"></i>{{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                            @csrf
+                            </form>
+                    </div>
+                </li>
+                @endguest
+            </ul>
         </div>
-    </div>
+
+        
+        <div>
+
+            <i class="nav-link rk-nav-link {{ request()->routeIs('login') ? 'active' : '' }}" href="{{ route('login') }}"></i> {{ Auth::user()->name ?? 'Masuk' }}
+            <i class="fas fa-user-circle me-2"></i> {{ Auth::user()->name ?? 'Login' }}
+            <i class="fas fa-user-circle me-2"></i> {{ Auth::user()->name ?? 'p' }}
+        </div>
+     </div>
 
     {{-- Main Content --}}
     <div class="content">

@@ -59,7 +59,7 @@
             <div class="main-sidebar">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="{{ route('admin') }}">CYBERNETSEC</a>
+                        <a href="{{ route('admin') }}">SIKAWAN.ID</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
                         <a href="{{ route('admin') }}">ID</a>
@@ -132,8 +132,8 @@
             <footer class="main-footer">
                 <div class="footer-left">
                     Copyright &copy; 2025 <div class="bullet"></div> Design Template By <a
-                        href="https://nauval.in/">CEYBERNETSEC.ID</a> And Developed App By <a
-                        href="https://github.com/fikrisuheri">MUHAMMAD MAS'UD</a>
+                        href="https://nauval.in/">SIKAWAN.ID</a> And Developed App By <a
+                        href="https://github.com/dekputri705-droid">Dwi Putri</a>
                 </div>
                 <div class="footer-right">
                     2.3.0
