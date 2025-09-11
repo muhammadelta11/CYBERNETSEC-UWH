@@ -102,7 +102,7 @@
                     <div class="single-footer-widget footer_1">
                         <div class="rk-footer-brand">
                             <a href="{{ route('welcome') }}">
-                                <h2>CYBERNETSEC.ID</h2>
+                            CYBERNETSEC.ID
                             </a>
                         </div>
                         <p>UNWAHAS CYBERNETSEC LABORATORY</p>

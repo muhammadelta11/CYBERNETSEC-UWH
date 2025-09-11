@@ -522,3 +522,37 @@ body.dark-mode .rk-section.bg-light h6 {
 body.dark-mode .dark-mode-toggle .form-check-label {
     color: #e2e8f0;
 }
+
+/* Biar footer tetap rapi di semua device */
+.footer-area .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-area .single-footer-widget {
+  margin-bottom: 20px; /* biar ada jarak antar kolom waktu turun */
+}
+
+/* Aturan khusus untuk layar kecil */
+@media (max-width: 767px) {
+  .footer-area .rk-footer-brand {
+    display: flex;
+    align-items: center;
+    flex-direction: column;  /* logo & text jadi vertikal */
+    text-align: center;
+  }
+
+  .footer-area .rk-footer-brand img {
+    margin: 0 0 10px 0; /* kasih jarak bawah */
+  }
+
+  .footer-area .social_icon {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .footer-area .contact_info {
+    text-align: center;
+    margin-top: 15px;
+  }
+}
