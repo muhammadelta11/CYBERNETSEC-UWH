@@ -59,7 +59,7 @@
                         </li>
                         @endif
                         <li class="nav-item rk-nav-item">
-                            <a class="nav-link rk-nav-link {{ request()->routeIs('podcast') ? 'active' : '' }}" href="{{ route('podcast') }}">Jadwal Event</a>
+                            <a class="nav-link rk-nav-link {{ request()->routeIs('podcast') ? 'active' : '' }}" href="{{ route('podcast') }}">Event</a>
                         </li>
                         @guest
                         <li class="nav-item rk-nav-item">
