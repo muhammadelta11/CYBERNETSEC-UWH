@@ -25,6 +25,18 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="">Kategori</label>
+                        <select name="blog_category_id" class="form-control @error('blog_category_id') is-invalid @enderror" required>
+                            <option value="">Pilih Kategori</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ $blog->blog_category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('blog_category_id')
+                        <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="">Konten</label>
                         <textarea name="content_blog" class="ckeditor @error('content_blog') is-invalid @enderror"
                             id="ckeditor">

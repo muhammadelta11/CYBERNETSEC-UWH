@@ -47,26 +47,39 @@
 
             @if ($cek->count() > 0 && $cek->first()->status == 2)
             <div class="col-md-6 mx-auto">
-                <h4>Pembayaran Anda Ditolak.Silahkan kirim ulang bukti pembayaran</h4>
-                <form action="{{ route('uploadulang') }}" enctype="multipart/form-data" method="POST">
-                    @csrf
-                    <div class="form-group mt-3">
-                        <label for="">Upload bukti transfer</label>
-                        <input type="file" class="form-control" name="bukti">
-                        @error('bukti')
-                        <small class="mt-2 text-danger"> {{ $message }}</small>
-                        @enderror
-                    </div>
-                    <div class="text-right">
-                        <button type="submit" class="btn_4">Kirim</button>
-                    </div>
-                </form>
+                <h4>Pembayaran Anda Ditolak. Silakan kirim ulang bukti pembayaran</h4>
+                <p class="mt-3">Nominal: Rp.{{ number_format($setting->harga,0,',','.') }}</p>
+                <h5>Silahkan transfer ke no rekening di bawah ini</h5>
+                <ul>
+                    @foreach ($rekening as $item)
+                    <li>- {{ $item->no_rekening }} a.n <b>{{ $item->atas_nama }}</b>
+                        <button class="btn btn-sm btn-outline-secondary ml-2" onclick="copyToClipboard('{{ $item->no_rekening }}')">
+                            <i class="fas fa-copy"></i> Salin
+                        </button>
+                    </li>
+                    @endforeach
+                </ul>
+                <div class="mt-4">
+                    <form action="{{ route('kirimnotifikasi') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> klik sini jika sudah kirim bukti pembayaran
+                        </button>
+                    </form>
+                    <button class="btn btn-success" onclick="sendWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> Kirim via WhatsApp
+                    </button>
+                </div>
             </div>
             @endif
 
             @if($cek->count() < 1) <div class="col-md-6 mx-auto">
                 @php
-                    $setting = \App\Setting::first()
+                    $setting = \App\Setting::first();
+                    if (!$setting) {
+                        $setting = new \stdClass();
+                        $setting->harga = 0;
+                    }
                 @endphp
 <h4>Silahkan transfer sebesar Rp.{{ number_format($setting->harga,0,',','.') }} ke no rekening di bawah ini</h4>
                 <ul>
@@ -74,23 +87,48 @@
                     <li>- {{ $item->no_rekening }} a.n <b>{{ $item->atas_nama }}</b></li>
                     @endforeach
                 </ul>
-                <form action="{{ route('uploadbukti') }}" enctype="multipart/form-data" method="POST">
-                    @csrf
-                    <div class="form-group mt-3">
-                        <label for="">Upload bukti transfer</label>
-                        <input type="file" class="form-control" name="bukti">
-                        @error('bukti')
-                        <small class="mt-2 text-danger"> {{ $message }}</small>
-                        @enderror
-                    </div>
-                    <div class="text-right">
-                        <button type="submit" class="btn_4">Kirim</button>
-                    </div>
-                </form>
+                <div class="mt-4">
+                    <button class="btn btn-success" onclick="sendWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> Kirim Bukti Pembayaran via WhatsApp
+                    </button>
+                </div>
         </div>
         @endif
     </div>
     </div>
 </section>
+
+<script>
+function sendWhatsApp() {
+    @php
+        $setting = \App\Setting::first();
+        if (!$setting) {
+            $setting = new \stdClass();
+            $setting->harga = 0;
+        }
+    @endphp
+    const message = `Halo Admin CyberNetSec UWH,
+
+Saya {{ Auth::user()->name }} ingin mengirim bukti pembayaran untuk upgrade Premium.
+
+Nominal: Rp.{{ number_format($setting->harga,0,',','.') }}
+
+Silakan konfirmasi pembayaran saya.
+
+Terima kasih.`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/6285647121046?text=${encodedMessage}`; // Replace with admin WhatsApp number
+    window.open(whatsappUrl, '_blank');
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert('Nomor rekening berhasil disalin: ' + text);
+    }, function(err) {
+        console.error('Could not copy text: ', err);
+    });
+}
+</script>
 <!--================ End Course Details Area =================-->
 @endsection

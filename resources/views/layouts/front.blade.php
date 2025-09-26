@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>CYBERNETSEC.ID</title>
     <link rel="icon" href="{{ asset('frontemplate') }}/img/icon/logo.png">
 
@@ -50,8 +51,13 @@
                             <a class="nav-link rk-nav-link {{ request()->routeIs('blog') ? 'active' : '' }}" href="{{ route('blog') }}">Artikel</a>
                         </li>
                         <li class="nav-item rk-nav-item">
-                            <a class="nav-link rk-nav-link {{ request()->routeIs('kelas') ? 'active' : '' }}" href="{{ route('kelas') }}">Up Skill</a>
+                            <a class="nav-link rk-nav-link {{ request()->routeIs('kelas') || request()->routeIs('upskill') ? 'active' : '' }}" href="{{ route('kelas') }}">BrainLab</a>
                         </li>
+                        @if(auth()->check() && auth()->user()->isMahasiswa())
+                        <li class="nav-item rk-nav-item">
+                            <a class="nav-link rk-nav-link {{ request()->routeIs('upskill') ? 'active' : '' }}" href="{{ route('upskill') }}">UPSKILL</a>
+                        </li>
+                        @endif
                         <li class="nav-item rk-nav-item">
                             <a class="nav-link rk-nav-link {{ request()->routeIs('podcast') ? 'active' : '' }}" href="{{ route('podcast') }}">Jadwal Event</a>
                         </li>
@@ -69,7 +75,10 @@
                                 <i class="fas fa-user-circle me-1"></i> Hi {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu rk-dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item rk-dropdown-item" href="{{ route('kursus.diambil') }}"><i class="fas fa-book me-2"></i>Kursus Saya</a>
                                 <a class="dropdown-item rk-dropdown-item" href="{{ route('akun') }}"><i class="fas fa-user me-2"></i>Akun</a>
+                                <a class="dropdown-item rk-dropdown-item" href="{{ route('sertifikat.index') }}"><i class="fas fa-certificate me-2"></i>E-Sertifikat</a>
+                                <a class="dropdown-item rk-dropdown-item" href="{{ route('event-registrations.index') }}"><i class="fas fa-calendar-check me-2"></i>Event Registrations</a>
                                 @if (Auth::user()->role == 'regular')
                                 <a class="dropdown-item rk-dropdown-item" href="{{ route('upgradepremium') }}"><i class="fas fa-crown me-2"></i>Upgrade Premium</a>
                                 @endif
@@ -141,6 +150,9 @@
                                     Copyright &copy;<script>
                                         document.write(new Date().getFullYear());
                                     </script> All rights reserved | This template is made with <i class="fas fa-heart text-danger"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> & Developed Apps By <a href="https:://github/fikrisuheri">CYBERNETSEC.ID</a>
+                                </p>
+                                <p class="footer-text m-0 mt-2">
+                                    <i class="fas fa-eye me-1"></i> Total Kunjungan: <span id="visit-counter">{{ number_format(\App\Visit::getTotalVisits()) }}</span>
                                 </p>
                             </div>
                         </div>

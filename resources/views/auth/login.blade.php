@@ -18,14 +18,14 @@
                         @csrf
                         
                         <div class="mb-4">
-                            <label for="email" class="form-label">Alamat Email</label>
+                        <label for="login_field" class="form-label">NIM atau Email</label>
                             <div class="input-group">
-                                <span class="input-group-text rk-input-group-text"><i class="fas fa-envelope"></i></span>
-                                <input id="email" type="email" class="form-control rk-form-control @error('email') is-invalid @enderror" 
-                                       name="email" value="{{ old('email') }}" required autocomplete="email" 
-                                       autofocus placeholder="nama@contoh.com">
+                                <span class="input-group-text rk-input-group-text"><i class="fas fa-user"></i></span>
+                                <input id="login_field" type="text" class="form-control rk-form-control @error('login_field') is-invalid @enderror"
+                                       name="login_field" value="{{ old('login_field') }}" required autocomplete="username"
+                                       autofocus placeholder="Masukkan NIM atau Email">
                             </div>
-                            @error('email')
+                            @error('login_field')
                                 <div class="invalid-feedback d-block mt-2">{{ $message }}</div>
                             @enderror
                         </div>

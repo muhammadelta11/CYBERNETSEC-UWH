@@ -18,5 +18,8 @@ class DatabaseSeeder extends Seeder
                 'harga' => 50000
             ]);
         }
+
+        // Run the KelasSeeder to populate sample classes
+        $this->call(KelasSeeder::class);
     }
 }

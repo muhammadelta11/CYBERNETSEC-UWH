@@ -32,6 +32,17 @@
                         <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="registration_enabled" value="1" id="registration_enabled" {{ $setting->registration_enabled ? 'checked' : '' }}>
+                            <label class="form-check-label" for="registration_enabled">
+                                Aktifkan Pendaftaran Pengguna
+                            </label>
+                        </div>
+                        @error('registration_enabled')
+                        <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-success">Perbaharui Pengaturan</button>
                     </div>

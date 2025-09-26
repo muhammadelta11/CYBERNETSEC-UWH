@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4>{{ $title }} {{ $transaksi->users->name }}</h4>
+                <h4>{{ $title }} {{ $transaksi->users ? $transaksi->users->name : 'User Tidak Ditemukan' }}</h4>
                 <div class="card-header-action">
                     <button id="btn-back" class="btn btn-primary">
                         Kembali
@@ -18,13 +18,25 @@
                             <tr>
                                 <td>Nama User</td>
                                 <td class="py-2 px-3">:</td>
-                                <td>{{ $transaksi->users->name }}</td>
+                                <td>{{ $transaksi->users ? $transaksi->users->name : 'User Tidak Ditemukan' }}</td>
                             </tr>
                             <tr>
                                 <td>Tanggal Upload Bukti</td>
                                 <td class="py-2 px-3">:</td>
                                 <td>{{ substr($transaksi->created_at,0,10) }}</td>
                             </tr>
+                            @if($transaksi->kelas_id && $transaksi->kelas)
+                            <tr>
+                                <td>Nama Kelas</td>
+                                <td class="py-2 px-3">:</td>
+                                <td>{{ $transaksi->kelas->name_kelas }}</td>
+                            </tr>
+                            <tr>
+                                <td>Harga</td>
+                                <td class="py-2 px-3">:</td>
+                                <td>Rp. {{ number_format($transaksi->harga,0,',','.') }}</td>
+                            </tr>
+                            @endif
                             <tr>
                                 <td>Status</td>
                                 <td class="py-2 px-3">:</td>

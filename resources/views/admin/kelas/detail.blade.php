@@ -7,10 +7,10 @@
                 <h4>{{ $title }} {{ $kelas->name_kelas }}</h4>
                 <div class="card-header-action">
                     <a href="{{ route('admin.kelas.edit',Crypt::encrypt($kelas->id)) }}" class="btn btn-warning">
-                        Edit 
+                        Edit
                     </a>
                     <a href="javascript:void(0)" onclick="alertconfirmn('{{ route('admin.kelas.hapus',Crypt::encrypt($kelas->id)) }}')" class="btn btn-danger">
-                        Hapus 
+                        Hapus
                     </a>
                     <button id="btn-back" class="btn btn-primary">
                         Kembali
@@ -22,6 +22,17 @@
                     <div class="col-md-6">
                         <table>
                             <tr>
+                                <td>Kategori</td>
+                                <td class="px-2 py-1">:</td>
+                                <td>
+                                    @if($kelas->upskillCategory)
+                                        {{ $kelas->upskillCategory->semester->name }} - {{ $kelas->upskillCategory->name }}
+                                    @else
+                                        <span class="text-muted">Tidak ada kategori</span>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Tipe Kelas</td>
                                 <td class="px-2 py-1">:</td>
                                 <td>
@@ -31,6 +42,10 @@
                                     Regular
                                     @elseif($kelas->type_kelas == 2)
                                     Premium
+                                    @elseif($kelas->type_kelas == 3)
+                                    Program Upskill
+                                    @elseif($kelas->type_kelas == 4)
+                                    Brainlabs
                                     @endif
                                 </td>
                             </tr>
@@ -55,12 +70,12 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4>Video Materi {{ $kelas->name_kelas }}</h4>
+                <h4>Materi {{ $kelas->name_kelas }}</h4>
                 <div class="card-header-action">
                     <a href="{{ route('admin.kelas.tambahvideo',Crypt::encrypt($kelas->id)) }}" class="btn btn-primary">
-                        Tambah
+                        Tambah Materi
                     </a>
-                    
+
                 </div>
             </div>
             <div class="card-body">
@@ -70,22 +85,42 @@
                             <tr>
                                 <th>No</th>
                                 <th>Judul</th>
-                                <th>URL Video</th>
+                                <th>Tipe</th>
+                                <th>Konten</th>
                                 <th width="10%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($kelas->video as $item)
+                            @foreach ($kelas->materi as $item)
                             <tr>
                                 <td></td>
-                                <td>{{ $item->name_video }}</td>
-                                <td>{{ $item->url_video }}</td>
+                                <td>{{ $item->title }}</td>
+                                <td>
+                                    @if($item->type == 'video')
+                                        <span class="badge badge-primary">Video</span>
+                                    @elseif($item->type == 'text')
+                                        <span class="badge badge-success">Teks</span>
+                                    @elseif($item->type == 'document')
+                                        <span class="badge badge-warning">Dokumen</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($item->type == 'video')
+                                        {{ $item->url }}
+                                    @elseif($item->type == 'text')
+                                        {!! Str::limit(strip_tags($item->content), 50) !!}
+                                    @elseif($item->type == 'document')
+                                        @if($item->url)
+                                            <a href="{{ asset('storage/' . $item->url) }}" target="_blank">{{ basename($item->url) }}</a>
+                                        @endif
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="javascript:void(0)" onclick="alertconfirmn('{{ route('admin.kelas.hapusvideo',[
                                         'id' => Crypt::encrypt($item->id),
                                         'idkelas' => Crypt::encrypt($kelas->id)
                                     ]) }}')" class="btn btn-danger">
-                                        Hapus 
+                                        Hapus
                                     </a>
                                 </td>
                             </tr>

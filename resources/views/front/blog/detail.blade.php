@@ -44,9 +44,9 @@
                         </div>
                         
                         <div class="rk-blog-tags mb-3">
-                            <span class="badge bg-primary bg-opacity-10 text-primary me-2">Education</span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary me-2">Learning</span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary">Tips</span>
+                            @if($blog->category)
+                                <span class="badge bg-primary bg-opacity-10 text-primary">{{ $blog->category->name }}</span>
+                            @endif
                         </div>
                     </header>
 
@@ -63,18 +63,40 @@
                     <div class="rk-blog-share mt-5 pt-4 border-top" data-aos="fade-up" data-aos-delay="300">
                         <h6 class="fw-bold mb-3">Bagikan Artikel</h6>
                         <div class="d-flex flex-wrap gap-2">
-                            <a href="#" class="btn btn-sm btn-outline-primary d-flex align-items-center">
+                            <a href="{{ 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode(url()->current()) . '&quote=' . urlencode($blog->name_blog) }}"
+                               target="_blank"
+                               class="btn btn-sm btn-outline-primary d-flex align-items-center"
+                               onclick="trackShare('facebook')">
                                 <i class="fab fa-facebook-f me-2"></i> Facebook
                             </a>
-                            <a href="#" class="btn btn-sm btn-outline-info d-flex align-items-center">
+                            <a href="{{ 'https://twitter.com/intent/tweet?text=' . urlencode($blog->name_blog) . '&url=' . urlencode(url()->current()) }}"
+                               target="_blank"
+                               class="btn btn-sm btn-outline-info d-flex align-items-center"
+                               onclick="trackShare('twitter')">
                                 <i class="fab fa-twitter me-2"></i> Twitter
                             </a>
-                            <a href="#" class="btn btn-sm btn-outline-danger d-flex align-items-center">
-                                <i class="fab fa-instagram me-2"></i> Instagram
+                            <a href="{{ 'https://wa.me/?text=' . urlencode($blog->name_blog . ' - ' . url()->current()) }}"
+                               target="_blank"
+                               class="btn btn-sm btn-outline-success d-flex align-items-center"
+                               onclick="trackShare('whatsapp')">
+                                <i class="fab fa-whatsapp me-2"></i> WhatsApp
                             </a>
-                            <a href="#" class="btn btn-sm btn-outline-secondary d-flex align-items-center">
-                                <i class="fas fa-link me-2"></i> Copy Link
+                            <a href="{{ 'https://www.linkedin.com/sharing/share-offsite/?url=' . urlencode(url()->current()) }}"
+                               target="_blank"
+                               class="btn btn-sm btn-outline-primary d-flex align-items-center"
+                               onclick="trackShare('linkedin')">
+                                <i class="fab fa-linkedin-in me-2"></i> LinkedIn
                             </a>
+                            <button type="button"
+                                    class="btn btn-sm btn-outline-secondary d-flex align-items-center"
+                                    id="copyLinkBtn"
+                                    onclick="copyToClipboard()">
+                                <i class="fas fa-link me-2"></i>
+                                <span id="copyText">Copy Link</span>
+                            </button>
+                        </div>
+                        <div id="copySuccess" class="mt-2 text-success small d-none">
+                            <i class="fas fa-check me-1"></i> Link berhasil disalin!
                         </div>
                     </div>
                 </article>
@@ -104,20 +126,6 @@
                     <div class="rk-sidebar-widget mb-5">
                         <h5 class="fw-bold mb-4 rk-heading">Artikel Terbaru</h5>
                         <div class="rk-recent-posts">
-                            @php
-                                // Mengambil recent blogs dari database jika tidak disediakan oleh controller
-                                if (!isset($recentBlogs) || empty($recentBlogs)) {
-                                    try {
-                                        if (class_exists('App\Models\Blog')) {
-                                            $recentBlogs = App\Models\Blog::latest()->take(5)->get();
-                                        } else {
-                                            $recentBlogs = [];
-                                        }
-                                    } catch (Exception $e) {
-                                        $recentBlogs = [];
-                                    }
-                                }
-                            @endphp
                             
                             @if(!empty($recentBlogs) && count($recentBlogs) > 0)
                                 @foreach($recentBlogs as $recent)
@@ -134,25 +142,7 @@
                                 </a>
                                 @endforeach
                             @else
-                                @php
-                                    $fallbackBlogs = [
-                                        ['title' => 'Tips Belajar Programming', 'date' => '15 Nov 2023'],
-                                        ['title' => 'Framework Terbaru 2023', 'date' => '10 Nov 2023']
-                                    ];
-                                @endphp
-                                @foreach($fallbackBlogs as $fallback)
-                                <div class="rk-recent-post-item d-flex mb-3">
-                                    <div class="rk-post-thumb me-3">
-                                        <div class="bg-primary bg-opacity-10 rounded d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
-                                            <i class="fas fa-newspaper text-primary"></i>
-                                        </div>
-                                    </div>
-                                    <div class="rk-post-content">
-                                        <h6 class="fw-medium mb-1 rk-heading">{{ $fallback['title'] }}</h6>
-                                        <small class="text-muted">{{ $fallback['date'] }}</small>
-                                    </div>
-                                </div>
-                                @endforeach
+                                <div class="text-muted small">Belum ada artikel terbaru</div>
                             @endif
                         </div>
                     </div>
@@ -160,22 +150,16 @@
                     <div class="rk-sidebar-widget mb-5">
                         <h5 class="fw-bold mb-4 rk-heading">Kategori</h5>
                         <div class="rk-categories-list">
-                            @php
-                                $categories = [
-                                    ['name' => 'Teknologi', 'count' => 12],
-                                    ['name' => 'Pendidikan', 'count' => 8],
-                                    ['name' => 'Web Development', 'count' => 15],
-                                    ['name' => 'Tips & Trik', 'count' => 7],
-                                    ['name' => 'Design', 'count' => 9]
-                                ];
-                            @endphp
-                            
-                            @foreach($categories as $category)
-                            <a href="#" class="d-flex justify-content-between align-items-center py-2 border-bottom text-decoration-none rk-category-link">
-                                <span class="text-dark">{{ $category['name'] }}</span>
-                                <span class="badge bg-primary bg-opacity-10 text-primary">{{ $category['count'] }}</span>
-                            </a>
-                            @endforeach
+                            @if(!empty($categories))
+                                @foreach($categories as $category)
+                                <a href="{{ route('blog', ['category' => $category->id]) }}" class="d-flex justify-content-between align-items-center py-2 border-bottom text-decoration-none rk-category-link">
+                                    <span class="text-dark">{{ $category->name }}</span>
+                                    <span class="badge bg-primary bg-opacity-10 text-primary">{{ $category->blogs_count }}</span>
+                                </a>
+                                @endforeach
+                            @else
+                                <p class="text-muted small">Belum ada kategori</p>
+                            @endif
                         </div>
                     </div>
 
@@ -202,22 +186,7 @@
     </div>
 </section>
 
-@php
-    if (!isset($relatedBlogs) || empty($relatedBlogs)) {
-        try {
-            if (class_exists('App\Models\Blog')) {
-                $relatedBlogs = App\Models\Blog::where('id', '!=', $blog->id)
-                    ->inRandomOrder()
-                    ->take(3)
-                    ->get();
-            } else {
-                $relatedBlogs = [];
-            }
-        } catch (Exception $e) {
-            $relatedBlogs = [];
-        }
-    }
-@endphp
+
 
 @if(!empty($relatedBlogs) && count($relatedBlogs) > 0)
 <section class="rk-related-articles py-5 bg-light">
@@ -318,6 +287,24 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem; /* Jarak antara ikon dan teks */
+    transition: all 0.3s ease;
+}
+
+.rk-blog-share .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Copy Success Message */
+#copySuccess {
+    animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
 }
 /* Blog Detail Hero */
 .rk-blog-detail-hero {

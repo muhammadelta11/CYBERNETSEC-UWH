@@ -18,6 +18,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Kelas</th>
+                                <th>Kategori</th>
                                 <th>Tipe Kelas</th>
                                 <th>Thumbnail</th>
                                 <th width="10%">Aksi</th>
@@ -29,12 +30,23 @@
                                 <td></td>
                                 <td>{{ $item->name_kelas }}</td>
                                 <td>
+                                    @if($item->upskillCategory)
+                                        {{ $item->upskillCategory->semester->name }} - {{ $item->upskillCategory->name }}
+                                    @else
+                                        <span class="text-muted">Tidak ada kategori</span>
+                                    @endif
+                                </td>
+                                <td>
                                     @if ($item->type_kelas == 0)
                                     Gratis
                                     @elseif($item->type_kelas == 1)
                                     Regular
                                     @elseif($item->type_kelas == 2)
                                     Premium
+                                    @elseif($item->type_kelas == 3)
+                                    Program Upskill
+                                    @elseif($item->type_kelas == 4)
+                                    Brainlabs
                                     @endif
                                 </td>
                                 <td>

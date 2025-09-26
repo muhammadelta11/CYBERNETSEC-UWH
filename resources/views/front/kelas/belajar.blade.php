@@ -22,20 +22,35 @@
             <!-- Video Player -->
             <div class="col-lg-8">
                 <div class="rk-learning-content">
-                    <!-- Video Player -->
-                    <div class="rk-video-player mb-4" data-aos="fade-up">
-                        <div class="ratio ratio-16x9">
-                            <iframe src="https://www.youtube.com/embed/{{ $video->url_video }}" 
-                                    allowfullscreen 
-                                    class="rounded-3 shadow"></iframe>
-                        </div>
+                    <!-- Materi Content -->
+                    <div class="rk-materi-content mb-4" data-aos="fade-up">
+                        @if($materi->type == 'video')
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.youtube.com/embed/{{ $materi->url }}"
+                                        allowfullscreen
+                                        class="rounded-3 shadow"></iframe>
+                            </div>
+                        @elseif($materi->type == 'text')
+                            <div class="rk-text-content bg-light p-4 rounded-3">
+                                <div class="text-content-display">{!! $materi->content !!}</div>
+                            </div>
+                        @elseif($materi->type == 'document')
+                            <div class="rk-document-content text-center p-4 bg-light rounded-3">
+                                <i class="fas fa-file-alt fa-4x text-primary mb-3"></i>
+                                <h5>{{ $materi->title }}</h5>
+                                <p class="text-muted mb-4">Dokumen materi yang dapat dilihat</p>
+                                <a href="{{ route('materi.download', ['id' => Crypt::encrypt($materi->id)]) }}" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-eye me-2"></i> Lihat Dokumen
+                                </a>
+                            </div>
+                        @endif
                     </div>
 
-                    <!-- Video Info -->
-                    <div class="rk-video-info mb-5" data-aos="fade-up" data-aos-delay="100">
-                        <h1 class="fw-bold mb-3 rk-heading">{{ $video->name_video }}</h1>
+                    <!-- Materi Info -->
+                    <div class="rk-materi-info mb-5" data-aos="fade-up" data-aos-delay="100">
+                        <h1 class="fw-bold mb-3 rk-heading">{{ $materi->title }}</h1>
                         
-                        <div class="rk-video-meta d-flex flex-wrap align-items-center gap-4 mb-3">
+                        <div class="rk-materi-meta d-flex flex-wrap align-items-center gap-4 mb-3">
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-clock text-primary me-2"></i>
                                 <small class="text-muted">Durasi: 15:30</small>
@@ -52,13 +67,13 @@
                                     @php
                                         // Calculate current position safely
                                         $currentPosition = 1;
-                                        $totalVideos = $kelas->video->count();
-                                        
-                                        // Find current video index if not provided
+                                        $totalMateri = $kelas->materi->count();
+
+                                        // Find current materi index if not provided
                                         if (!isset($currentIndex)) {
                                             $currentIndex = 0;
-                                            foreach ($kelas->video as $index => $item) {
-                                                if ($item->id == $video->id) {
+                                            foreach ($kelas->materi as $index => $item) {
+                                                if ($item->id == $materi->id) {
                                                     $currentIndex = $index;
                                                     $currentPosition = $index + 1;
                                                     break;
@@ -68,7 +83,7 @@
                                             $currentPosition = $currentIndex + 1;
                                         }
                                     @endphp
-                                    Materi {{ $currentPosition }}/{{ $totalVideos }}
+                                    Materi {{ $currentPosition }}/{{ $totalMateri }}
                                 </small>
                             </div>
                         </div>
@@ -79,16 +94,17 @@
                                 <small class="text-muted">Progress Belajar</small>
                                 <small class="text-muted">
                                     @php
-                                        // Calculate progress percentage safely
-                                        $progress = $totalVideos > 0 ? 
-                                                   round(($currentPosition / $totalVideos) * 100) : 0;
+                                        // Calculate progress percentage based on completed materi
+                                        $completedCount = count($completedMateri);
+                                        $progress = $totalMateri > 0 ?
+                                                   round(($completedCount / $totalMateri) * 100) : 0;
                                         $progress = min($progress, 100); // Ensure max 100%
                                     @endphp
                                     {{ $progress }}%
                                 </small>
                             </div>
                             <div class="progress" style="height: 8px;">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: {{ $progress }}%" 
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: {{ $progress }}%"
                                      aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
@@ -96,29 +112,45 @@
                         <!-- Video Description -->
                         <div class="rk-video-description">
                             <h5 class="fw-bold mb-3">Deskripsi Materi</h5>
-                            <p class="text-muted">
-                                Materi ini membahas konsep dasar yang perlu dipahami sebelum melanjutkan ke materi berikutnya. 
-                                Pastikan Anda memahami dengan baik sebelum melanjutkan.
-                            </p>
+                            <div class="text-muted">
+                                {!! $materi->content !!}
+                            </div>
+                        </div>
+
+                        <!-- Mark as Completed Button -->
+                        <div class="rk-completion-section mb-4">
+                            @php
+                                $isCompleted = in_array($materi->id, $completedMateri);
+                            @endphp
+                            @if(!$isCompleted)
+                            <button id="markCompletedBtn" class="btn btn-success" onclick="markMateriCompleted({{ $materi->id }})">
+                                <i class="fas fa-check me-2"></i> Tandai sebagai Selesai
+                            </button>
+                            @else
+                            <div class="alert alert-success d-flex align-items-center" role="alert">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <div>Anda telah menyelesaikan materi ini!</div>
+                            </div>
+                            @endif
                         </div>
                     </div>
 
                     <!-- Navigation Buttons -->
                     <div class="rk-navigation-buttons d-flex gap-3" data-aos="fade-up" data-aos-delay="200">
                         @php
-                            // Find previous and next videos if not provided
-                            if (!isset($prevVideo) || !isset($nextVideo)) {
-                                $videos = $kelas->video;
-                                $prevVideo = null;
-                                $nextVideo = null;
-                                
-                                foreach ($videos as $index => $item) {
-                                    if ($item->id == $video->id) {
+                            // Find previous and next materi if not provided
+                            if (!isset($prevMateri) || !isset($nextMateri)) {
+                                $materiList = $kelas->materi;
+                                $prevMateri = null;
+                                $nextMateri = null;
+
+                                foreach ($materiList as $index => $item) {
+                                    if ($item->id == $materi->id) {
                                         if ($index > 0) {
-                                            $prevVideo = $videos[$index - 1];
+                                            $prevMateri = $materiList[$index - 1];
                                         }
-                                        if ($index < count($videos) - 1) {
-                                            $nextVideo = $videos[$index + 1];
+                                        if ($index < count($materiList) - 1) {
+                                            $nextMateri = $materiList[$index + 1];
                                         }
                                         break;
                                     }
@@ -126,19 +158,19 @@
                             }
                         @endphp
 
-                        @if($prevVideo)
+                        @if($prevMateri)
                         <a href="{{ route('kelas.belajar', [
                             'id' => Crypt::encrypt($kelas->id),
-                            'idvideo' => Crypt::encrypt($prevVideo->id)
+                            'idmateri' => Crypt::encrypt($prevMateri->id)
                         ]) }}" class="btn btn-outline-primary">
                             <i class="fas fa-arrow-left me-2"></i> Sebelumnya
                         </a>
                         @endif
 
-                        @if($nextVideo)
+                        @if($nextMateri)
                         <a href="{{ route('kelas.belajar', [
                             'id' => Crypt::encrypt($kelas->id),
-                            'idvideo' => Crypt::encrypt($nextVideo->id)
+                            'idmateri' => Crypt::encrypt($nextMateri->id)
                         ]) }}" class="btn btn-primary ms-auto">
                             Selanjutnya <i class="fas fa-arrow-right ms-2"></i>
                         </a>
@@ -188,31 +220,35 @@
                         <div class="card-body">
                             <h6 class="fw-bold mb-3">Daftar Materi</h6>
                             <div class="rk-curriculum-list">
-                                @foreach ($kelas->video as $index => $item)
+                                @foreach ($kelas->materi as $index => $item)
+                                @php
+                                    $isCurrent = $materi->id == $item->id;
+                                    $isCompleted = in_array($item->id, $completedMateri);
+                                @endphp
                                 <div class="rk-curriculum-item mb-2">
                                     <a href="{{ route('kelas.belajar', [
                                         'id' => Crypt::encrypt($kelas->id),
-                                        'idvideo' => Crypt::encrypt($item->id)
-                                    ]) }}" 
-                                       class="d-flex align-items-center p-3 rounded-3 text-decoration-none {{ $video->id == $item->id ? 'bg-primary text-white' : 'bg-light' }}">
+                                        'idmateri' => Crypt::encrypt($item->id)
+                                    ]) }}"
+                                       class="d-flex align-items-center p-3 rounded-3 text-decoration-none {{ $isCurrent ? 'bg-primary text-white' : 'bg-light' }}">
                                         <div class="rk-item-icon me-3">
-                                            @if($video->id == $item->id)
+                                            @if($isCurrent)
                                             <i class="fas fa-play-circle fa-lg"></i>
-                                            @elseif($index < $currentIndex)
+                                            @elseif($isCompleted)
                                             <i class="fas fa-check-circle text-success fa-lg"></i>
                                             @else
                                             <i class="fas fa-circle text-muted fa-lg"></i>
                                             @endif
                                         </div>
                                         <div class="rk-item-content flex-grow-1">
-                                            <p class="mb-1 {{ $video->id == $item->id ? 'text-white' : 'text-dark' }} fw-medium">
-                                                {{ $item->name_video }}
+                                            <p class="mb-1 {{ $isCurrent ? 'text-white' : 'text-dark' }} fw-medium">
+                                                {{ $item->title }}
                                             </p>
-                                            <small class="{{ $video->id == $item->id ? 'text-white-50' : 'text-muted' }}">
+                                            <small class="{{ $isCurrent ? 'text-white-50' : 'text-muted' }}">
                                                 15:30
                                             </small>
                                         </div>
-                                        @if($index < $currentIndex)
+                                        @if($isCompleted)
                                         <div class="rk-item-badge">
                                             <span class="badge bg-success">Selesai</span>
                                         </div>
@@ -224,26 +260,7 @@
                         </div>
                     </div>
 
-                    <!-- Resources -->
-                    <div class="rk-sidebar-card rk-card border-0 shadow-sm mt-4">
-                        <div class="card-body">
-                            <h6 class="fw-bold mb-3">Materi Pendukung</h6>
-                            <div class="rk-resources-list">
-                                <a href="#" class="d-flex align-items-center p-2 rounded-3 text-decoration-none bg-light mb-2">
-                                    <i class="fas fa-file-pdf text-danger me-2"></i>
-                                    <span class="text-dark">Slide Presentasi.pdf</span>
-                                </a>
-                                <a href="#" class="d-flex align-items-center p-2 rounded-3 text-decoration-none bg-light mb-2">
-                                    <i class="fas fa-file-code text-primary me-2"></i>
-                                    <span class="text-dark">Source Code.zip</span>
-                                </a>
-                                <a href="#" class="d-flex align-items-center p-2 rounded-3 text-decoration-none bg-light">
-                                    <i class="fas fa-link text-info me-2"></i>
-                                    <span class="text-dark">Referensi Tambahan</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+
                 </aside>
             </div>
         </div>
@@ -428,20 +445,60 @@
     .rk-curriculum-list::-webkit-scrollbar {
         width: 6px;
     }
-    
+
     .rk-curriculum-list::-webkit-scrollbar-track {
         background: #f1f1f1;
         border-radius: 10px;
     }
-    
+
     .rk-curriculum-list::-webkit-scrollbar-thumb {
         background: #c1c1c1;
         border-radius: 10px;
     }
-    
+
     .rk-curriculum-list::-webkit-scrollbar-thumb:hover {
         background: #a8a8a8;
     }
 </style>
+
+<script>
+function markMateriCompleted(materiId) {
+    const btn = document.getElementById('markCompletedBtn');
+    const originalText = btn.innerHTML;
+
+    // Disable button and show loading
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Menyimpan...';
+
+    // Send AJAX request
+    fetch('{{ route("kelas.markCompleted") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({
+            materi_id: materiId
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Reload page to update progress
+            location.reload();
+        } else {
+            alert('Terjadi kesalahan saat menyimpan progress.');
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Terjadi kesalahan saat menyimpan progress.');
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+    });
+}
+</script>
 
 @endsection

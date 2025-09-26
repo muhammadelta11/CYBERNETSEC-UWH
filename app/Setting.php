@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     protected $table = 'setting';
-    protected $fillable = ['about','harga'];
+    protected $fillable = ['about','harga','registration_enabled'];
 }

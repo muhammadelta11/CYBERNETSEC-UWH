@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\BlogCategory;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 
@@ -35,6 +36,7 @@ class BlogController extends Controller
     {
         $data = [
             'title' => 'Tambah Blog',
+            'categories' => \App\BlogCategory::all(),
         ];
         return view('admin.blog.tambah', $data);
     }
@@ -45,6 +47,7 @@ class BlogController extends Controller
         $validator = Validator($request->all(), [
             'name_blog' => 'required',
             'content_blog' => 'required',
+            'blog_category_id' => 'required|exists:blog_categories,id',
             'thumbnail_blog' => 'required|mimes:png,jpg,jpeg'
         ]);
 
@@ -55,6 +58,7 @@ class BlogController extends Controller
             $obj = [
                 'name_blog' => $request->name_blog,
                 'content_blog' => $request->content_blog,
+                'blog_category_id' => $request->blog_category_id,
                 'thumbnail_blog' => $file,
             ];
             Blog::create($obj);
@@ -77,7 +81,8 @@ class BlogController extends Controller
         $dec_id = Crypt::decrypt($id);
         $data = [
             'blog' => Blog::find($dec_id),
-            'title' => 'Edit Blog'
+            'title' => 'Edit Blog',
+            'categories' => \App\BlogCategory::all(),
         ];
 
         return view('admin.blog.edit', $data);
@@ -89,6 +94,7 @@ class BlogController extends Controller
         $validator = Validator($request->all(), [
             'name_blog' => 'required',
             'content_blog' => 'required',
+            'blog_category_id' => 'required|exists:blog_categories,id',
             'thumbnail_blog' => 'mimes:png,jpg,jpeg'
         ]);
 
@@ -104,12 +110,14 @@ class BlogController extends Controller
                 $obj = [
                     'name_blog' => $request->name_blog,
                     'content_blog' => $request->content_blog,
+                    'blog_category_id' => $request->blog_category_id,
                     'thumbnail_blog' => $file,
                 ];
             } else {
                 $obj = [
                     'name_blog' => $request->name_blog,
                     'content_blog' => $request->content_blog,
+                    'blog_category_id' => $request->blog_category_id,
                 ];
             }
 

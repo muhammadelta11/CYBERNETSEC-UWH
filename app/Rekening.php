@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Rekening extends Model
 {
     protected $table = 'rekening';
-    protected $fillable = ['no_rekening','atas_nama'];
+    protected $fillable = ['no_rekening','atas_nama', 'payment_type', 'class_type'];
 }

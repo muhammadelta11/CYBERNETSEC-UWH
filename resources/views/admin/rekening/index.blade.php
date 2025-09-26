@@ -15,6 +15,8 @@
                         <tr>
                             <th>No Rekening</th>
                             <th>Atas Nama</th>
+                            <th>Tipe Pembayaran</th>
+                            <th>Tipe Kelas</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -23,6 +25,28 @@
                         <tr>
                             <td>{{ $rek->no_rekening }}</td>
                             <td>{{ $rek->atas_nama }}</td>
+                            <td>
+                                @if($rek->payment_type == 'bank_transfer')
+                                    Bank Transfer
+                                @elseif($rek->payment_type == 'gopay')
+                                    GoPay
+                                @elseif($rek->payment_type == 'dana')
+                                    DANA
+                                @elseif($rek->payment_type == 'ovo')
+                                    OVO
+                                @elseif($rek->payment_type == 'shopeepay')
+                                    ShopeePay
+                                @endif
+                            </td>
+                            <td>
+                                @if($rek->class_type == 'upskill')
+                                    Upskill
+                                @elseif($rek->class_type == 'brainlabs')
+                                    Brainlabs
+                                @elseif($rek->class_type == 'all')
+                                    Semua
+                                @endif
+                            </td>
                             <td>
                                 <a href="{{ route('admin.rekening.edit', $rek->id) }}" class="btn btn-warning">Edit</a>
                                 <form action="{{ route('admin.rekening.destroy', $rek->id) }}" method="POST" style="display:inline;">

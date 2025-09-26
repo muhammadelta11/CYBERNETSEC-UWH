@@ -18,8 +18,10 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Event</th>
-                                <th>URL Event</th>
-                                <th>Thumbnail</th>
+                                <th>Tanggal Event</th>
+                                <th>Tipe</th>
+                                <th>Kuota</th>
+                                <th>Poster Event</th>
                                 <th width="10%">Aksi</th>
                             </tr>
                         </thead>
@@ -28,10 +30,15 @@
                             <tr>
                                 <td></td>
                                 <td>{{ $item->name_podcast }}</td>
-                                <td>{{ $item->url_podcast }}</td>
+                                <td>{{ $item->event_date ? \Carbon\Carbon::parse($item->event_date)->format('d/m/Y') : '-' }}</td>
+                                <td>{{ $item->is_event ? 'Event' : 'Podcast' }}</td>
+                                <td>{{ $item->is_event ? ($item->quota ?? '-') : '-' }}</td>
                                 <td>
-                                    <img src="http://img.youtube.com/vi/{{ $item->url_podcast }}/0.jpg" width="200"
-                                        alt="" srcset="">
+                                    @if($item->thumbnail)
+                                        <img src="{{ asset('storage/' . $item->thumbnail) }}" width="200" alt="Poster Event">
+                                    @else
+                                        <span class="text-muted">No Poster</span>
+                                    @endif
                                 </td>
                                 <td>
                                     <a href="{{ route('admin.podcast.detail',Crypt::encrypt($item->id)) }}"

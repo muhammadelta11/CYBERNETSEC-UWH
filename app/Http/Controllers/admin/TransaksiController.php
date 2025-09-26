@@ -14,7 +14,7 @@ class TransaksiController extends Controller
     {
         $data = [
             'title' => 'Semua Transaksi',
-            'transaksis' => Transaksi::all(),
+            'transaksis' => Transaksi::with('users', 'kelas')->get(),
         ];
         return view('admin.transaksi.index', $data);
     }
@@ -23,7 +23,7 @@ class TransaksiController extends Controller
     {
         $data = [
             'title' => 'Transaksi Belum Dicek ',
-            'transaksis' => Transaksi::where(['status' => 0])->get(),
+            'transaksis' => Transaksi::with('users', 'kelas')->where(['status' => 0])->get(),
         ];
         return view('admin.transaksi.index', $data);
     }
@@ -32,7 +32,7 @@ class TransaksiController extends Controller
     {
         $data = [
             'title' => 'Transaksi Disetujui',
-            'transaksis' => Transaksi::where(['status' => 1])->get(),
+            'transaksis' => Transaksi::with('users', 'kelas')->where(['status' => 1])->get(),
         ];
         return view('admin.transaksi.index', $data);
     }
@@ -41,7 +41,7 @@ class TransaksiController extends Controller
     {
         $data = [
             'title' => 'Transaksi Ditolak',
-            'transaksis' => Transaksi::where(['status' => 2])->get(),
+            'transaksis' => Transaksi::with('users', 'kelas')->where(['status' => 2])->get(),
         ];
         return view('admin.transaksi.index', $data);
     }
@@ -49,9 +49,13 @@ class TransaksiController extends Controller
     public function detail($id)
     {
         $dec_id = Crypt::decrypt($id);
+        $transaksi = Transaksi::with('users', 'kelas')->find($dec_id);
+        if (!$transaksi) {
+            abort(404, 'Transaksi tidak ditemukan');
+        }
         $data = [
             'title' => 'Detail Transaksi',
-            'transaksi' => Transaksi::find($dec_id)
+            'transaksi' => $transaksi
         ];
         return view('admin.transaksi.detail', $data);
     }
@@ -59,17 +63,38 @@ class TransaksiController extends Controller
     public function ubah(Request $request,$id)
     {
         $dec_id = Crypt::decrypt($id);
-        $transaksi = Transaksi::find($dec_id);
-        if($request->status == 1){
-            $transaksi->status = 1;
-            User::where('id','=',$transaksi->users_id)->update(['role' => 'premium']);
-        }else{
-            $transaksi->status = 2;
-            User::where('id','=',$transaksi->users_id)->update(['role' => 'regular']);
+        $transaksi = Transaksi::with('users', 'kelas')->find($dec_id);
+        $old_status = $transaksi->status;
+        $new_status = $request->status;
+
+        $transaksi->status = $new_status;
+
+        if($new_status == 1){
+            // Approve
+            if (!$transaksi->kelas_id) {
+                User::where('id','=',$transaksi->users_id)->update(['role' => 'premium']);
+            } else {
+                \App\UserKelas::firstOrCreate([
+                    'user_id' => $transaksi->users_id,
+                    'kelas_id' => $transaksi->kelas_id,
+                ]);
+            }
+        } elseif($new_status == 2){
+            // Reject
+            if (!$transaksi->kelas_id) {
+                User::where('id','=',$transaksi->users_id)->update(['role' => 'regular']);
+            } else {
+                // If previously approved, unenroll
+                if ($old_status == 1) {
+                    \App\UserKelas::where('user_id', $transaksi->users_id)
+                        ->where('kelas_id', $transaksi->kelas_id)
+                        ->delete();
+                }
+            }
         }
 
         $transaksi->save();
-        return redirect()->route('admin.transaksi.detail',$id)->with('status','Berhasil Memperbaharui Status');
+        return redirect()->route('admin.transaksi')->with('status','Berhasil Memperbaharui Status');
     }
 }
 

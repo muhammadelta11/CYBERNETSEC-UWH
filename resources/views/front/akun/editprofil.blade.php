@@ -38,9 +38,24 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="">NIM</label>
+                        <input class="form-control" type="text" name="nim" value="{{ Auth::user()->nim }}" id="" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Angkatan</label>
+                        <input class="form-control" type="text" value="{{ Auth::user()->angkatan }}" id="" readonly>
+                    </div>
+                    <div class="form-group">
                         <label for="">Email</label>
                         <input class="form-control" type="email" name="email" value="{{ Auth::user()->email }}" id="">
                         @error('email')
+                        <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="">WhatsApp</label>
+                        <input class="form-control" type="text" name="whatsapp" value="{{ Auth::user()->whatsapp }}" id="" placeholder="Contoh: 081234567890">
+                        @error('whatsapp')
                         <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>

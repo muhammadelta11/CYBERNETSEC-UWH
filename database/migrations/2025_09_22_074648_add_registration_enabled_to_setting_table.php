@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRekeningTable extends Migration
+class AddRegistrationEnabledToSettingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateRekeningTable extends Migration
      */
     public function up()
     {
-        Schema::create('rekening', function (Blueprint $table) {
-            $table->id();
-            $table->string('no_rekening');
-            $table->string('atas_nama');
-            $table->timestamps();
+        Schema::table('setting', function (Blueprint $table) {
+            $table->boolean('registration_enabled')->default(true);
         });
     }
 
@@ -28,6 +25,8 @@ class CreateRekeningTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rekening');
+        Schema::table('setting', function (Blueprint $table) {
+            $table->dropColumn('registration_enabled');
+        });
     }
 }

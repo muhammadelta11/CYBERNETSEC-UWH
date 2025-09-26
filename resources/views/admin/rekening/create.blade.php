@@ -26,6 +26,28 @@
                         <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="payment_type">Tipe Pembayaran</label>
+                        <select name="payment_type" class="form-control @error('payment_type') is-invalid @enderror">
+                            @foreach($paymentTypes as $key => $value)
+                            <option value="{{ $key }}" {{ old('payment_type') == $key ? 'selected' : '' }}>{{ $value }}</option>
+                            @endforeach
+                        </select>
+                        @error('payment_type')
+                        <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="class_type">Tipe Kelas</label>
+                        <select name="class_type" class="form-control @error('class_type') is-invalid @enderror">
+                            @foreach($classTypes as $key => $value)
+                            <option value="{{ $key }}" {{ old('class_type') == $key ? 'selected' : '' }}>{{ $value }}</option>
+                            @endforeach
+                        </select>
+                        @error('class_type')
+                        <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-success">Simpan</button>
                     </div>

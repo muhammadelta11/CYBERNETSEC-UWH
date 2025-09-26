@@ -9,27 +9,27 @@
                 <div data-aos="fade-up">
                     <h1 class="display-5 fw-bold mb-3 rk-heading">Jadwal Event</h1>
                     <p class="lead text-muted">Temukan Jadwal Event inspiratif untuk meningkatkan skill dan pengetahuan Anda</p>
-                    
+
                     <!-- Search Form -->
                     <div class="rk-podcast-search mt-4" data-aos="fade-up" data-aos-delay="100">
                         <form action="#" method="GET" class="d-flex">
                             <div class="input-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="Cari video..." aria-label="Search videos">
+                                <input type="text" class="form-control form-control-lg" placeholder="Cari event..." aria-label="Search events">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search"></i>
                                 </button>
                             </div>
                         </form>
                     </div>
-                    
+
                     <!-- Category Filters -->
                     <div class="rk-podcast-categories mt-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="d-flex flex-wrap justify-content-center gap-2">
                             <a href="#" class="btn btn-sm btn-outline-primary active">Semua</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Tutorial</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Webinar</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Interview</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Tips & Trik</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Online</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Offline</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Hybrid</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Workshop</a>
                         </div>
                     </div>
                 </div>
@@ -43,8 +43,8 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-lg-8 text-center" data-aos="fade-up">
-                <h2 class="fw-bold mb-3 rk-heading">Jadwal Event Kami</h2>
-                <p class="text-muted">Jadwal Event yang dirancang khusus untuk membantu perkembangan karir Anda</p>
+                <h2 class="fw-bold mb-3 rk-heading">Event Kami</h2>
+                <p class="text-muted">Event yang dirancang khusus untuk membantu perkembangan karir Anda</p>
             </div>
         </div>
         
@@ -53,17 +53,19 @@
             <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                 <div class="rk-podcast-card rk-card h-100 border-0 rk-shadow-hover">
                     <div class="rk-podcast-thumb position-relative">
-                        <img src="http://img.youtube.com/vi/{{ $item->url_podcast }}/maxresdefault.jpg" 
-                             onerror="this.src='http://img.youtube.com/vi/{{ $item->url_podcast }}/0.jpg'" 
-                             class="card-img-top" alt="{{ $item->name_podcast }}"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="rk-play-overlay position-absolute top-50 start-50 translate-middle">
-                            <div class="rk-play-button bg-primary text-white rounded-circle d-flex align-items-center justify-content-center">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="rk-video-badge position-absolute top-0 end-0 m-3">
-                            <span class="badge bg-dark">Video</span>
+                        @if($item->thumbnail)
+                            <img src="{{ asset('storage/' . $item->thumbnail) }}"
+                                 class="card-img-top" alt="{{ $item->name_podcast }}"
+                                 style="height: 200px; object-fit: cover;">
+                        @else
+                            <img src="{{ asset('images/default-event.jpg') }}"
+                                 class="card-img-top" alt="{{ $item->name_podcast }}"
+                                 style="height: 200px; object-fit: cover;">
+                        @endif
+                        <div class="rk-event-badge position-absolute top-0 end-0 m-3">
+                            <span class="badge bg-{{ $item->event_type == 'online' ? 'success' : ($item->event_type == 'offline' ? 'primary' : 'warning') }}">
+                                {{ ucfirst($item->event_type ?? 'Event') }}
+                            </span>
                         </div>
                     </div>
                     <div class="card-body">
@@ -72,17 +74,50 @@
                                 {{ $item->name_podcast }}
                             </a>
                         </h5>
+                        <div class="rk-event-info mb-2">
+                            @if($item->event_date)
+                                <small class="text-muted d-block">
+                                    <i class="far fa-calendar me-1"></i>
+                                    {{ \Carbon\Carbon::parse($item->event_date)->format('d M Y') }}
+                                    @if($item->event_time)
+                                        {{ $item->event_time }}
+                                    @endif
+                                </small>
+                            @endif
+                            @if($item->location)
+                                <small class="text-muted d-block">
+                                    <i class="fas fa-map-marker-alt me-1"></i>
+                                    {{ $item->location }}
+                                </small>
+                            @endif
+                            @if($item->speaker)
+                                <small class="text-muted d-block">
+                                    <i class="fas fa-user me-1"></i>
+                                    {{ $item->speaker }}
+                                </small>
+                            @endif
+                        </div>
                         <p class="card-text text-muted rk-line-clamp-3">
                             {!! strip_tags($item->description_podcast) !!}
                         </p>
                     </div>
                     <div class="card-footer bg-transparent border-0 pt-0">
                         <div class="d-flex justify-content-between align-items-center">
-                            <div class="rk-video-duration">
-                                <small class="text-muted"><i class="far fa-clock me-1"></i> 15:30</small>
+                            <div class="rk-event-price">
+                                @if($item->registration_fee > 0)
+                                    <small class="text-success fw-bold">
+                                        <i class="fas fa-ticket-alt me-1"></i>
+                                        Rp {{ number_format($item->registration_fee, 0, ',', '.') }}
+                                    </small>
+                                @else
+                                    <small class="text-success">
+                                        <i class="fas fa-ticket-alt me-1"></i>
+                                        Gratis
+                                    </small>
+                                @endif
                             </div>
                             <a href="{{ route('podcast.detail', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-outline-primary">
-                                Tonton <i class="fas fa-arrow-right ms-1"></i>
+                                Lihat Detail <i class="fas fa-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </div>
@@ -91,9 +126,9 @@
             @empty
             <div class="col-12 text-center py-5" data-aos="fade-up">
                 <div class="rk-empty-state">
-                    <i class="fas fa-video fa-3x text-muted mb-3"></i>
-                    <h4 class="text-muted">Belum ada video</h4>
-                    <p class="text-muted">Silakan kembali lagi nanti untuk melihat video terbaru</p>
+                    <i class="fas fa-calendar-alt fa-3x text-muted mb-3"></i>
+                    <h4 class="text-muted">Belum ada event</h4>
+                    <p class="text-muted">Silakan kembali lagi nanti untuk melihat event terbaru</p>
                 </div>
             </div>
             @endforelse
@@ -152,8 +187,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center text-white" data-aos="fade-up">
-                <h3 class="fw-bold mb-3">Ingin Video Pembelajaran Lainnya?</h3>
-                <p class="mb-4">Bergabunglah dengan premium membership untuk mengakses semua video pembelajaran eksklusif</p>
+                <h3 class="fw-bold mb-3">Ingin Mengikuti Event Lainnya?</h3>
+                <p class="mb-4">Bergabunglah dengan komunitas kami untuk mendapatkan informasi event terbaru dan eksklusif</p>
                 <a href="{{ route('register') }}" class="rk-btn-primary btn-lg">
                     Daftar Sekarang <i class="fas fa-arrow-right ms-2"></i>
                 </a>

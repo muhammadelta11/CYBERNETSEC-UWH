@@ -26,12 +26,14 @@ class AkunController extends Controller
         if ($request->email == Auth::user()->email) {
             $validator = Validator::make($request->all(), [
                 'name' => 'required:string',
-                'email' => 'required'
+                'email' => 'required',
+                'whatsapp' => 'nullable|string|max:20'
             ]);
         } else {
             $validator = Validator::make($request->all(), [
                 'name' => 'required:string',
-                'email' => 'required|unique:users|email'
+                'email' => 'required|unique:users|email',
+                'whatsapp' => 'nullable|string|max:20'
             ]);
         }
 
@@ -40,7 +42,8 @@ class AkunController extends Controller
         } else {
             User::where('id', '=', Auth::user()->id)->update([
                 'email' => $request->email,
-                'name' => $request->name
+                'name' => $request->name,
+                'whatsapp' => $request->whatsapp
             ]);
             return redirect()->route('akun')->with('status', 'Berhasil memperbarui profil');
         }

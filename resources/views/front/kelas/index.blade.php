@@ -7,9 +7,23 @@
         <div class="row align-items-center py-5">
             <div class="col-lg-8 mx-auto text-center">
                 <div data-aos="fade-up">
-                    <h1 class="display-5 fw-bold mb-3 rk-heading">Up Skill</h1>
-                    <p class="lead text-muted">Temukan Up Skill terbaik yang sesuai dengan minat dan kebutuhan belajar Anda</p>
-                    
+                    <h1 class="display-5 fw-bold mb-3 rk-heading">
+                        @if($viewMode == 'upskill')
+                            Program Upskill Mahasiswa
+                        @else
+                            BrainLab
+                        @endif
+                    </h1>
+                    <p class="lead text-muted">
+                        @if($viewMode == 'upskill')
+                            Program upskill terstruktur khusus untuk mahasiswa dengan kurikulum akademik yang terintegrasi
+                        @elseif($isMahasiswa)
+                            Temukan program upskill terbaik yang sesuai dengan minat dan kebutuhan belajar Anda
+                        @else
+                            Temukan berbagai skill dan pengetahuan baru untuk mengembangkan diri Anda
+                        @endif
+                    </p>
+                                        
                     <!-- Search Form -->
                     <div class="rk-kelas-search mt-4" data-aos="fade-up" data-aos-delay="100">
                         <form action="#" method="GET" class="d-flex">
@@ -21,7 +35,7 @@
                             </div>
                         </form>
                     </div>
-                    
+                                        
                     <!-- Category Filters -->
                     <div class="rk-kelas-categories mt-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="d-flex flex-wrap justify-content-center gap-2">
@@ -47,13 +61,50 @@
     </div>
 </section>
 
+<!-- Info Section for Non-Mahasiswa -->
+@if(!$isMahasiswa)
+<section class="rk-info-section py-4 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center" data-aos="fade-up">
+                <div class="alert alert-info border-0 shadow-sm">
+                    <i class="fas fa-info-circle fa-2x text-info mb-3"></i>
+                    <h5 class="fw-bold text-info mb-2">Program Upskill Khusus Mahasiswa</h5>
+                    <p class="mb-3">
+                        Program upskill dengan kurikulum terstruktur khusus tersedia untuk mahasiswa yang telah terdaftar.
+                        Pendaftaran mahasiswa hanya dapat dilakukan melalui admin sistem. Silakan hubungi administrator untuk informasi lebih lanjut.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <a href="{{ route('login') }}" class="btn btn-info">
+                            <i class="fas fa-sign-in-alt me-2"></i>Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+
 <!-- Kelas Section -->
 <section class="rk-kelas-section py-5">
     <div class="container">
         <div class="row justify-content-between mb-5">
             <div class="col-lg-6">
-                <h2 class="fw-bold mb-3 rk-heading">Katalog Labs</h2>
-                <p class="text-muted">Temukan berbagai pilihan kelas untuk mengembangkan skill Anda</p>
+                <h2 class="fw-bold mb-3 rk-heading">
+                    @if($isMahasiswa)
+                        Program Upskill
+                    @else
+                        Katalog BrainLab
+                    @endif
+                </h2>
+                <p class="text-muted">
+                    @if($isMahasiswa)
+                        Program upskill terstruktur untuk pengembangan karir mahasiswa
+                    @else
+                        Temukan berbagai pilihan kelas untuk mengembangkan skill Anda
+                    @endif
+                </p>
             </div>
             <div class="col-lg-4 text-lg-end">
                 <div class="rk-sort-filter" data-aos="fade-left">
@@ -68,124 +119,155 @@
             </div>
         </div>
 
-        <div class="row">
-            @forelse ($kelas as $item)
-            <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                <div class="rk-kelas-card rk-card h-100 border-0 rk-shadow-hover">
-                    <div class="rk-kelas-thumb position-relative">
-                        <img src="{{ asset('storage/' . $item->thumbnail) }}" class="card-img-top" alt="{{ $item->name_kelas }}" 
-                             style="height: 200px; object-fit: cover;">
-                        <div class="rk-kelas-badge position-absolute top-0 end-0 m-3">
-                            @if ($item->type_kelas == 0)
-                            <span class="badge bg-success">Gratis</span>
-                            @elseif($item->type_kelas == 1)
-                            <span class="badge bg-primary">Regular</span>
-                            @elseif($item->type_kelas == 2)
-                            <span class="badge bg-warning">Premium</span>
-                            @endif
-                        </div>
-                        <div class="rk-kelas-overlay position-absolute w-100 h-100"></div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold rk-heading">
-                            <a href="{{ route('kelas.detail', Crypt::encrypt($item->id)) }}" class="text-dark text-decoration-none">
-                                {{ $item->name_kelas }}
-                            </a>
-                        </h5>
-                        <p class="card-text text-muted rk-line-clamp-3">
-                            {!! strip_tags($item->description_kelas) !!}
-                        </p>
-                        
-                        <div class="rk-kelas-meta d-flex justify-content-between align-items-center mt-3">
-                            <div class="rk-kelas-rating">
-                                <small class="text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <span class="text-muted ms-1">4.5</span>
-                                </small>
-                            </div>
-                            <div class="rk-kelas-students">
-                                <small class="text-muted">
-                                    <i class="fas fa-users me-1"></i> 250
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer bg-transparent border-0 pt-0">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="rk-kelas-price">
-                                @if($item->type_kelas == 0)
-                                <span class="text-success fw-bold">Gratis</span>
-                                @else
-                                <span class="text-primary fw-bold">Rp {{ number_format($item->harga_kelas, 0, ',', '.') }}</span>
+        @if($viewMode == 'upskill')
+            <!-- Upskill Mode: Step-by-Step Hierarchical Structure -->
+
+            <!-- Semesters Section -->
+            <div id="semesters-section" class="rk-upskill-section">
+                <div class="row">
+                    @forelse ($semesters as $semester)
+                    <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                        <div class="rk-semester-card rk-card h-100 border-0 rk-shadow-hover cursor-pointer" onclick="selectSemester({{ $semester->id }})" data-semester-id="{{ $semester->id }}">
+                            <div class="card-body text-center p-4">
+                                <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
+                                <h5 class="card-title fw-bold mb-2">{{ $semester->name }}</h5>
+                                @if($semester->description)
+                                <p class="card-text text-muted small mb-3">{{ $semester->description }}</p>
                                 @endif
+                                <div class="rk-semester-stats">
+                                    <span class="badge bg-primary fs-6 px-3 py-2">{{ $semester->upskillCategories->sum(function($cat) { return $cat->kelas->count(); }) }} Kelas</span>
+                                </div>
                             </div>
-                            <a href="{{ route('kelas.detail', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-outline-primary">
-                                Lihat Detail <i class="fas fa-arrow-right ms-1"></i>
-                            </a>
                         </div>
                     </div>
+                    @empty
+                    <div class="col-12 text-center py-5" data-aos="fade-up">
+                        <div class="rk-empty-state">
+                            <i class="fas fa-graduation-cap fa-3x text-muted mb-3"></i>
+                            <h4 class="text-muted">Belum ada program upskill tersedia untuk angkatan Anda</h4>
+                            <p class="text-muted">Silakan kembali lagi nanti untuk melihat program terbaru</p>
+                        </div>
+                    </div>
+                    @endforelse
                 </div>
             </div>
-            @empty
-            <div class="col-12 text-center py-5" data-aos="fade-up">
-                <div class="rk-empty-state">
-                    <i class="fas fa-graduation-cap fa-3x text-muted mb-3"></i>
-                    <h4 class="text-muted">Belum ada kelas tersedia</h4>
-                    <p class="text-muted">Silakan kembali lagi nanti untuk melihat kelas terbaru</p>
-                </div>
-            </div>
-            @endforelse
-        </div>
-        
-        <!-- Pagination -->
-        @if($kelas->hasPages())
-        <div class="row mt-5">
-            <div class="col-12">
-                <nav aria-label="Kelas pagination" data-aos="fade-up">
-                    <ul class="pagination justify-content-center">
-                        {{-- Previous Page Link --}}
-                        @if ($kelas->onFirstPage())
-                            <li class="page-item disabled" aria-disabled="true">
-                                <span class="page-link">&laquo;</span>
-                            </li>
-                        @else
-                            <li class="page-item">
-                                <a class="page-link" href="{{ $kelas->previousPageUrl() }}" rel="prev">&laquo;</a>
-                            </li>
-                        @endif
 
-                        {{-- Pagination Elements --}}
-                        @foreach ($kelas->getUrlRange(1, $kelas->lastPage()) as $page => $url)
-                            @if ($page == $kelas->currentPage())
-                                <li class="page-item active" aria-current="page">
-                                    <span class="page-link">{{ $page }}</span>
-                                </li>
-                            @else
-                                <li class="page-item">
-                                    <a class="page-link" href="{{ $url }}">{{ $page }}</a>
-                                </li>
-                            @endif
+            <!-- Categories Section -->
+            <div id="categories-section" class="rk-upskill-section d-none">
+                <div class="rk-navigation mb-4">
+                    <button class="btn btn-outline-secondary" id="back-to-semesters" onclick="backToSemesters()">
+                        <i class="fas fa-arrow-left me-2"></i>Kembali ke Semester
+                    </button>
+                    <h4 class="mb-0 ms-3 d-inline" id="current-semester-title"></h4>
+                </div>
+                <div id="categories-container" class="row">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Classes Section -->
+            <div id="classes-section" class="rk-upskill-section d-none">
+                <div class="rk-navigation mb-4">
+                    <button class="btn btn-outline-secondary" id="back-to-categories" onclick="backToCategories()">
+                        <i class="fas fa-arrow-left me-2"></i>Kembali ke Kategori
+                    </button>
+                    <h4 class="mb-0 ms-3 d-inline" id="current-category-title"></h4>
+                </div>
+                <div id="classes-container" class="row">
+                    <!-- Classes will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Hidden data for JavaScript -->
+            <div id="upskill-data" class="d-none">
+                @foreach ($semesters as $semester)
+                <div class="semester-data" data-semester-id="{{ $semester->id }}" data-semester-name="{{ $semester->name }}" data-semester-desc="{{ $semester->description }}">
+                    @foreach ($semester->upskillCategories as $category)
+                    <div class="category-data" data-category-id="{{ $category->id }}" data-category-name="{{ $category->name }}" data-category-desc="{{ $category->description }}">
+                        @foreach ($category->kelas as $kelas)
+                        <div class="kelas-data"
+                             data-kelas-id="{{ $kelas->id }}"
+                             data-name="{{ $kelas->name_kelas }}"
+                             data-desc="{{ strip_tags($kelas->description_kelas) }}"
+                             data-thumbnail="{{ asset('storage/' . $kelas->thumbnail) }}"
+                             data-type="{{ $kelas->type_kelas }}"
+                             data-harga="{{ $kelas->harga ?? 0 }}"
+                             data-encrypted-id="{{ Crypt::encrypt($kelas->id) }}">
+                        </div>
                         @endforeach
-
-                        {{-- Next Page Link --}}
-                        @if ($kelas->hasMorePages())
-                            <li class="page-item">
-                                <a class="page-link" href="{{ $kelas->nextPageUrl() }}" rel="next">&raquo;</a>
-                            </li>
-                        @else
-                            <li class="page-item disabled" aria-disabled="true">
-                                <span class="page-link">&raquo;</span>
-                            </li>
-                        @endif
-                    </ul>
-                </nav>
+                    </div>
+                    @endforeach
+                </div>
+                @endforeach
             </div>
-        </div>
+        @else
+            <!-- SkilLab Mode: Step-by-Step Category to Classes -->
+
+            <!-- Categories Section -->
+            <div id="skilLab-categories-section" class="rk-upskill-section">
+                <div class="row">
+                    @forelse ($categories as $category)
+                    <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                        <div class="rk-category-card rk-card h-100 border-0 rk-shadow-hover cursor-pointer" data-category-id="{{ $category->id }}">
+                            <div class="card-body text-center p-4">
+                                <i class="fas fa-folder fa-3x text-warning mb-3"></i>
+                                <h5 class="card-title fw-bold mb-2">{{ $category->name }}</h5>
+                                @if($category->description)
+                                <p class="card-text text-muted small mb-3">{{ $category->description }}</p>
+                                @endif
+                                <div class="rk-category-stats">
+                                    <span class="badge bg-secondary fs-6 px-3 py-2">{{ $category->kelas->count() }} Kelas</span>
+                                </div>
+                                <button class="btn btn-primary mt-3" onclick="selectSkilLabCategory('{{ $category->id }}')">Lihat Kelas</button>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="col-12 text-center py-5" data-aos="fade-up">
+                        <div class="rk-empty-state">
+                            <i class="fas fa-graduation-cap fa-3x text-muted mb-3"></i>
+                            <h4 class="text-muted">Belum ada kategori tersedia</h4>
+                            <p class="text-muted">Silakan kembali lagi nanti untuk melihat program terbaru</p>
+                        </div>
+                    </div>
+                    @endforelse
+                </div>
+            </div>
+
+            <!-- Classes Section -->
+            <div id="skilLab-classes-section" class="rk-upskill-section d-none">
+                <div class="rk-navigation mb-4">
+                    <button class="btn btn-outline-secondary" onclick="backToSkilLabCategories()">
+                        <i class="fas fa-arrow-left me-2"></i>Kembali ke Kategori
+                    </button>
+                    <h4 class="mb-0 ms-3 d-inline" id="skilLab-current-category-title"></h4>
+                </div>
+                <div id="skilLab-classes-container" class="row">
+                    <!-- Classes will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Hidden data for SkilLab JavaScript -->
+            <div id="skilLab-data" class="d-none">
+                @foreach ($categories as $category)
+                <div class="skilLab-category-data" data-category-id="{{ $category->id }}" data-category-name="{{ $category->name }}" data-category-desc="{{ $category->description }}">
+                    @foreach ($category->kelas as $kelas)
+                    <div class="skilLab-kelas-data"
+                         data-kelas-id="{{ $kelas->id }}"
+                         data-name="{{ $kelas->name_kelas }}"
+                         data-desc="{{ strip_tags($kelas->description_kelas) }}"
+                         data-thumbnail="{{ asset('storage/' . $kelas->thumbnail) }}"
+                         data-type="{{ $kelas->type_kelas }}"
+                         data-harga="{{ $kelas->harga ?? 0 }}"
+                         data-encrypted-id="{{ Crypt::encrypt($kelas->id) }}">
+                    </div>
+                    @endforeach
+                </div>
+                @endforeach
+            </div>
         @endif
+        
+
     </div>
 </section>
 
@@ -427,6 +509,330 @@
     .rk-kelas-hero {
         padding-top: calc(80px + 2rem);
     }
+
+    /* Upskill Step-by-Step Styles */
+    .rk-upskill-section {
+        min-height: 400px;
+    }
+
+    .rk-semester-card,
+    .rk-category-card {
+        border-radius: var(--rk-radius);
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .rk-semester-card:hover,
+    .rk-category-card:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        transform: translateY(-5px);
+    }
+
+    .rk-semester-card .card-body,
+    .rk-category-card .card-body {
+        padding: 2rem 1.5rem;
+    }
+
+    .rk-semester-stats .badge,
+    .rk-category-stats .badge {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    .rk-navigation {
+        align-items: center;
+    }
+
+    .rk-navigation .btn {
+        border-radius: 50px;
+        padding: 0.5rem 1.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .rk-navigation .btn:hover {
+        transform: translateX(-2px);
+    }
+
+    /* Responsive adjustments for step-by-step */
+    @media (max-width: 768px) {
+        .rk-semester-card .card-body,
+        .rk-category-card .card-body {
+            padding: 1.5rem 1rem;
+        }
+
+        .rk-semester-card .fa-graduation-cap,
+        .rk-category-card .fa-folder {
+            font-size: 2rem !important;
+        }
+
+        .rk-navigation {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start !important;
+        }
+
+        .rk-navigation h4 {
+            margin-left: 0 !important;
+            margin-top: 0.5rem;
+        }
+    }
 </style>
 
 @endsection
+
+<script>
+let currentSemesterId = null;
+let currentCategoryId = null;
+
+function selectSemester(semesterId) {
+    currentSemesterId = semesterId;
+    const semesterData = $(`.semester-data[data-semester-id="${currentSemesterId}"]`);
+    const semesterName = semesterData.data('semester-name');
+
+    // Update title
+    $('#current-semester-title').text(semesterName);
+
+    // Populate categories
+    const categoriesContainer = $('#categories-container');
+    categoriesContainer.empty();
+
+    semesterData.find('.category-data').each(function(index) {
+        const categoryId = $(this).data('category-id');
+        const categoryName = $(this).data('category-name');
+        const categoryDesc = $(this).data('category-desc');
+        const kelasCount = $(this).find('.kelas-data').length;
+
+        const categoryCard = `
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="rk-category-card rk-card h-100 border-0 rk-shadow-hover cursor-pointer" onclick="selectCategory(${categoryId})" data-category-id="${categoryId}">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-folder fa-3x text-warning mb-3"></i>
+                        <h5 class="card-title fw-bold mb-2">${categoryName}</h5>
+                        ${categoryDesc ? `<p class="card-text text-muted small mb-3">${categoryDesc}</p>` : ''}
+                        <div class="rk-category-stats">
+                            <span class="badge bg-secondary fs-6 px-3 py-2">${kelasCount} Kelas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        categoriesContainer.append(categoryCard);
+    });
+
+    // Show categories section, hide semesters
+    $('#semesters-section').addClass('d-none');
+    $('#categories-section').removeClass('d-none');
+    $('#classes-section').addClass('d-none');
+}
+
+function selectCategory(categoryId) {
+    currentCategoryId = categoryId;
+    const categoryData = $(`.category-data[data-category-id="${currentCategoryId}"]`);
+    const categoryName = categoryData.data('category-name');
+
+    // Update title
+    $('#current-category-title').text(categoryName);
+
+    // Populate classes
+    const classesContainer = $('#classes-container');
+    classesContainer.empty();
+
+    categoryData.find('.kelas-data').each(function(index) {
+        const kelasId = $(this).data('kelas-id');
+        const name = $(this).data('name');
+        const desc = $(this).data('desc');
+        const thumbnail = $(this).data('thumbnail');
+        const type = $(this).data('type');
+        const harga = parseInt($(this).data('harga')) || 0;
+        const encryptedId = $(this).data('encrypted-id');
+
+        let priceText = '';
+        if (type == 0) {
+            priceText = '<span class="text-success fw-bold">Gratis</span>';
+        } else if (type == 1) {
+            priceText = '<span class="text-primary fw-bold">Regular</span>';
+        } else if (type == 2) {
+            priceText = '<span class="text-warning fw-bold">Premium</span>';
+        } else if (type == 3) {
+            priceText = `<span class="text-primary fw-bold">Rp ${new Intl.NumberFormat('id-ID').format(harga)}</span>`;
+        } else if (type == 4) {
+            priceText = `<span class="text-primary fw-bold">Rp ${new Intl.NumberFormat('id-ID').format(harga)}</span>`;
+        } else {
+            priceText = '<span class="text-primary fw-bold">Berbayar</span>';
+        }
+
+        const kelasCard = `
+            <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
+                <div class="rk-kelas-card rk-card h-100 border-0 rk-shadow-hover">
+                    <div class="rk-kelas-thumb position-relative">
+                        <img src="${thumbnail}" class="card-img-top" alt="${name}" style="height: 200px; object-fit: cover;">
+                        <div class="rk-kelas-badge position-absolute top-0 end-0 m-3">
+                            ${type == 0 ? '<span class="badge bg-success">Gratis</span>' :
+                              type == 1 ? '<span class="badge bg-primary">Regular</span>' :
+                              type == 2 ? '<span class="badge bg-warning">Premium</span>' :
+                              type == 3 ? '<span class="badge bg-info">Program Upskill</span>' :
+                              type == 4 ? '<span class="badge bg-info">Skillabs</span>' : ''}
+                        </div>
+                        <div class="rk-kelas-overlay position-absolute w-100 h-100"></div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold rk-heading">
+                            <a href="/kelas/detail/${encryptedId}" class="text-dark text-decoration-none">${name}</a>
+                        </h5>
+                        <p class="card-text text-muted rk-line-clamp-3">${desc}</p>
+                        <div class="rk-kelas-meta d-flex justify-content-between align-items-center mt-3">
+                            <div class="rk-kelas-rating">
+                                <small class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="text-muted ms-1">4.5</span>
+                                </small>
+                            </div>
+                            <div class="rk-kelas-students">
+                                <small class="text-muted">
+                                    <i class="fas fa-users me-1"></i> 250
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 pt-0">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="rk-kelas-price">${priceText}</div>
+                            <a href="/kelas/detail/${encryptedId}" class="btn btn-sm btn-outline-primary">
+                                Lihat Detail <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        classesContainer.append(kelasCard);
+    });
+
+    // Show classes section, hide categories
+    $('#semesters-section').addClass('d-none');
+    $('#categories-section').addClass('d-none');
+    $('#classes-section').removeClass('d-none');
+}
+
+function backToSemesters() {
+    $('#semesters-section').removeClass('d-none');
+    $('#categories-section').addClass('d-none');
+    $('#classes-section').addClass('d-none');
+    currentSemesterId = null;
+    currentCategoryId = null;
+}
+
+function backToCategories() {
+    $('#semesters-section').addClass('d-none');
+    $('#categories-section').removeClass('d-none');
+    $('#classes-section').addClass('d-none');
+    currentCategoryId = null;
+}
+
+function selectSkilLabCategory(categoryId) {
+    const categoryData = $(`.skilLab-category-data[data-category-id="${categoryId}"]`);
+    const categoryName = categoryData.data('category-name');
+
+    // Update title
+    $('#skilLab-current-category-title').text(categoryName);
+
+    // Populate classes
+    const classesContainer = $('#skilLab-classes-container');
+    classesContainer.empty();
+
+    categoryData.find('.skilLab-kelas-data').each(function(index) {
+        const kelasId = $(this).data('kelas-id');
+        const name = $(this).data('name');
+        const desc = $(this).data('desc');
+        const thumbnail = $(this).data('thumbnail');
+        const type = $(this).data('type');
+        const harga = parseInt($(this).data('harga')) || 0;
+        const encryptedId = $(this).data('encrypted-id');
+
+        let priceText = '';
+        if (type == 0) {
+            priceText = '<span class="text-success fw-bold">Gratis</span>';
+        } else if (type == 1) {
+            priceText = '<span class="text-primary fw-bold">Regular</span>';
+        } else if (type == 2) {
+            priceText = '<span class="text-warning fw-bold">Premium</span>';
+        } else if (type == 3) {
+            priceText = `<span class="text-primary fw-bold">Rp ${new Intl.NumberFormat('id-ID').format(harga)}</span>`;
+        } else if (type == 4) {
+            priceText = `<span class="text-primary fw-bold">Rp ${new Intl.NumberFormat('id-ID').format(harga)}</span>`;
+        } else {
+            priceText = '<span class="text-primary fw-bold">Berbayar</span>';
+        }
+
+        const kelasCard = `
+            <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
+                <div class="rk-kelas-card rk-card h-100 border-0 rk-shadow-hover">
+                    <div class="rk-kelas-thumb position-relative">
+                        <img src="${thumbnail}" class="card-img-top" alt="${name}" style="height: 200px; object-fit: cover;">
+                        <div class="rk-kelas-badge position-absolute top-0 end-0 m-3">
+                            ${type == 0 ? '<span class="badge bg-success">Gratis</span>' :
+                              type == 1 ? '<span class="badge bg-primary">Regular</span>' :
+                              type == 2 ? '<span class="badge bg-warning">Premium</span>' :
+                              type == 3 ? '<span class="badge bg-info">Program Upskill</span>' :
+                              type == 4 ? '<span class="badge bg-info">Skillabs</span>' : ''}
+                        </div>
+                        <div class="rk-kelas-overlay position-absolute w-100 h-100"></div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold rk-heading">
+                            <a href="/kelas/detail/${encryptedId}" class="text-dark text-decoration-none">${name}</a>
+                        </h5>
+                        <p class="card-text text-muted rk-line-clamp-3">${desc}</p>
+                        <div class="rk-kelas-meta d-flex justify-content-between align-items-center mt-3">
+                            <div class="rk-kelas-rating">
+                                <small class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="text-muted ms-1">4.5</span>
+                                </small>
+                            </div>
+                            <div class="rk-kelas-students">
+                                <small class="text-muted">
+                                    <i class="fas fa-users me-1"></i> 250
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 pt-0">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="rk-kelas-price">${priceText}</div>
+                            <a href="/kelas/detail/${encryptedId}" class="btn btn-sm btn-outline-primary">
+                                Lihat Detail <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        classesContainer.append(kelasCard);
+    });
+
+    // Show classes section, hide categories
+    $('#skilLab-categories-section').addClass('d-none');
+    $('#skilLab-classes-section').removeClass('d-none');
+}
+
+function backToSkilLabCategories() {
+    $('#skilLab-categories-section').removeClass('d-none');
+    $('#skilLab-classes-section').addClass('d-none');
+}
+</script>

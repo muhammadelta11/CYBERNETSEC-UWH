@@ -1,11 +1,11 @@
 @extends('layouts.front')
 @section('content')
 
-<!-- Hero Section -->
-<section class="rk-kelas-detail-hero bg-light py-4">
-    <div class="container">
+<section class="rk-kelas-detail-hero">
+    <div class="container pt-4 pb-4">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('welcome') }}" class="text-decoration-none">Home</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('welcome') }}" class="text-decoration-none">Home</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('kelas') }}" class="text-decoration-none">Kelas</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Detail Kelas</li>
@@ -23,24 +23,24 @@
                     <!-- Course Header -->
                     <header class="rk-kelas-header mb-5" data-aos="fade-up">
                         <h1 class="display-5 fw-bold mb-3 rk-heading">{{ $kelas->name_kelas }}</h1>
-                        
+
                         <div class="rk-kelas-meta d-flex flex-wrap align-items-center gap-4 mb-4">
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-graduation-cap text-primary me-2"></i>
-                                <span class="text-muted">{{ $kelas->video->count() }} Materi</span>
+                                <span class="text-muted">{{ $kelas->materi->count() }} Materi</span>
                             </div>
-                            
+
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-users text-primary me-2"></i>
                                 <span class="text-muted">250+ Siswa</span>
                             </div>
-                            
+
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-star text-warning me-2"></i>
                                 <span class="text-muted">4.8 (120 reviews)</span>
                             </div>
                         </div>
-                        
+
                         <div class="rk-kelas-badges mb-3">
                             @if ($kelas->type_kelas == 0)
                             <span class="badge bg-success me-2">Gratis</span>
@@ -48,15 +48,19 @@
                             <span class="badge bg-primary me-2">Regular</span>
                             @elseif($kelas->type_kelas == 2)
                             <span class="badge bg-warning me-2">Premium</span>
+                            @elseif($kelas->type_kelas == 3)
+                            <span class="badge bg-info me-2">Program Upskill</span>
+                            @elseif($kelas->type_kelas == 4)
+                            <span class="badge bg-info me-2">Brainlabs</span>
+                            @endif
+                            @if($kelas->is_course_conversion)
+                            <span class="badge bg-success me-2">
+                                <i class="fas fa-graduation-cap me-1"></i>Konversi MK
+                            </span>
                             @endif
                             <span class="badge bg-info">Bestseller</span>
                         </div>
                     </header>
-
-                    <!-- Course Thumbnail -->
-                    <div class="rk-kelas-thumbnail mb-5" data-aos="fade-up" data-aos-delay="100">
-                        <img src="{{ asset('storage/'.$kelas->thumbnail) }}" alt="{{ $kelas->name_kelas }}" class="img-fluid rounded-3 shadow">
-                    </div>
 
                     <!-- Course Description -->
                     <div class="rk-kelas-description mb-5" data-aos="fade-up" data-aos-delay="200">
@@ -70,14 +74,14 @@
                     <div class="rk-kelas-curriculum" data-aos="fade-up" data-aos-delay="300">
                         <h4 class="fw-bold mb-4 rk-heading">Daftar Materi</h4>
                         <div class="rk-curriculum-list">
-                            @if ($kelas->video->count() < 1)
+                            @if ($kelas->materi->count() < 1)
                             <div class="rk-empty-curriculum text-center py-4">
                                 <i class="fas fa-book-open fa-2x text-muted mb-3"></i>
                                 <p class="text-muted">Belum ada materi untuk kelas ini</p>
                             </div>
                             @else
                             <div class="accordion" id="curriculumAccordion">
-                                @foreach ($kelas->video as $index => $item)
+                                @foreach ($kelas->materi as $index => $item)
                                 <div class="rk-curriculum-item card border-0 mb-2">
                                     <div class="card-header border-0 bg-light" id="heading{{ $index }}">
                                         <h5 class="mb-0">
@@ -88,30 +92,30 @@
                                                     aria-controls="collapse{{ $index }}">
                                                 <span>
                                                     <i class="fas fa-play-circle text-primary me-2"></i>
-                                                    {{ $item->name_video }}
+                                                    {{ $item->title }}
                                                 </span>
                                                 <span class="badge bg-secondary">15:30</span>
                                             </button>
                                         </h5>
                                     </div>
 
-                                    <div id="collapse{{ $index }}" 
-                                         class="collapse {{ $index == 0 ? 'show' : '' }}" 
-                                         aria-labelledby="heading{{ $index }}" 
-                                         data-bs-parent="#curriculumAccordion">
-                                        <div class="card-body">
-                                            <p class="text-muted mb-3">Materi pembelajaran video untuk topik ini.</p>
-                                            @if($kelas->type_kelas == 0 || (Auth::check() && ($kelas->type_kelas == 1 || (Auth::user()->role == 'premium' && $kelas->type_kelas == 2))))
-                                            <a href="{{ route('kelas.belajar', [
-                                                'id' => Crypt::encrypt($kelas->id),
-                                                'idvideo' => Crypt::encrypt($item->id)
-                                            ]) }}" class="btn btn-sm btn-primary">
-                                                Tonton Sekarang <i class="fas fa-arrow-right ms-1"></i>
-                                            </a>
-                                            @endif
+                                        <div id="collapse{{ $index }}" 
+                                             class="collapse {{ $index == 0 ? 'show' : '' }}" 
+                                             aria-labelledby="heading{{ $index }}" 
+                                             data-bs-parent="#curriculumAccordion">
+                                            <div class="card-body">
+                                                <p class="text-muted mb-3">Materi pembelajaran untuk topik ini.</p>
+                                                @if($kelas->type_kelas == 0 || (Auth::check() && ($kelas->type_kelas == 1 || (Auth::user()->role == 'premium' && $kelas->type_kelas == 2))))
+                                                <a href="{{ route('kelas.belajar', [
+                                                    'id' => Crypt::encrypt($kelas->id),
+                                                    'idmateri' => Crypt::encrypt($item->id)
+                                                ]) }}" class="btn btn-sm btn-primary">
+                                                    Lihat Materi <i class="fas fa-arrow-right ms-1"></i>
+                                                </a>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
                             @endif
@@ -129,9 +133,21 @@
                             <div class="rk-course-price text-center mb-4">
                                 @if($kelas->type_kelas == 0)
                                 <h3 class="text-success fw-bold">Gratis</h3>
-                                @else
-                                <h3 class="text-primary fw-bold">Rp {{ number_format($kelas->harga_kelas, 0, ',', '.') }}</h3>
+                                @elseif($kelas->type_kelas == 1)
+                                <h3 class="text-primary fw-bold">Regular</h3>
+                                <p class="text-muted small">Hubungi Admin</p>
+                                @elseif($kelas->type_kelas == 2)
+                                <h3 class="text-warning fw-bold">Premium</h3>
+                                <p class="text-muted small">Upgrade ke Premium</p>
+                                @elseif($kelas->type_kelas == 3)
+                                <h3 class="text-primary fw-bold">Rp {{ number_format($kelas->harga, 0, ',', '.') }}</h3>
                                 <p class="text-muted small">Satu kali pembayaran</p>
+                                @elseif($kelas->type_kelas == 4)
+                                <h3 class="text-primary fw-bold">Rp {{ number_format($kelas->harga, 0, ',', '.') }}</h3>
+                                <p class="text-muted small">Satu kali pembayaran</p>
+                                @else
+                                <h3 class="text-primary fw-bold">Berbayar</h3>
+                                <p class="text-muted small">Hubungi Admin</p>
                                 @endif
                             </div>
 
@@ -157,11 +173,11 @@
                                 </ul>
                             </div>
 
-                            @if ($kelas->video->count() > 0)
+                            @if ($kelas->materi->count() > 0)
                                 @if ($kelas->type_kelas == 0)
                                 <a href="{{ route('kelas.belajar',[
                                     'id' => Crypt::encrypt($kelas->id),
-                                    'idvideo' => Crypt::encrypt($kelas->video[0]->id)
+                                    'idmateri' => Crypt::encrypt($kelas->materi[0]->id)
                                 ]) }}" class="rk-btn-primary w-100 text-center">
                                     <i class="fas fa-play-circle me-2"></i> Mulai Belajar
                                 </a>
@@ -177,15 +193,35 @@
                                 @if($kelas->type_kelas == 1)
                                 <a href="{{ route('kelas.belajar',[
                                     'id' => Crypt::encrypt($kelas->id),
-                                    'idvideo' => Crypt::encrypt($kelas->video[0]->id)
+                                    'idmateri' => Crypt::encrypt($kelas->materi[0]->id)
                                 ]) }}" class="rk-btn-primary w-100 text-center">
                                     <i class="fas fa-play-circle me-2"></i> Lanjutkan Belajar
                                 </a>
                                 @else
+                                @if($kelas->type_kelas == 3 || $kelas->type_kelas == 4)
+                                @php
+                                    $transaksi = \App\Transaksi::where('users_id', Auth::user()->id)
+                                        ->where('kelas_id', $kelas->id)
+                                        ->where('status', 1)
+                                        ->first();
+                                @endphp
+                                @if($transaksi)
+                                <a href="{{ route('kelas.belajar',[
+                                    'id' => Crypt::encrypt($kelas->id),
+                                    'idmateri' => Crypt::encrypt($kelas->materi[0]->id)
+                                ]) }}" class="rk-btn-primary w-100 text-center">
+                                    <i class="fas fa-play-circle me-2"></i> Akses Kelas
+                                </a>
+                                @else
+                                <a href="{{ route('transaksi.kelas', $kelas->id) }}" class="btn btn-success w-100">
+                                    <i class="fas fa-credit-card me-2"></i> Bayar Sekarang
+                                </a>
+                                @endif
+                                @else
                                 @if (Auth::user()->role == 'premium')
                                 <a href="{{ route('kelas.belajar',[
                                     'id' => Crypt::encrypt($kelas->id),
-                                    'idvideo' => Crypt::encrypt($kelas->video[0]->id)
+                                    'idmateri' => Crypt::encrypt($kelas->materi[0]->id)
                                 ]) }}" class="rk-btn-primary w-100 text-center">
                                     <i class="fas fa-play-circle me-2"></i> Akses Kelas
                                 </a>
@@ -196,6 +232,7 @@
                                 <a href="{{ route('upgradepremium') }}" class="btn btn-warning w-100">
                                     Upgrade Premium
                                 </a>
+                                @endif
                                 @endif
                                 @endif
                                 @endguest
@@ -222,12 +259,16 @@
                                         Regular
                                         @elseif($kelas->type_kelas == 2)
                                         Premium
+                                        @elseif($kelas->type_kelas == 3)
+                                        Program Upskill
+                                        @elseif($kelas->type_kelas == 4)
+                                        Skillabs
                                         @endif
                                     </span>
                                 </li>
                                 <li class="d-flex justify-content-between py-2 border-bottom">
                                     <span class="text-muted">Jumlah Materi</span>
-                                    <span class="fw-medium">{{ $kelas->video->count() }} Video</span>
+                                    <span class="fw-medium">{{ $kelas->materi->count() }} Materi</span>
                                 </li>
                                 <li class="d-flex justify-content-between py-2 border-bottom">
                                     <span class="text-muted">Durasi</span>

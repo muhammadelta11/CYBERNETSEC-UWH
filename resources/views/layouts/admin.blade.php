@@ -65,22 +65,101 @@
                         <a href="{{ route('admin') }}">ID</a>
                     </div>
                     <ul class="sidebar-menu">
-                        <li class="menu-header">Menu Administrator</li>
+                        <li class="menu-header">
+                            @if(Auth::user()->isAdmin())
+                                Menu Administrator
+                            @elseif(Auth::user()->isAdminUpskill())
+                                Menu Admin Upskill
+                            @elseif(Auth::user()->isOperator())
+                                Menu Operator
+                            @else
+                                Menu Admin
+                            @endif
+                        </li>
+                        
+                        <!-- Dashboard - Accessible by all admin roles -->
                         <li class="{{Request::path() == 'admin' ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('admin') }}">
                                 <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="{{Request::path() == 'admin/user' ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('admin.user') }}">
-                                <i class="fas fa-users"></i><span>User</span>
-                            </a>
-                        </li>
-                        <li class="{{Request::path() == 'admin/kelas' ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('admin.kelas') }}">
-                                <i class="fas fa-university"></i><span>Kelas</span>
-                            </a>
-                        </li>
+
+                        <!-- Administrator and Admin Upskill Menus -->
+                        @if(Auth::user()->isAdmin() || Auth::user()->isAdminUpskill())
+                            <li class="{{Request::path() == 'admin/user' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.user') }}">
+                                    <i class="fas fa-users"></i><span>Kelola User</span>
+                                </a>
+                            </li>
+                            <li class="{{Request::path() == 'admin/import' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.import') }}">
+                                    <i class="fas fa-file-import"></i><span>Import Mahasiswa</span>
+                                </a>
+                            </li>
+                            <li class="{{Request::path() == 'admin/userlog' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.userlog') }}">
+                                    <i class="fas fa-history"></i><span>Log User Kelas</span>
+                                </a>
+                            </li>
+                            <li class="{{Request::path() == 'admin/rekening' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.rekening') }}">
+                                    <i class="fas fa-credit-card"></i><span>Rekening</span>
+                                </a>
+                            </li>
+                        @endif
+
+                        <!-- Administrator Only Menus -->
+                        @if(Auth::user()->isAdmin())
+                            <li class="{{Request::path() == 'admin/setting' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.setting') }}">
+                                    <i class="fas fa-cog"></i><span>Pengaturan</span>
+                                </a>
+                            </li>
+                            <li class="{{Request::path() == 'admin/test-email' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.test-email') }}">
+                                    <i class="fas fa-envelope"></i><span>Test Email</span>
+                                </a>
+                            </li>
+                        @endif
+
+                        <!-- Administrator & Admin Upskill Menus -->
+                        @if(Auth::user()->isAdmin() || Auth::user()->isAdminUpskill())
+                            <li class="{{Request::path() == 'admin/kelas' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.kelas') }}">
+                                    <i class="fas fa-university"></i><span>Kelas</span>
+                                </a>
+                            </li>
+                            <li class="{{Request::path() == 'admin/sertifikat' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.sertifikat') }}">
+                                    <i class="fas fa-certificate"></i><span>E-Sertifikat</span>
+                                </a>
+                            </li>
+                        @endif
+
+                        <!-- Administrator, Admin Upskill & Operator Menus -->
+                        @if(Auth::user()->isAdmin() || Auth::user()->isAdminUpskill() || Auth::user()->isOperator())
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link has-dropdown"><i
+                                        class="fas fa-fire"></i><span>Transaksi</span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link" href="{{ route('admin.transaksi') }}">Semua Transaksi</a></li>
+                                    <li><a class="nav-link" href="{{ route('admin.transaksi.belumdicek') }}">Belum Dicek</a></li>
+                                    <li><a class="nav-link" href="{{ route('admin.transaksi.ditolak') }}">Ditolak</a></li>
+                                    <li><a class="nav-link" href="{{ route('admin.transaksi.disetujui') }}">Disetujui</a></li>
+                                </ul>
+                            </li>
+                        @endif
+
+                        <!-- Administrator & Operator Menus -->
+                        @if(Auth::user()->isAdmin() || Auth::user()->isOperator())
+                            <li class="{{Request::path() == 'admin/event-registrations' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.event-registrations.index') }}">
+                                    <i class="fas fa-calendar-check"></i><span>Event Registrations</span>
+                                </a>
+                            </li>
+                        @endif
+
+                        <!-- All Admin Roles Menus -->
                         <li class="{{Request::path() == 'admin/podcast' ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.podcast') }}">
                                 <i class="fas fa-microphone"></i><span>Jadwal Event</span>
@@ -91,27 +170,24 @@
                                 <i class="fas fa-newspaper"></i><span>Blog</span>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link has-dropdown"><i
-                                    class="fas fa-fire"></i><span>Transaksi</span></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="{{ route('admin.transaksi') }}">Semua Transaksi</a></li>
-                                <li><a class="nav-link" href="{{ route('admin.transaksi.belumdicek') }}">Belum Dicek</a>
-                                </li>
-                                <li><a class="nav-link" href="{{ route('admin.transaksi.ditolak') }}">Ditolak</a></li>
-                                <li class=""><a class="nav-link"
-                                        href="{{ route('admin.transaksi.disetujui') }}">Disetujui</a></li>
-                            </ul>
-                        </li>
-                        <li class="{{Request::path() == 'admin/rekening' ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('admin.rekening') }}">
-                                <i class="fas fa-credit-card"></i><span>Rekening</span>
+                        <li class="{{Request::path() == 'admin/blog-categories' ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.blog_categories') }}">
+                                <i class="fas fa-tags"></i><span>Kategori Blog</span>
                             </a>
                         </li>
-                        <li class="{{Request::path() == 'admin/setting' ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('admin.setting') }}">
-                                <i class="fas fa-cog"></i><span>Pengaturan</span>
-                            </a>
+
+                        <!-- Role Information -->
+                        <li class="menu-header">Informasi Role</li>
+                        <li>
+                            <div class="sidebar-user">
+                                <div class="sidebar-user-picture">
+                                    <img alt="image" src="{{ asset('admintemplate/') }}/img/avatar/avatar-1.png">
+                                </div>
+                                <div class="sidebar-user-details">
+                                    <div class="user-name">{{ Auth::user()->name }}</div>
+                                    <div class="user-role">{{ Auth::user()->role_display }}</div>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </aside>

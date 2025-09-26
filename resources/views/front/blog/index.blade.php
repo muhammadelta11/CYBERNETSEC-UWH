@@ -25,11 +25,10 @@
                     <!-- Category Filters -->
                     <div class="rk-blog-categories mt-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="d-flex flex-wrap justify-content-center gap-2">
-                            <a href="#" class="btn btn-sm btn-outline-primary active">Semua</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Teknologi</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Pendidikan</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Tips & Trik</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Web Development</a>
+                            <a href="{{ route('blog') }}" class="btn btn-sm btn-outline-primary {{ !$selectedCategory ? 'active' : '' }}">Semua</a>
+                            @foreach(\App\BlogCategory::all() as $category)
+                                <a href="{{ route('blog', ['category' => $category->id]) }}" class="btn btn-sm btn-outline-primary {{ $selectedCategory == $category->id ? 'active' : '' }}">{{ $category->name }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -79,7 +78,7 @@
                     <div class="card-footer bg-transparent border-0 pt-0">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="rk-blog-tags">
-                                <span class="badge bg-light text-dark">Education</span>
+                                <span class="badge bg-light text-dark">{{ $item->category->name ?? 'Education' }}</span>
                             </div>
                             <a href="{{ route('blog.detail', Crypt::encrypt($item->id)) }}" class="rk-blog-read-more">
                                 <i class="fas fa-arrow-right text-primary"></i>
