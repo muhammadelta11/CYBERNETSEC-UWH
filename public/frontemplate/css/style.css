@@ -266,6 +266,14 @@ body.dark-mode .rk-hero-section::before {
     margin-bottom: 0.5rem;
 }
 
+.footer-area .footer_2 h4 {
+    text-align: center;
+}
+
+.footer-area .social_icon {
+    text-align: center;
+}
+
 .rk-copyright {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1.5rem 0;
@@ -347,6 +355,46 @@ body.dark-mode .rk-shadow-hover:hover {
 
     .rk-nav-link:after {
         display: none;
+    }
+
+    /* Footer spacing for tablet and small desktop */
+    .footer-area {
+        padding-bottom: 2rem;
+    }
+
+    .footer-area .single-footer-widget {
+        margin-bottom: 40px;
+    }
+
+    .footer-area .footer_1 {
+        margin-bottom: 60px;
+    }
+
+    .footer-area .footer_1 p {
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-area .footer_2 {
+        padding-top: 50px;
+    }
+
+    .footer-area .footer_2 h4 {
+        margin-bottom: 20px;
+    }
+
+    .footer-area .social_icon {
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .footer-area .contact_info {
+        margin-top: 20px;
+    }
+
+    .footer-area .rk-social-icon a {
+        width: 35px;
+        height: 35px;
+        margin-right: 8px;
     }
 }
 
@@ -535,6 +583,10 @@ body.dark-mode .dark-mode-toggle .form-check-label {
 
 /* Aturan khusus untuk layar kecil */
 @media (max-width: 767px) {
+  .footer-area {
+    padding-bottom: 2rem;
+  }
+
   .footer-area .rk-footer-brand {
     display: flex;
     align-items: center;
@@ -546,13 +598,39 @@ body.dark-mode .dark-mode-toggle .form-check-label {
     margin: 0 0 10px 0; /* kasih jarak bawah */
   }
 
+  .footer-area .single-footer-widget {
+    margin-bottom: 40px;
+  }
+
+  .footer-area .footer_1 {
+    margin-bottom: 60px; /* tambah jarak lebih agar tidak tabrak */
+  }
+
+  .footer-area .footer_1 p {
+    margin-bottom: 1.5rem; /* tambah jarak bawah teks brand */
+  }
+
+  .footer-area .footer_2 {
+    padding-top: 50px; /* tambah padding atas lebih untuk jarak */
+  }
+
+  .footer-area .footer_2 h4 {
+    margin-bottom: 20px; /* jarak antara judul dan ikon */
+  }
+
   .footer-area .social_icon {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 0; /* hapus margin atas, gunakan margin bottom h4 */
   }
 
   .footer-area .contact_info {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 20px;
+  }
+
+  .footer-area .rk-social-icon a {
+    width: 35px;
+    height: 35px;
+    margin-right: 8px;
   }
 }

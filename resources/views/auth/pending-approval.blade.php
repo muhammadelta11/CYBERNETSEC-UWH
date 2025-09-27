@@ -58,6 +58,10 @@
         border: none;
     }
 
+    .card-header-text-center {
+        text-align: center;
+    }
+
     .fas.fa-clock {
         animation: pulse 2s infinite;
     }

@@ -21,6 +21,19 @@
     <link rel="stylesheet" href="{{ asset('frontemplate') }}/css/style.css">
 
     <link href="{{ asset('swal/dist/sweetalert2.min.css') }}" rel="stylesheet">
+
+    @stack('styles')
+
+    <style>
+        .rk-body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1;
+        }
+    </style>
 </head>
 
 <body class="rk-body">
@@ -100,7 +113,7 @@
             </div>
         </nav>
     </header>
-    <main style="min-height: calc(100vh - 400px);">
+    <main>
         @yield('content')
     </main>
 
