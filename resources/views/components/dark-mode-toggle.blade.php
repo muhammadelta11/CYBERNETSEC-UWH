@@ -67,7 +67,60 @@
         background: #111827;
         color: #e5e7eb;
     }
+
+    /* Dark mode di register */
+    [data-theme="dark"] .rk-features-list {
+        background: #f8f9fa;
+        color: #111827;
+    }
+
+     [data-theme="dark"] .rk-register-footer {
+        background: white;
+        color: #111827;
+    }
+
+    /* Dark mode di Masuk */
+    [data-theme="dark"] .form-label{ /* kalimat nim atau kata sandi */
+        background: white;
+        color: #111827;
+    }
     
+    [data-theme="dark"] .form-label{ /* kalimat kata sandi */
+        background: white;
+        color: #111827;
+    }
+
+    [data-theme="dark"] .form-check{ /* kalimat ingat saya */
+        background: white;
+        color: #111827;
+    }
+
+    [data-theme="dark"] .rk-login-footer{ /* kalimat belum punya akun?*/
+        background: white;
+        color: #111827;
+    }
+
+    /* Dark mode di Pending-Approval */
+
+    [data-theme="dark"] .card-header-text-center { /* kalimat Akun Anda telah berhasil dibuat*/
+        text-align: center;
+        background: white;
+        color: #111827;
+    }
+    
+    [data-theme="dark"] .card-text { /* kalimat Akun Anda telah berhasil dibuat*/
+        background: white;
+        color: #111827;
+    }
+
+    [data-theme="dark"] .card-title { /* kalimat Terima kasih telah mendaftar!*/
+        background: white;
+        color: #111827;
+    }
+    
+    
+
+
     [data-theme="dark"] .rk-navbar {
         background: rgba(17, 24, 39, 0.95) !important;
         backdrop-filter: blur(10px);

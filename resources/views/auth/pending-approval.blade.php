@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">
+                <div class="card-header-text-center">
                     <h4>Akun Menunggu Persetujuan</h4>
                 </div>
                 <div class="card-body text-center">

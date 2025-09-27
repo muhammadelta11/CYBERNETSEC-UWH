@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">
+                <div class="card-header-text-center">
                     <h4>Akun Ditolak</h4>
                 </div>
-                <div class="card-body text-center">
+                <div class="card-body-text-center">
                     <div class="mb-4">
                         <i class="fas fa-times-circle fa-4x text-danger mb-3"></i>
                         <h5 class="card-title">Maaf, Akun Anda Ditolak</h5>
