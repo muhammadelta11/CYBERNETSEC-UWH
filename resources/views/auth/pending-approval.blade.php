@@ -35,7 +35,7 @@
 
                     <div class="mt-3">
                         <small class="text-muted">
-                            Masalah dengan akun? <a href="mailto:admin@cybernetsec-uwh.com">Hubungi Administrator</a>
+                            Masalah dengan akun? <a href="https://wa.link/zhihdp">Hubungi Administrator</a>
                         </small>
                     </div>
                 </div>

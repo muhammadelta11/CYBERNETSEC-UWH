@@ -9,7 +9,7 @@
                     <div class="rk-register-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h2>Registrasi Umum</h2>
+                    <h2>Registrasi Akun</h2>
                     <p class="mb-0">Bergabung dengan komunitas pembelajaran untuk masyarakat umum</p>
                 </div>
                 
@@ -88,15 +88,15 @@
                         </div>
                         
                         <button type="submit" class="btn rk-btn-register mb-4">
-                            <i class="fas fa-users me-2"></i> Daftar sebagai Umum
+                            <i class="fas fa-users me-2"></i> Konfirmasi Registrasi
                         </button>
                         
                         <div class="rk-register-footer">
-                            <p class="mb-2">
+                            <!-- <p class="mb-2">
                                 <a href="{{ route('register') }}">
                                     <i class="fas fa-arrow-left me-1"></i> Kembali ke Pilihan Registrasi
                                 </a>
-                            </p>
+                            </p> -->
                             <p class="mb-0">Sudah punya akun? 
                                 <a href="{{ route('login') }}">Masuk Sekarang</a>
                             </p>

@@ -66,7 +66,7 @@
                             <a class="nav-link rk-nav-link {{ request()->routeIs('login') ? 'active' : '' }}" href="{{ route('login') }}">Masuk</a>
                         </li>
                         <li class="d-none d-lg-block">
-                            <a class="rk-btn-primary" href="{{ route('register') }}">Daftar</a>
+                            <a class="rk-btn-primary" href="{{ route('register.umum') }}">Daftar</a>
                         </li>
                         @else
                         <li class="nav-item dropdown rk-nav-item">
