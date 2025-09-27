@@ -24,7 +24,7 @@
                     <header class="rk-kelas-header mb-5" data-aos="fade-up">
                         <h1 class="display-5 fw-bold mb-3 rk-heading">{{ $kelas->name_kelas }}</h1>
 
-                        <div class="rk-kelas-meta d-flex flex-wrap align-items-center gap-4 mb-4">
+                        <div class="rk-kelas-meta d-flex flex-column align-items-start gap-2 mb-4">
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-graduation-cap text-primary me-2"></i>
                                 <span class="text-muted">{{ $kelas->materi->count() }} Materi</span>

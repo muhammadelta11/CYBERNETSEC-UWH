@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">
+                <div class="card-header-text-center">
                     <h4>Akun Menunggu Persetujuan</h4>
                 </div>
                 <div class="card-body text-center">
@@ -35,7 +35,7 @@
 
                     <div class="mt-3">
                         <small class="text-muted">
-                            Masalah dengan akun? <a href="mailto:admin@cybernetsec-uwh.com">Hubungi Administrator</a>
+                            Masalah dengan akun? <a href="https://wa.link/zhihdp">Hubungi Administrator</a>
                         </small>
                     </div>
                 </div>
@@ -56,6 +56,10 @@
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         border: none;
+    }
+
+    .card-header-text-center {
+        text-align: center;
     }
 
     .fas.fa-clock {
