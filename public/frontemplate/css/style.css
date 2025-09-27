@@ -12,6 +12,10 @@
     --rk-spacing-md: 2rem;
     --rk-spacing-lg: 4rem;
     --rk-spacing-xl: 6rem;
+    --rk-dark-text: #f8f9fa;
+    --rk-dark-muted: #cbd5e1;
+    --rk-dark-border: #4a5568;
+    --rk-light-border: rgba(0,0,0,0.1);
 }
 
 body {
@@ -20,65 +24,141 @@ body {
     overflow-x: hidden;
     padding-top: 80px; /* Memastikan konten tidak tertutup navbar */
     background-color: var(--rk-light); /* Background default untuk body */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Dark Mode styles */
-body.dark-mode {
+[data-theme="dark"] {
     background-color: var(--rk-dark);
-    color: #e2e8f0;
+    color: var(--rk-dark-text);
 }
-body.dark-mode .rk-navbar {
+[data-theme="dark"] .rk-navbar {
     background: rgba(33, 37, 41, 0.95) !important;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 }
-body.dark-mode .rk-navbar.scrolled {
+[data-theme="dark"] .rk-navbar.scrolled {
     background: rgba(33, 37, 41, 0.98) !important;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
 }
-body.dark-mode .rk-navbar-brand,
-body.dark-mode .rk-nav-link {
-    color: #f8f9fa !important;
+[data-theme="dark"] .rk-navbar-brand,
+[data-theme="dark"] .rk-nav-link {
+    color: var(--rk-dark-text) !important;
 }
-body.dark-mode .rk-heading h1,
-body.dark-mode .rk-heading h2,
-body.dark-mode .rk-heading h3,
-body.dark-mode .rk-heading h4,
-body.dark-mode .rk-heading h5,
-body.dark-mode .rk-heading h6 {
-    color: #f8f9fa;
+[data-theme="dark"] .rk-navbar-brand {
+    -webkit-text-fill-color: var(--rk-dark-text) !important;
 }
-body.dark-mode .rk-hero-section {
+[data-theme="dark"] .rk-heading h1,
+[data-theme="dark"] .rk-heading h2,
+[data-theme="dark"] .rk-heading h3,
+[data-theme="dark"] .rk-heading h4,
+[data-theme="dark"] .rk-heading h5,
+[data-theme="dark"] .rk-heading h6 {
+    color: var(--rk-dark-text);
+}
+[data-theme="dark"] .rk-hero-section {
     background: linear-gradient(135deg, rgba(33, 37, 41, 1) 0%, rgba(50, 55, 60, 1) 100%);
 }
-body.dark-mode .rk-card {
+[data-theme="dark"] .rk-hero-section::before {
+    opacity: 0.3;
+}
+[data-theme="dark"] .rk-card {
     background-color: #2c3136;
-    color: #e2e8f0;
+    color: var(--rk-dark-text);
+    border: 1px solid var(--rk-dark-border);
+    transition: all 0.3s ease;
 }
-body.dark-mode .rk-card .card-text {
-    color: #a0aec0 !important;
+[data-theme="dark"] .rk-card .card-text {
+    color: var(--rk-dark-muted) !important;
 }
-body.dark-mode .rk-dropdown-menu {
+[data-theme="dark"] .rk-dropdown-menu {
     background-color: var(--rk-dark);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--rk-dark-border);
 }
-body.dark-mode .rk-dropdown-item {
-    color: #e2e8f0;
+[data-theme="dark"] .rk-dropdown-item {
+    color: var(--rk-dark-text);
 }
-body.dark-mode .rk-dropdown-item:hover {
+[data-theme="dark"] .rk-dropdown-item:hover {
     background: rgba(67, 97, 238, 0.2);
     color: var(--rk-primary);
 }
-body.dark-mode .text-muted {
-    color: #a0aec0 !important;
+[data-theme="dark"] .text-muted {
+    color: var(--rk-dark-muted) !important;
 }
-body.dark-mode .bg-light {
+[data-theme="dark"] .bg-light {
     background-color: #2c3136 !important; /* Untuk section bg-light di dark mode */
 }
-body.dark-mode .form-check-label {
-    color: #f8f9fa;
+[data-theme="dark"] .form-check-label {
+    color: var(--rk-dark-text);
 }
-body.dark-mode .rk-footer-area {
+[data-theme="dark"] .rk-footer-area {
     background-color: #1a1e22;
+    border-top: 1px solid var(--rk-dark-border);
+}
+
+/* Forms in dark mode */
+[data-theme="dark"] .form-control {
+    background: #3d4147;
+    border-color: var(--rk-dark-border);
+    color: var(--rk-dark-text);
+}
+[data-theme="dark"] .form-control:focus {
+    background: #3d4147;
+    border-color: var(--rk-primary);
+    box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+}
+[data-theme="dark"] .form-control::placeholder {
+    color: var(--rk-dark-muted);
+}
+
+/* Buttons and Badges in dark mode */
+[data-theme="dark"] .btn-outline-primary {
+    color: var(--rk-primary);
+    border-color: var(--rk-primary);
+}
+[data-theme="dark"] .btn-outline-primary:hover {
+    background: var(--rk-primary);
+    color: white;
+    border-color: var(--rk-primary);
+}
+[data-theme="dark"] .badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--rk-dark-text);
+    border: 1px solid var(--rk-dark-border);
+}
+[data-theme="dark"] .badge.bg-primary {
+    background-color: rgba(67, 97, 238, 0.2) !important;
+    color: var(--rk-primary) !important;
+    border-color: rgba(67, 97, 238, 0.3);
+}
+[data-theme="dark"] .badge.bg-success {
+    background-color: rgba(76, 201, 240, 0.2) !important;
+    color: var(--rk-success) !important;
+    border-color: rgba(76, 201, 240, 0.3);
+}
+[data-theme="dark"] .badge.bg-warning {
+    background-color: rgba(253, 126, 20, 0.2) !important;
+    color: #fd7e14 !important;
+    border-color: rgba(253, 126, 20, 0.3);
+}
+
+/* Tables and Alerts in dark mode */
+[data-theme="dark"] table {
+    background: #2c3136;
+    color: var(--rk-dark-text);
+}
+[data-theme="dark"] .table th,
+[data-theme="dark"] .table td {
+    border-color: var(--rk-dark-border);
+}
+[data-theme="dark"] .table-hover tbody tr:hover {
+    background-color: rgba(67, 97, 238, 0.1);
+}
+[data-theme="dark"] .alert {
+    background: #3d4147;
+    border-color: var(--rk-dark-border);
+    color: var(--rk-dark-text);
 }
 
 
@@ -313,7 +393,7 @@ body.dark-mode .rk-shadow-hover:hover {
     border-radius: var(--rk-radius);
     overflow: hidden;
     transition: all 0.3s ease;
-    border: none;
+    border: 1px solid var(--rk-light-border);
     background-color: white; /* Default card background */
 }
 
@@ -330,10 +410,12 @@ body.dark-mode .rk-shadow-hover:hover {
         border-radius: var(--rk-radius);
         box-shadow: var(--rk-shadow);
         margin-top: 1rem;
+        border: 1px solid var(--rk-light-border);
     }
     body.dark-mode .rk-navbar-collapse {
-        background: var(--rk-dark);
+        background: #2c3136;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        border-color: var(--rk-dark-border);
     }
 
 

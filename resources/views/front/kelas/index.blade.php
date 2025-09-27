@@ -216,8 +216,8 @@
                                 <p class="card-text text-muted small mb-3">{{ $category->description }}</p>
                                 @endif
                                 <div class="rk-category-stats">
-                                    <span class="badge bg-secondary fs-6 px-3 py-2">{{ $category->kelas->count() }} Kelas</span>
-                                </div>
+                                <span class="badge bg-secondary fs-6 px-3 py-2 text-white">{{ $category->kelas->count() }} Kelas</span>
+                            </div>
                                 <button class="btn btn-primary mt-3" onclick="selectSkilLabCategory('{{ $category->id }}')">Lihat Kelas</button>
                             </div>
                         </div>
