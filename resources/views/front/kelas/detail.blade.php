@@ -152,24 +152,33 @@
                             </div>
 
                             <div class="rk-course-features mb-4">
-                                <h6 class="fw-bold mb-3">Fitur Kelas:</h6>
+                                <h6 class="fw-bold mb-3">Benefit Kelas:</h6>
                                 <ul class="list-unstyled">
-                                    <li class="d-flex align-items-center mb-2">
-                                        <i class="fas fa-check text-success me-2"></i>
-                                        <span>Akses selamanya</span>
-                                    </li>
-                                    <li class="d-flex align-items-center mb-2">
-                                        <i class="fas fa-check text-success me-2"></i>
-                                        <span>Sertifikat kelulusan</span>
-                                    </li>
-                                    <li class="d-flex align-items-center mb-2">
-                                        <i class="fas fa-check text-success me-2"></i>
-                                        <span>Dukungan mentor</span>
-                                    </li>
-                                    <li class="d-flex align-items-center">
-                                        <i class="fas fa-check text-success me-2"></i>
-                                        <span>Download materi</span>
-                                    </li>
+                            @if($kelas->features)
+                                @foreach(json_decode($kelas->features) as $feature)
+                                <li class="d-flex align-items-center mb-2" style="gap: 8px;">
+                                    <i class="fas fa-check text-success"></i>
+                                    <span>{{ $feature }}</span>
+                                </li>
+                                @endforeach
+                            @else
+                            <!-- <li class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <span>Akses selamanya</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <span>Sertifikat kelulusan</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <span>Dukungan mentor</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <span>Download materi</span>
+                            </li> -->
+                            @endif
                                 </ul>
                             </div>
 

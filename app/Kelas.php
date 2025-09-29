@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kelas extends Model
 {
     protected $table = 'kelas';
-    protected $fillable = ['name_kelas', 'type_kelas', 'description_kelas', 'thumbnail', 'harga', 'modul', 'modul_file', 'upskill_category_id'];
+    protected $fillable = ['name_kelas', 'type_kelas', 'description_kelas', 'thumbnail', 'harga', 'modul', 'modul_file', 'upskill_category_id', 'features'];
 
     public function video()
     {

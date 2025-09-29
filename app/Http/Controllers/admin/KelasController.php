@@ -40,7 +40,9 @@ class KelasController extends Controller
             'upskill_category_id' => 'required|exists:upskill_categories,id',
             'description_kelas' => 'required',
             'thumbnail' => 'required|mimes:png,jpg,jpeg',
-            'modul_file' => 'nullable|mimes:pdf,doc,docx|max:10240'
+            'modul_file' => 'nullable|mimes:pdf,doc,docx|max:10240',
+            'features' => 'nullable|array',
+            'features.*' => 'string|max:255'
         ]);
 
         if ($request->type_kelas == 3 || $request->type_kelas == 4) {
@@ -67,6 +69,7 @@ class KelasController extends Controller
                 'harga' => $request->harga,
                 'thumbnail' => $file,
                 'modul_file' => $modulFilePath,
+                'features' => $request->features ? json_encode($request->features) : null,
             ];
             Kelas::insert($obj);
             return redirect()->route('admin.kelas')->with('status', 'Berhasil Menambah Kelas Baru');
@@ -114,7 +117,9 @@ class KelasController extends Controller
             'upskill_category_id' => 'required|exists:upskill_categories,id',
             'description_kelas' => 'required',
             'thumbnail' => 'mimes:png,jpg,jpeg',
-            'modul_file' => 'nullable|mimes:pdf,doc,docx|max:10240'
+            'modul_file' => 'nullable|mimes:pdf,doc,docx|max:10240',
+            'features' => 'nullable|array',
+            'features.*' => 'string|max:255'
         ]);
 
         if ($request->type_kelas == 3 || $request->type_kelas == 4) {
@@ -148,6 +153,7 @@ class KelasController extends Controller
             $kelas->description_kelas = $request->description_kelas;
             $kelas->harga = $request->harga;
             $kelas->modul = $request->modul;
+            $kelas->features = $request->features ? json_encode($request->features) : null;
             $kelas->save();
             return redirect()->route('admin.kelas.detail',$id)->with('status', 'Berhasil Memperbarui Kelas');
         }

@@ -84,6 +84,31 @@
                         @enderror
                     </div>
 
+                    <div class="form-group">
+                        <label for="">Fitur Kelas</label>
+                        <div id="features-container">
+                            @php
+                                $existingFeatures = $kelas->features ? json_decode($kelas->features, true) : [];
+                            @endphp
+                            @if(count($existingFeatures) > 0)
+                                @foreach($existingFeatures as $feature)
+                                <div class="input-group mb-2">
+                                    <input type="text" name="features[]" class="form-control" value="{{ $feature }}" placeholder="Masukkan fitur kelas">
+                                    <button type="button" class="btn btn-outline-danger remove-feature-btn">Hapus</button>
+                                </div>
+                                @endforeach
+                            @endif
+                            <input type="text" name="features[]" class="form-control mb-2" placeholder="Masukkan fitur kelas">
+                        </div>
+                        <button type="button" id="add-feature-btn" class="btn btn-sm btn-outline-primary mt-2">Tambah Fitur</button>
+                        @error('features')
+                        <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                        @error('features.*')
+                        <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+
                     <div class="text-right">
                         <button type="submit" class="btn btn-success">Perbaharui Kelas</button>
                     </div>
@@ -112,6 +137,24 @@ document.addEventListener('DOMContentLoaded', function() {
             hargaGroup.style.display = 'block';
         } else {
             hargaGroup.style.display = 'none';
+        }
+    });
+
+    // Features management
+    document.getElementById('add-feature-btn').addEventListener('click', function() {
+        const container = document.getElementById('features-container');
+        const inputGroup = document.createElement('div');
+        inputGroup.className = 'input-group mb-2';
+        inputGroup.innerHTML = `
+            <input type="text" name="features[]" class="form-control" placeholder="Masukkan fitur kelas">
+            <button type="button" class="btn btn-outline-danger remove-feature-btn">Hapus</button>
+        `;
+        container.appendChild(inputGroup);
+    });
+
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('remove-feature-btn')) {
+            e.target.closest('.input-group').remove();
         }
     });
 });
