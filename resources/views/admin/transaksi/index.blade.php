@@ -20,6 +20,7 @@
                                 <th>No</th>
                                 <th>Nama User</th>
                                 <th>Kategori Kelas</th>
+                                <th>Tipe Kelas</th>
                                 <th>Jumlah</th>
                                 <th>Nama Kelas</th>
                                 <th>Status</th>
@@ -39,6 +40,7 @@
                                     Upgrade Premium
                                     @endif
                                 </td>
+                                <td>{{ $item->kelas ? $item->kelas->type_kelas : '-' }}</td>
                                 <td>
                                     @if ($item->kelas_id)
                                     Rp. {{ number_format($item->harga,0,',','.') }}
@@ -69,7 +71,7 @@
                                     Ditolak
                                     @endif
                                 </td>
-                                <td>{{ substr($item->created_at,0,10) }}</td>
+                                <td>{{ $item->tanggal ? substr($item->tanggal,0,10) : substr($item->created_at,0,10) }}</td>
                                 <td>
                                     @if($item->status == 0)
                                     <form action="{{ route('admin.transaksi.ubah', Crypt::encrypt($item->id)) }}" method="POST" style="display: inline;">

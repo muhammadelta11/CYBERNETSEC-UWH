@@ -12,36 +12,68 @@ class TransaksiController extends Controller
 {
     public function index()
     {
+        $query = Transaksi::with('users', 'kelas');
+
+        if (auth()->user()->isAdminUpskill()) {
+            $query->whereHas('kelas', function($q) {
+                $q->where('type_kelas', '3');
+            });
+        }
+
         $data = [
             'title' => 'Semua Transaksi',
-            'transaksis' => Transaksi::with('users', 'kelas')->get(),
+            'transaksis' => $query->get(),
         ];
         return view('admin.transaksi.index', $data);
     }
 
     public function belumdicek()
     {
+        $query = Transaksi::with('users', 'kelas')->where(['status' => 0]);
+
+        if (auth()->user()->isAdminUpskill()) {
+            $query->whereHas('kelas', function($q) {
+                $q->where('type_kelas', 'Upskill');
+            });
+        }
+
         $data = [
             'title' => 'Transaksi Belum Dicek ',
-            'transaksis' => Transaksi::with('users', 'kelas')->where(['status' => 0])->get(),
+            'transaksis' => $query->get(),
         ];
         return view('admin.transaksi.index', $data);
     }
 
     public function disetujui()
     {
+        $query = Transaksi::with('users', 'kelas')->where(['status' => 1]);
+
+        if (auth()->user()->isAdminUpskill()) {
+            $query->whereHas('kelas', function($q) {
+                $q->where('type_kelas', 'Upskill');
+            });
+        }
+
         $data = [
             'title' => 'Transaksi Disetujui',
-            'transaksis' => Transaksi::with('users', 'kelas')->where(['status' => 1])->get(),
+            'transaksis' => $query->get(),
         ];
         return view('admin.transaksi.index', $data);
     }
 
     public function ditolak()
     {
+        $query = Transaksi::with('users', 'kelas')->where(['status' => 2]);
+
+        if (auth()->user()->isAdminUpskill()) {
+            $query->whereHas('kelas', function($q) {
+                $q->where('type_kelas', 'Upskill');
+            });
+        }
+
         $data = [
             'title' => 'Transaksi Ditolak',
-            'transaksis' => Transaksi::with('users', 'kelas')->where(['status' => 2])->get(),
+            'transaksis' => $query->get(),
         ];
         return view('admin.transaksi.index', $data);
     }
@@ -53,6 +85,11 @@ class TransaksiController extends Controller
         if (!$transaksi) {
             abort(404, 'Transaksi tidak ditemukan');
         }
+
+        if (auth()->user()->isAdminUpskill() && (!$transaksi->kelas || $transaksi->kelas->type_kelas != 'Upskill')) {
+            abort(403, 'Unauthorized');
+        }
+
         $data = [
             'title' => 'Detail Transaksi',
             'transaksi' => $transaksi

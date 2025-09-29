@@ -11,7 +11,7 @@ class KursusController extends Controller
 {
     public function diambil()
     {
-        $kelas = Auth::user()->kelas()->paginate(9);
+        $kelas = Auth::user()->kelas()->with('upskillCategory')->paginate(9);
         return view('front.kursus.diambil', compact('kelas'));
     }
 

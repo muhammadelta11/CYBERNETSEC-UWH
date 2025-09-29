@@ -108,29 +108,48 @@ class TransaksiController extends Controller
 
             $kelas = \App\Kelas::findOrFail($id);
             $file = $request->file('bukti')->store('buktitf','public');
-            $obj = [
-                'users_id' => Auth::user()->id,
-                'kelas_id' => $kelas->id,
-                'harga' => $kelas->harga,
-                'status' => '0',
-                'bukti_transfer' => $file
-            ];
-
-            Transaksi::create($obj);
-            return redirect()->route('transaksi.kelas', $id)->with('status','Berhasil Mengirim Bukti Transfer untuk Kelas');
+            
+            // Check for existing transaction with pending or rejected status
+            $existing = \App\Transaksi::where('users_id', Auth::user()->id)
+                                 ->where('kelas_id', $kelas->id)
+                                 ->whereIn('status', [0, 2])
+                                 ->first();
+            
+            if ($existing) {
+                // Update existing transaction
+                $existing->status = 0;
+                $existing->bukti_transfer = $file;
+                $existing->tanggal = now();
+                $existing->save();
+                $message = 'Berhasil Mengirim Ulang Bukti Transfer untuk Kelas';
+            } else {
+                // Create new transaction
+                $obj = [
+                    'users_id' => Auth::user()->id,
+                    'kelas_id' => $kelas->id,
+                    'harga' => $kelas->harga,
+                    'status' => '0',
+                    'bukti_transfer' => $file,
+                    'tanggal' => now()
+                ];
+                \App\Transaksi::create($obj);
+                $message = 'Berhasil Mengirim Bukti Transfer untuk Kelas';
+            }
+            
+            return redirect()->route('transaksi.kelas', $id)->with('status', $message);
         }
     }
 
-    public function kirimTanpaBukti(Request $request, $id)
+    public function kirimTanpaBukti($id)
     {
         $kelas = \App\Kelas::findOrFail($id);
-        
+
         // Check for existing transaction with pending or rejected status
         $existing = \App\Transaksi::where('users_id', Auth::user()->id)
                              ->where('kelas_id', $kelas->id)
                              ->whereIn('status', [0, 2])
                              ->first();
-        
+
         if ($existing) {
             // Update existing transaction: set status to pending (0) and update timestamp
             $existing->status = 0;
@@ -143,11 +162,12 @@ class TransaksiController extends Controller
                 'kelas_id' => $kelas->id,
                 'harga' => $kelas->harga,
                 'status' => 0,
-                'bukti_transfer' => null
+                'bukti_transfer' => null,
+                'tanggal' => now()
             ];
             \App\Transaksi::create($obj);
         }
-        
+
         return redirect()->route('transaksi.kelas.daftar', $id);
     }
 

@@ -1,4 +1,2 @@
-- [x] Create migration to add 'tanggal' column to transaksi table
-- [x] Update Transaksi model fillable array to include 'tanggal'
-- [x] Run the migration
-- [ ] Test the re-registration flow to ensure no error
+- [x] Modify KursusController@diambil to eager load upskillCategory
+- [x] Modify kursus/diambil.blade.php to show upskill category name in badge if available

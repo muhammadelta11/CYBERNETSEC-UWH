@@ -36,12 +36,10 @@
                         <div class="rk-kelas-badge position-absolute top-0 end-0 m-3">
                             @if ($k->type_kelas == 0)
                             <span class="badge bg-success">Gratis</span>
-                            @elseif($k->type_kelas == 1)
-                            <span class="badge bg-primary">Regular</span>
-                            @elseif($k->type_kelas == 2)
-                            <span class="badge bg-warning">Premium</span>
                             @elseif($k->type_kelas == 3)
-                            <span class="badge bg-info">Program Upskill</span>
+                            <span class="badge bg-info">{{ $k->upskillCategory ? $k->upskillCategory->name : 'Upskill' }}</span>
+                            @elseif(in_array($k->type_kelas, [1, 2, 4, 5]))
+                            <span class="badge bg-secondary">BrainLabs</span>
                             @endif
                         </div>
                         <div class="rk-kelas-overlay position-absolute w-100 h-100"></div>
@@ -73,6 +71,19 @@
                                     <i class="fas fa-users me-1"></i> 250
                                 </small>
                             </div>
+                        </div>
+                        <!-- New: Display Tipe Kelas Text -->
+                        <div class="mt-2">
+                            <strong>Tipe Kelas: </strong>
+                            @if ($k->type_kelas == 0)
+                                Gratis
+                            @elseif ($k->type_kelas == 3)
+                                {{ $k->upskillCategory ? $k->upskillCategory->name : 'Upskill' }}
+                            @elseif (in_array($k->type_kelas, [1, 2, 4, 5]))
+                                BrainLabs
+                            @else
+                                Tidak Diketahui
+                            @endif
                         </div>
                     </div>
                     <div class="card-footer bg-transparent border-0 pt-0">
