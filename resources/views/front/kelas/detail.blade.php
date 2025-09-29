@@ -24,22 +24,24 @@
                     <header class="rk-kelas-header mb-5" data-aos="fade-up">
                         <h1 class="display-5 fw-bold mb-3 rk-heading">{{ $kelas->name_kelas }}</h1>
 
-                        <div class="rk-kelas-meta d-flex flex-column align-items-start gap-2 mb-4">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-graduation-cap text-primary me-2"></i>
-                                <span class="text-muted">{{ $kelas->materi->count() }} Materi</span>
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-users text-primary me-2"></i>
-                                <span class="text-muted">250+ Siswa</span>
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-star text-warning me-2"></i>
-                                <span class="text-muted">4.8 (120 reviews)</span>
-                            </div>
+                    <div class="rk-kelas-meta d-flex flex-row align-items-center mb-4" style="gap: 24px;">
+                        <div class="d-flex align-items-center" style="gap: 8px;">
+                            <i class="fas fa-graduation-cap text-primary"></i>
+                            <span class="text-muted">{{ $kelas->materi->count() }} Materi</span>
                         </div>
+
+                        <div class="d-flex align-items-center" style="gap: 8px;">
+                            <i class="fas fa-users text-primary"></i>
+                            <span class="text-muted">250+ Siswa</span>
+                        </div>
+
+                        <div class="d-flex align-items-center" style="gap: 8px;">
+                            <i class="fas fa-star text-warning"></i>
+                            <span class="text-muted">4.8 (120 reviews)</span>
+                        </div>
+                    </div>
+
+
 
                         <div class="rk-kelas-badges mb-3">
                             @if ($kelas->type_kelas == 0)
