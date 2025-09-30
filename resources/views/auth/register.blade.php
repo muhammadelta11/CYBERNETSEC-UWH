@@ -48,43 +48,47 @@
     </div>
 </div>
 
-<style>
+    <style>
+    /* Dark mode improvements for registration form */
     .rk-register-selection-card {
-        background: white;
+        background: var(--rk-light);
         border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         overflow: hidden;
         transition: all 0.3s ease;
+        color: var(--rk-dark);
+        border: 1px solid var(--rk-secondary);
     }
     
     .rk-register-header {
-        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
-        color: white;
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        color: var(--rk-dark);
         padding: 2.5rem 2rem;
         text-align: center;
     }
     
     .rk-register-header h2 {
-        color: #ffffff;
+        color: var(--rk-dark);
         font-weight: 600;
         margin-bottom: 0.5rem;
     }
 
     .rk-register-header p {
-        color: rgba(255, 255, 255, 0.85);
+        color: rgba(0, 0, 0, 0.7);
         font-weight: 400;
     }
 
     .rk-register-icon {
         width: 80px;
         height: 80px;
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.15);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 1.5rem;
         font-size: 2.2rem;
+        color: var(--rk-dark);
     }
     
     .rk-register-body {
@@ -92,8 +96,8 @@
     }
 
     .rk-user-type-card {
-        background: #f8f9fa;
-        border: 2px solid #e9ecef;
+        background: var(--rk-light);
+        border: 2px solid var(--rk-secondary);
         border-radius: 12px;
         padding: 2rem;
         text-align: center;
@@ -102,29 +106,30 @@
         height: 100%;
         display: flex;
         flex-direction: column;
+        color: var(--rk-dark);
     }
 
     .rk-user-type-card:hover {
-        border-color: #4361ee;
+        border-color: var(--rk-primary);
         transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(67, 97, 238, 0.15);
+        box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15);
     }
 
     .rk-user-type-icon {
         width: 70px;
         height: 70px;
-        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 1.5rem;
         font-size: 1.8rem;
-        color: white;
+        color: var(--rk-light);
     }
 
     .rk-user-type-card h4 {
-        color: #212529;
+        color: var(--rk-dark);
         font-weight: 600;
         margin-bottom: 0.5rem;
     }
@@ -150,8 +155,8 @@
     }
 
     .rk-user-type-button {
-        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
-        color: white;
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        color: var(--rk-light);
         padding: 1rem;
         border-radius: 8px;
         font-weight: 600;
@@ -162,28 +167,29 @@
     }
 
     .rk-user-type-card:hover .rk-user-type-button {
-        background: linear-gradient(135deg, #3a0ca3 0%, #2d0a87 100%);
+        background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
     }
     
     .rk-register-footer {
         text-align: center;
         margin-top: 2rem;
         padding-top: 2rem;
-        border-top: 1px solid #e1e5eb;
+        border-top: 1px solid var(--rk-secondary);
+        color: var(--rk-dark);
     }
     
     .rk-register-footer a {
-        color: #4361ee;
+        color: var(--rk-primary);
         text-decoration: none;
         font-weight: 500;
         transition: all 0.3s ease;
     }
     
     .rk-register-footer a:hover {
-        color: #3a0ca3;
+        color: #4338ca;
         text-decoration: underline;
     }
-    
+</style>
     @media (max-width: 767.98px) {
         .rk-register-header {
             padding: 2rem 1.5rem;

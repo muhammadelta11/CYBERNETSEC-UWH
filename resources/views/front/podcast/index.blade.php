@@ -24,12 +24,12 @@
 
                     <!-- Category Filters -->
                     <div class="rk-podcast-categories mt-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="d-flex flex-wrap justify-content-center gap-2">
-                            <a href="#" class="btn btn-sm btn-outline-primary active">Semua</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Online</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Offline</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Hybrid</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Workshop</a>
+                        <div class="d-flex flex-wrap justify-content-center gap-3">
+                            <a href="#" class="btn btn-sm btn-outline-primary active w-auto">Semua</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary w-auto">Online</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary w-auto">Offline</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary w-auto">Hybrid</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary w-auto">Workshop</a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
             @forelse ($podcasts as $item)
             <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                 <div class="rk-podcast-card rk-card h-100 border-0 rk-shadow-hover">
-                    <div class="rk-podcast-thumb position-relative">
+                    <div class="rk-podcast-thumb position-relative" style="overflow: hidden; border: 1px solid red;">
                         @if($item->thumbnail)
                             <img src="{{ asset('storage/' . $item->thumbnail) }}"
                                  class="card-img-top" alt="{{ $item->name_podcast }}"
@@ -62,8 +62,8 @@
                                  class="card-img-top" alt="{{ $item->name_podcast }}"
                                  style="height: 200px; object-fit: cover;">
                         @endif
-                        <div class="rk-event-badge position-absolute top-0 end-0 m-3">
-                            <span class="badge bg-{{ $item->event_type == 'online' ? 'success' : ($item->event_type == 'offline' ? 'primary' : 'warning') }}">
+                        <div class="rk-event-badge position-absolute top-0 start-0 m-3" style="z-index: 9999; background-color: rgba(0,0,0,0.5);">
+                            <span class="badge text-white px-3 py-1 rounded-2 bg-{{ $item->event_type == 'online' ? 'success' : ($item->event_type == 'offline' ? 'primary' : 'warning') }}" style="font-weight: 600; font-size: 0.85rem;">
                                 {{ ucfirst($item->event_type ?? 'Event') }}
                             </span>
                         </div>
@@ -102,7 +102,7 @@
                         </p>
                     </div>
                     <div class="card-footer bg-transparent border-0 pt-0">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
                             <div class="rk-event-price">
                                 @if($item->registration_fee > 0)
                                     <small class="text-success fw-bold">
@@ -197,211 +197,6 @@
     </div>
 </section>
 
-<style>
-    /* Podcast Hero Section */
-    .rk-podcast-hero {
-        padding: 120px 0 60px;
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        margin-top: -1px;
-    }
-    
-    .rk-podcast-search .input-group {
-        max-width: 500px;
-        margin: 0 auto;
-    }
-    
-    .rk-podcast-search .form-control {
-        border-right: 0;
-        border-radius: 50px 0 0 50px;
-        padding-left: 25px;
-    }
-    
-    .rk-podcast-search .btn {
-        border-radius: 0 50px 50px 0;
-        padding: 0.75rem 1.5rem;
-    }
-    
-    .rk-podcast-categories .btn {
-        border-radius: 50px;
-        transition: all 0.3s ease;
-    }
-    
-    .rk-podcast-categories .btn.active,
-    .rk-podcast-categories .btn:hover {
-        background: var(--rk-primary);
-        color: white;
-        border-color: var(--rk-primary);
-    }
-    
-    /* Podcast Cards */
-    .rk-podcast-card {
-        border-radius: var(--rk-radius);
-        overflow: hidden;
-        transition: all 0.3s ease;
-    }
-    
-    .rk-podcast-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--rk-shadow) !important;
-    }
-    
-    .rk-podcast-thumb {
-        overflow: hidden;
-        position: relative;
-    }
-    
-    .rk-podcast-thumb img {
-        transition: transform 0.5s ease;
-    }
-    
-    .rk-podcast-card:hover .rk-podcast-thumb img {
-        transform: scale(1.05);
-    }
-    
-    .rk-play-overlay {
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        z-index: 2;
-    }
-    
-    .rk-play-button {
-        width: 60px;
-        height: 60px;
-        font-size: 1.2rem;
-    }
-    
-    .rk-podcast-card:hover .rk-play-overlay {
-        opacity: 1;
-    }
-    
-    .rk-line-clamp-3 {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        min-height: 72px;
-    }
-    
-    /* CTA Section */
-    .rk-cta-section {
-        background: var(--rk-gradient) !important;
-    }
-    
-    /* Pagination */
-    .rk-podcast-section .pagination {
-        display: flex;
-        justify-content: center;
-        margin-top: 2rem;
-    }
-    
-    .rk-podcast-section .page-item {
-        margin: 0 0.25rem;
-    }
-    
-    .rk-podcast-section .page-link {
-        border-radius: 8px;
-        border: 1px solid #dee2e6;
-        color: var(--rk-dark);
-        padding: 0.5rem 0.75rem;
-        transition: all 0.3s ease;
-    }
-    
-    .rk-podcast-section .page-item.active .page-link {
-        background: var(--rk-primary);
-        border-color: var(--rk-primary);
-        color: white;
-    }
-    
-    .rk-podcast-section .page-link:hover {
-        background: rgba(67, 97, 238, 0.1);
-        color: var(--rk-primary);
-        border-color: #dee2e6;
-    }
-    
-    .rk-podcast-section .page-item.disabled .page-link {
-        color: #6c757d;
-        pointer-events: none;
-    }
-    
-    /* Empty State */
-    .rk-empty-state {
-        padding: 3rem 1rem;
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 991.98px) {
-        .rk-podcast-hero {
-            padding: 100px 0 40px;
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .rk-podcast-hero {
-            padding: 80px 0 40px;
-        }
-        
-        .rk-podcast-search .input-group {
-            flex-direction: column;
-        }
-        
-        .rk-podcast-search .form-control {
-            border-radius: 50px;
-            margin-bottom: 10px;
-            border-right: 1px solid #ced4da !important;
-        }
-        
-        .rk-podcast-search .btn {
-            border-radius: 50px;
-            width: 100%;
-        }
-        
-        .rk-podcast-categories {
-            overflow-x: auto;
-            padding-bottom: 10px;
-        }
-        
-        .rk-podcast-categories .d-flex {
-            flex-wrap: nowrap;
-            justify-content: flex-start !important;
-        }
-        
-        .rk-podcast-section .pagination {
-            flex-wrap: wrap;
-        }
-        
-        .rk-podcast-section .page-item {
-            margin: 0.125rem;
-        }
-        
-        .display-5 {
-            font-size: 2.2rem;
-        }
-    }
-    
-    @media (max-width: 576px) {
-        .rk-podcast-thumb {
-            height: 180px;
-        }
-        
-        .rk-podcast-hero {
-            padding: 70px 0 30px;
-        }
-        
-        .rk-podcast-section {
-            padding: 2rem 0;
-        }
-        
-        .rk-play-button {
-            width: 50px;
-            height: 50px;
-            font-size: 1rem;
-        }
-    }
-    
-    /* Memastikan konten tidak tertutup oleh fixed navbar */
-    .rk-podcast-hero {
-        padding-top: calc(80px + 2rem);
-    }
-</style>
+
 
 @endsection

@@ -376,12 +376,12 @@
                     <p class="text-muted">Pilih metode belajar yang paling sesuai dengan kebutuhan dan preferensi Anda</p>
                 </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="rk-card rk-feature-card h-100 border-0 rk-shadow-hover">
                         <div class="card-body p-4 text-center">
                             <div class="icon-wrapper icon-blue">
-                                <i class="fas fa-book-open fs-3 text-primary"></i>
+                                <i class="fas fa-book-open fs-3 text-white"></i>
                             </div>
 
                             <h4 class="fw-bold mb-3 rk-heading">Up Skill Gratis</h4>
@@ -397,7 +397,7 @@
                     <div class="rk-card rk-feature-card h-100 border-0 rk-shadow-hover">
                         <div class="card-body p-4 text-center">
                             <div class="icon-wrapper icon-green">
-                                <i class="fas fa-users fs-3 text-success"></i>
+                                <i class="fas fa-users fs-3 text-white"></i>
                             </div>
                             <h4 class="fw-bold mb-3 rk-heading">Up Skill Regular</h4>
                             <p class="text-muted">Up Skill eksklusif untuk anggota terdaftar dengan materi lebih lengkap
@@ -412,7 +412,7 @@
                     <div class="rk-card rk-feature-card h-100 border-0 rk-shadow-hover">
                         <div class="card-body p-4 text-center">
                             <div class="icon-wrapper icon-yellow">
-                                <i class="fas fa-gem fs-3 text-warning"></i>
+                                <i class="fas fa-gem fs-3 text-white"></i>
                             </div>
                             <h4 class="fw-bold mb-3 rk-heading">Up Skill Premium</h4>
                             <p class="text-muted">Pengalaman belajar premium dengan mentor dedicated, sertifikat, dan
@@ -630,24 +630,24 @@
 
         /* Variasi warna */
         .icon-blue {
-            background: rgba(13, 110, 253, 0.1);
-            border: 2px solid rgba(13, 110, 253, 0.3);
-            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.15);
-            color: #0d6efd;
+            background: #0d6efd;
+            border: 2px solid #0d6efd;
+            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+            color: white;
         }
 
         .icon-green {
-            background: rgba(25, 135, 84, 0.1);
-            border: 2px solid rgba(25, 135, 84, 0.3);
-            box-shadow: 0 4px 10px rgba(25, 135, 84, 0.15);
-            color: #198754;
+            background: #198754;
+            border: 2px solid #198754;
+            box-shadow: 0 4px 10px rgba(25, 135, 84, 0.3);
+            color: white;
         }
 
         .icon-yellow {
-            background: rgba(255, 193, 7, 0.1);
-            border: 2px solid rgba(255, 193, 7, 0.3);
-            box-shadow: 0 4px 10px rgba(255, 193, 7, 0.15);
-            color: #ffc107;
+            background: #ffc107;
+            border: 2px solid #ffc107;
+            box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3);
+            color: white;
         }
 
         /* Team Section */

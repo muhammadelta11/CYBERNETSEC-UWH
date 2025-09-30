@@ -79,135 +79,145 @@
     </div>
 </div>
 
-<style>
+    <style>
+    /* Dark mode improvements for login form */
     .rk-login-card {
-        background: white;
+        background: var(--rk-light);
         border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         overflow: hidden;
         transition: all 0.3s ease;
+        color: var(--rk-dark);
+        border: 1px solid var(--rk-secondary);
     }
-    
+
     .rk-login-card:hover {
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         transform: translateY(-5px);
     }
-    
+
     .rk-login-header {
-        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
-        color: white;
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        color: var(--rk-dark);
         padding: 2.5rem 2rem;
         text-align: center;
+        border-bottom: 1px solid var(--rk-secondary);
     }
-    
+
     .rk-login-icon {
         width: 80px;
         height: 80px;
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.15);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 1.5rem;
         font-size: 2.2rem;
+        color: var(--rk-dark);
     }
-    
+
     .rk-login-body {
         padding: 2.5rem 2rem;
     }
-    
+
     .rk-form-control {
         padding: 0.9rem 1.2rem;
         border-radius: 8px;
-        border: 1px solid #e1e5eb;
+        border: 1px solid var(--rk-secondary);
         transition: all 0.3s;
         font-family: 'Inter', sans-serif;
+        background-color: var(--rk-light);
+        color: var(--rk-dark);
     }
-    
+
     .rk-form-control:focus {
-        border-color: #4361ee;
-        box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.15);
+        border-color: var(--rk-primary);
+        box-shadow: 0 0 0 0.3rem rgba(99, 102, 241, 0.4);
+        background-color: var(--rk-light);
+        color: var(--rk-dark);
     }
-    
+
     .rk-input-group-text {
-        background-color: white;
+        background-color: var(--rk-light);
         border-radius: 8px 0 0 8px;
-        border: 1px solid #e1e5eb;
+        border: 1px solid var(--rk-secondary);
         border-right: none;
-        color: #4361ee;
+        color: var(--rk-primary);
     }
-    
+
     .rk-password-toggle {
         cursor: pointer;
-        background-color: white;
-        border: 1px solid #e1e5eb;
+        background-color: var(--rk-light);
+        border: 1px solid var(--rk-secondary);
         border-left: none;
         border-radius: 0 8px 8px 0;
-        color: #6c757d;
+        color: #9ca3af;
     }
-    
+
     .rk-btn-login {
-        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
         border: none;
-        color: white;
+        color: var(--rk-dark);
         padding: 0.9rem;
         border-radius: 8px;
         font-weight: 600;
         font-family: 'Poppins', sans-serif;
-        box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         transition: all 0.3s ease;
         width: 100%;
     }
-    
+
     .rk-btn-login:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
     }
-    
+
     .rk-login-footer {
         text-align: center;
         margin-top: 1.5rem;
         padding-top: 1.5rem;
-        border-top: 1px solid #e1e5eb;
+        border-top: 1px solid var(--rk-secondary);
+        color: var(--rk-dark);
     }
-    
+
     .rk-login-footer a {
-        color: #4361ee;
+        color: var(--rk-primary);
         text-decoration: none;
         font-weight: 500;
         transition: all 0.3s ease;
     }
-    
+
     .rk-login-footer a:hover {
-        color: #3a0ca3;
+        color: #4338ca;
         text-decoration: underline;
     }
-    
+
     .rk-form-check-input:checked {
-        background-color: #4361ee;
-        border-color: #4361ee;
+        background-color: var(--rk-primary);
+        border-color: var(--rk-primary);
     }
-    
+
     .rk-form-check-input:focus {
-        border-color: #4361ee;
-        box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+        border-color: var(--rk-primary);
+        box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
     }
-    
+
     @media (max-width: 767.98px) {
         .rk-login-header {
             padding: 2rem 1.5rem;
         }
-        
+
         .rk-login-body {
             padding: 2rem 1.5rem;
         }
-        
+
         .rk-login-icon {
             width: 70px;
             height: 70px;
             font-size: 1.8rem;
         }
-        
+
         .container.mt-5.pt-5.mb-3 {
             margin-top: 2rem !important;
             padding-top: 2rem !important;

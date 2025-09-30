@@ -301,13 +301,14 @@
 <style>
     /* Kelas Detail Hero */
     .rk-kelas-detail-hero {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        background: linear-gradient(135deg, #212529 0%, #343a40 100%);
         margin-top: -1px;
     }
     
     .rk-kelas-detail-hero .breadcrumb {
-        margin-bottom: 0;
-        padding: 0.75rem 0;
+       background-color: var(--bs-breadcrumb-bg, #f8f9fa);
+       color: #212529;
+       border-bottom: 1px solid #dee2e6;
     }
     
     .rk-kelas-detail-hero .breadcrumb-item a {

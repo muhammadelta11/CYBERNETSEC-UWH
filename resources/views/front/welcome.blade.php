@@ -44,63 +44,7 @@
         </div>
     </section>
 
-    <section class="rk-section" id="feature"> {{-- Hapus py-5, sudah ada di .rk-section --}}
-        <div class="container"> {{-- Hapus py-5, sudah ada di .rk-section --}}
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center" data-aos="fade-up">
-                    <h2 class="fw-bold mb-3 rk-heading">Bidang Riset Utama</h2>
-                    <p class="text-muted">Fokus kami dalam pengembangan teknologi digital dan keamanan siber</p>
-                </div>
-            </div>
-            <div class="row justify-content-center"> {{-- Tambah justify-content-center untuk tata letak di mobile --}}
-                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100"> {{-- col-md-6 agar 2 kolom di tablet --}}
-                    <div class="rk-card h-100 border-0 rk-shadow-hover">
-                        <div class="card-body p-4 text-center">
-                            <div
-                                class="rk-icon-wrapper bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4">
-                                <i class="fas fa-shield-alt fs-3 text-light"></i>
-                            </div>
-                            <h4 class="fw-bold mb-3 rk-heading">Cyber Security</h4>
-                            <p class="text-muted">Proteksi sistem, jaringan, dan data dari ancaman digital modern.</p>
-                            <div class="mt-4">
-                                <span class="badge bg-primary">Akses Tanpa Batas</span> {{-- Gunakan class badge yang baru --}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="rk-card h-100 border-0 rk-shadow-hover">
-                        <div class="card-body p-4 text-center">
-                            <div
-                                class="rk-icon-wrapper bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4">
-                                <i class="fas fa-brain fs-3 text-light"></i>
-                            </div>
-                            <h4 class="fw-bold mb-3 rk-heading">Artificial Intelligence & Cloud Computing</h4>
-                            <p class="text-muted">Pemanfaatan AI untuk solusi inovatif di pendidikan & industri.</p>
-                            <div class="mt-4">
-                                <span class="badge bg-success">Daftar Gratis</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="rk-card h-100 border-0 rk-shadow-hover">
-                        <div class="card-body p-4 text-center">
-                            <div
-                                class="rk-icon-wrapper bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4">
-                                <i class="fas fa-network-wired fs-3 text-light"></i>
-                            </div>
-                            <h4 class="fw-bold mb-3 rk-heading">Network Engineering</h4>
-                            <p class="text-muted">Optimasi jaringan & keamanan untuk menunjang aktivitas digital.</p>
-                            <div class="mt-4">
-                                <span class="badge bg-warning">Fitur Eksklusif</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    x
 
     <section class="rk-section bg-light"> {{-- Hapus py-5 --}}
         <div class="container"> {{-- Hapus py-5 --}}
@@ -160,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>  
         </div>
     </section>
 
@@ -175,10 +119,10 @@
             <div class="row justify-content-center"> {{-- Tambah justify-content-center untuk tata letak di mobile --}}
                 @foreach ($kelas as $item)
                     <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                        <div class="rk-card course-card h-100 border-0 rk-shadow-hover">
+                        <div class="rk-card course-card h-100 border-0 rk-shadow-hover rk-card-dark">
                             <div class="position-relative">
                                 <img src="{{ asset('storage/' . $item->thumbnail) }}" class="card-img-top"
-                                    alt="{{ $item->name_kelas }}" style="height: 200px; object-fit: cover;">
+                                    alt="{{ $item->name_kelas }}" style="height: 200px; object-fit:cover;">
                                 <div class="position-absolute top-0 end-0 m-3">
                                     @if ($item->type_kelas == 0)
                                         <span class="badge bg-success">Gratis</span>
@@ -189,10 +133,10 @@
                                     @endif
                                 </div>
                             </div>
-                            <br>
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold rk-heading">{{ $item->name_kelas }}</h5>
-                                <p class="card-text rk-line-clamp-3 text-muted">{!! strip_tags($item->description_kelas) !!}</p>
+                            <br>                                                                        
+                            <div class="card-body rk-card-body">
+                                <h5 class="card-title fw-bold rk-heading rk-card-title">{{ $item->name_kelas }}</h5>
+                                <p class="card-text rk-line-clamp-3 text-muted rk-card-text">{!! strip_tags($item->description_kelas) !!}</p>
                             </div>
                             <div class="card-footer bg-transparent border-0 pt-0">
                                 <div class="d-flex justify-content-between align-items-center">
