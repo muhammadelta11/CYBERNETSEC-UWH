@@ -790,7 +790,7 @@ function selectSkilLabCategory(categoryId) {
                         <div class="rk-kelas-overlay position-absolute w-100 h-100"></div>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title fw-bold rk-heading">
+                        <h5 class="card-title judul-brain fw-bold rk-heading">
                             <a href="/kelas/detail/${encryptedId}" class="text-dark text-decoration-none">${name}</a>
                         </h5>
                         <p class="card-text text-muted rk-line-clamp-3">${desc}</p>

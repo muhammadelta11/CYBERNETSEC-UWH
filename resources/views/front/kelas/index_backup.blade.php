@@ -159,7 +159,7 @@
                                     <div class="rk-kelas-overlay position-absolute w-100 h-100"></div>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title fw-bold rk-heading">
+                                    <h5 class="card-title judul-brain fw-bold rk-heading">
                                         <a href="{{ route('kelas.detail', Crypt::encrypt($item->id)) }}" class="text-dark text-decoration-none">
                                             {{ $item->name_kelas }}
                                         </a>
@@ -258,7 +258,7 @@
                                 <div class="rk-kelas-overlay position-absolute w-100 h-100"></div>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title fw-bold rk-heading">
+                                <h5 class="card-title judul-brain fw-bold rk-heading">
                                     <a href="{{ route('kelas.detail', Crypt::encrypt($item->id)) }}" class="text-dark text-decoration-none">
                                         {{ $item->name_kelas }}
                                     </a>
