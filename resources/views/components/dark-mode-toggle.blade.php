@@ -77,6 +77,19 @@
         color: #e5e7eb;
     }
 
+
+    [data-theme="dark"] .navbar-nav.align-items-center {
+        background: transparent;
+        color: #111827 !important;
+    }
+    /* Dark mode di navbar */
+    [data-theme="dark"] .breadcrumb{
+        color: transparent !important;
+        background: transparent;
+    }
+
+
+
     /* Dark mode di register */
     [data-theme="dark"] .rk-features-list {
         background: #f8f9fa;
@@ -84,13 +97,13 @@
     }
 
      [data-theme="dark"] .rk-register-footer {
-        background: white;
-        color: #111827;
+        /* background: white; */
+        color: white;
     }
 
     /* breadcrumb register */
     [data-theme="dark"] .breadcrumb {
-        background-color: #212529 !important;
+        background-color: transparent;
         color: #adb5bd !important;
     }
 
@@ -98,7 +111,7 @@
         color: #adb5bd !important;
     }
     [data-theme="dark"] .breadcrumb-item.active {
-        color: #0080ffff !important;
+        color: #ffc107 !important;
     }
     [data-theme="dark"] .breadcrumb-item a:hover {
         color: #f8f9fa !important;
@@ -168,7 +181,28 @@
         color: #f9fafb !important;
     }
     
+    /* Dark mode di deskripsi kelas */
+    [data-theme="dark"] .rk-curriculum-list .rk-empty-curriculum.text-center.py-4{
+        background: #1f2937;
+        color: #e5e7eb;
+    }
 
+
+    /* Dark mode di deskripsi event */
+    [data-theme="dark"] .event-details.mt-4{
+        background: #1f2937;
+        color: #e5e7eb;
+    }
+    [data-theme="dark"] .sidebar_top.mt-3 {
+        background: #1f2937;
+        color: #e5e7eb;
+    }
+    [data-theme="dark"] .event-registration.mt-4  {
+        background: #1f2937;
+        color: #e5e7eb;
+    }
+
+    /* Dark mode di navbar dan hero section */
     [data-theme="dark"] .rk-navbar {
         background: rgba(17, 24, 39, 0.95) !important;
         backdrop-filter: blur(10px);

@@ -44,8 +44,6 @@
         </div>
     </section>
 
-    x
-
     <section class="rk-section bg-light"> {{-- Hapus py-5 --}}
         <div class="container"> {{-- Hapus py-5 --}}
             <div class="row align-items-center">

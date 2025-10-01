@@ -10,7 +10,7 @@
                         <i class="fas fa-lock"></i>
                     </div>
                     <h3>Masuk ke Akun Anda</h3>
-                    <p class="mb-0">Selamat datang kembali! Silakan masuk untuk melanjutkan</p>
+                    <p class="mb-0">Selamat datang kembali! Silakan masuk untuk melanjutkan pembelajaran.</p>
                 </div>
                 
                 <div class="rk-login-body">

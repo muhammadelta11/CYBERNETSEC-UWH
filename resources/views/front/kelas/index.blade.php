@@ -279,7 +279,7 @@
                 <h3 class="fw-bold mb-3">Siap Memulai Perjalanan Belajar Anda?</h3>
                 <p class="mb-4">Bergabunglah dengan komunitas pembelajar kami dan raih skill baru untuk masa depan yang lebih baik</p>
                 <div class="d-flex flex-wrap justify-content-center gap-3">
-                    <a href="{{ route('register') }}" class="rk-btn-primary btn-lg">
+                    <a href="{{ route('register.umum') }}" class="rk-btn-primary btn-lg">
                         Daftar Sekarang <i class="fas fa-arrow-right ms-2"></i>
                     </a>
                     <a href="{{ route('about') }}" class="btn btn-outline-light btn-lg">

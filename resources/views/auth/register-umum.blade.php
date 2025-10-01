@@ -10,7 +10,7 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <h3>Registrasi Akun</h3>
-                    <p class="mb-0">Bergabung dengan komunitas pembelajaran untuk masyarakat umum</p>
+                    <p class="mb-0">Bergabung dengan komunitas pembelajaran!</p>
                 </div>
 
                 <div class="rk-register-body">
@@ -91,7 +91,7 @@
                             <i class="fas fa-users me-2"></i> Konfirmasi Registrasi
                         </button>
 
-                        <div class="rk-register-footer">
+                        <div class="rk-register-footer Daftar">
                             <p class="mb-0">Sudah punya akun?
                                 <a href="{{ route('login') }}">Masuk Sekarang</a>
                             </p>

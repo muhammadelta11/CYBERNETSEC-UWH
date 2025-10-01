@@ -3,7 +3,7 @@
 
 <section class="rk-blog-detail-hero">
     <div class="container pt-4 pb-4">
-        <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb blog-detail-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('welcome') }}" class="text-decoration-none">Home</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('blog') }}" class="text-decoration-none">Blog</a></li>
@@ -457,6 +457,7 @@ body.dark-mode .rk-related-articles {
 body.dark-mode .rk-blog-detail-hero .breadcrumb-item a,
 body.dark-mode .rk-blog-detail-hero .breadcrumb-item.active {
     color: #f8f9fa !important;
+    
 }
 body.dark-mode .rk-blog-detail-header,
 body.dark-mode .rk-blog-detail-section .border-top {
