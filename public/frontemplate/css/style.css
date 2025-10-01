@@ -15,11 +15,11 @@
     --rk-dark-text: #f8f9fa;
     --rk-dark-muted: #cbd5e1;
     --rk-dark-border: #4a5568;
-    --rk-light-border: rgba(0,0,0,0.1);
+    --rk-light-border: rgba(0, 0, 0, 0.1);
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     color: #4a5568;
     overflow-x: hidden;
     padding-top: 80px; /* Memastikan konten tidak tertutup navbar */
@@ -57,7 +57,11 @@ body {
     color: var(--rk-dark-text);
 }
 [data-theme="dark"] .rk-hero-section {
-    background: linear-gradient(135deg, rgba(33, 37, 41, 1) 0%, rgba(50, 55, 60, 1) 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(33, 37, 41, 1) 0%,
+        rgba(50, 55, 60, 1) 100%
+    );
 }
 [data-theme="dark"] .rk-hero-section::before {
     opacity: 0.3;
@@ -67,6 +71,26 @@ body {
     color: var(--rk-dark-text);
     border: 1px solid var(--rk-dark-border);
     transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(67, 97, 238, 0.3);
+    border-radius: 12px;
+}
+
+[data-theme="dark"] .rk-category-card,
+[data-theme="dark"] .rk-kelas-card {
+    background-color: white !important;
+    border: 1px solid #dee2e6 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 12px !important;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    padding: 1rem !important;
+    overflow: visible !important;
+    color: #212529 !important;
+}
+
+[data-theme="dark"] .rk-category-card:hover,
+[data-theme="dark"] .rk-kelas-card:hover {
+    box-shadow: 0 0 25px rgba(67, 97, 238, 0.6);
+    border-color: rgba(67, 97, 238, 0.6);
 }
 [data-theme="dark"] .rk-card .card-text {
     color: var(--rk-dark-muted) !important;
@@ -110,6 +134,23 @@ body {
 }
 [data-theme="dark"] .form-control::placeholder {
     color: var(--rk-dark-muted);
+}
+
+/* Dark mode styles for dropdown select */
+[data-theme="dark"] .rk-sort-filter .form-select {
+    background-color: #2c3136 !important;
+    color: #a4aec1 !important;
+    border-color: #444c56 !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    padding-right: 2.5rem !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23e5e7eb' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 0.75rem center !important;
+    background-size: 8px 10px !important;
+    box-shadow: none !important;
+    border-radius: 0.375rem !important;
 }
 
 /* Buttons and Badges in dark mode */
@@ -161,14 +202,13 @@ body {
     color: var(--rk-dark-text);
 }
 
-
 .rk-heading h1,
 .rk-heading h2,
 .rk-heading h3,
 .rk-heading h4,
 .rk-heading h5,
 .rk-heading h6 {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 700;
     color: var(--rk-dark);
 }
@@ -214,7 +254,7 @@ body {
 }
 
 .rk-nav-link:after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -270,25 +310,37 @@ body {
 /* Hero Section */
 .rk-hero-section {
     padding: var(--rk-spacing-xl) 0; /* Menggunakan variabel spasi */
-    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(245, 247, 255, 1) 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(245, 247, 255, 1) 100%
+    );
     position: relative;
     overflow: hidden;
     margin-top: -1px; /* Menghindari double border/shadow dengan navbar fixed */
 }
 
 .rk-hero-section::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -100px;
     right: -100px;
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(58, 12, 163, 0.05) 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(67, 97, 238, 0.1) 0%,
+        rgba(58, 12, 163, 0.05) 100%
+    );
     z-index: 0;
 }
 body.dark-mode .rk-hero-section::before {
-    background: linear-gradient(135deg, rgba(67, 97, 238, 0.2) 0%, rgba(58, 12, 163, 0.1) 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(67, 97, 238, 0.2) 0%,
+        rgba(58, 12, 163, 0.1) 100%
+    );
 }
 
 .rk-hero-content {
@@ -300,7 +352,6 @@ body.dark-mode .rk-hero-section::before {
     border-radius: var(--rk-radius);
     box-shadow: var(--rk-shadow);
 }
-
 
 /* Footer */
 .rk-footer-area {
@@ -383,15 +434,16 @@ body.dark-mode .rk-dropdown-item:hover {
     background: rgba(67, 97, 238, 0.2);
 }
 
-
 /* Utility Classes */
 .rk-shadow-hover {
     transition: all 0.3s ease;
+    cursor: default !important;
 }
 
 .rk-shadow-hover:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+    cursor: default !important;
 }
 body.dark-mode .rk-shadow-hover:hover {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4) !important;
@@ -425,7 +477,6 @@ body.dark-mode .rk-shadow-hover:hover {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         border-color: var(--rk-dark-border);
     }
-
 
     .rk-nav-item {
         margin: 0.3rem 0;
@@ -501,11 +552,14 @@ body.dark-mode .rk-shadow-hover:hover {
     }
 }
 
-
 /* Custom styles untuk halaman welcome */
 .rk-hero-section {
     padding: var(--rk-spacing-xl) 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(245, 247, 255, 1) 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(245, 247, 255, 1) 100%
+    );
     position: relative;
     overflow: hidden;
     margin-top: -1px;
@@ -581,9 +635,18 @@ body.dark-mode .rk-section.bg-light h6 {
 }
 
 /* Background opacity untuk badge */
-.badge.bg-primary { background-color: rgba(67, 97, 238, 0.15) !important; color: var(--rk-primary) !important; }
-.badge.bg-success { background-color: rgba(76, 201, 240, 0.15) !important; color: var(--rk-success) !important; }
-.badge.bg-warning { background-color: rgba(253, 126, 20, 0.15) !important; color: #fd7e14 !important; } /* Orange */
+.badge.bg-primary {
+    background-color: rgba(67, 97, 238, 0.15) !important;
+    color: var(--rk-primary) !important;
+}
+.badge.bg-success {
+    background-color: rgba(76, 201, 240, 0.15) !important;
+    color: var(--rk-success) !important;
+}
+.badge.bg-warning {
+    background-color: rgba(253, 126, 20, 0.15) !important;
+    color: #fd7e14 !important;
+} /* Orange */
 
 /* Responsive adjustments */
 @media (max-width: 991.98px) {
@@ -655,64 +718,64 @@ body.dark-mode .dark-mode-toggle .form-check-label {
 
 /* Biar footer tetap rapi di semua device */
 .footer-area .row {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .footer-area .single-footer-widget {
-  margin-bottom: 20px; /* biar ada jarak antar kolom waktu turun */
+    margin-bottom: 20px; /* biar ada jarak antar kolom waktu turun */
 }
 
 /* Aturan khusus untuk layar kecil */
 @media (max-width: 767px) {
-  .footer-area {
-    padding-bottom: 2rem;
-  }
+    .footer-area {
+        padding-bottom: 2rem;
+    }
 
-  .footer-area .rk-footer-brand {
-    display: flex;
-    align-items: center;
-    flex-direction: column;  /* logo & text jadi vertikal */
-    text-align: center;
-  }
+    .footer-area .rk-footer-brand {
+        display: flex;
+        align-items: center;
+        flex-direction: column; /* logo & text jadi vertikal */
+        text-align: center;
+    }
 
-  .footer-area .rk-footer-brand img {
-    margin: 0 0 10px 0; /* kasih jarak bawah */
-  }
+    .footer-area .rk-footer-brand img {
+        margin: 0 0 10px 0; /* kasih jarak bawah */
+    }
 
-  .footer-area .single-footer-widget {
-    margin-bottom: 40px;
-  }
+    .footer-area .single-footer-widget {
+        margin-bottom: 40px;
+    }
 
-  .footer-area .footer_1 {
-    margin-bottom: 60px; /* tambah jarak lebih agar tidak tabrak */
-  }
+    .footer-area .footer_1 {
+        margin-bottom: 60px; /* tambah jarak lebih agar tidak tabrak */
+    }
 
-  .footer-area .footer_1 p {
-    margin-bottom: 1.5rem; /* tambah jarak bawah teks brand */
-  }
+    .footer-area .footer_1 p {
+        margin-bottom: 1.5rem; /* tambah jarak bawah teks brand */
+    }
 
-  .footer-area .footer_2 {
-    padding-top: 50px; /* tambah padding atas lebih untuk jarak */
-  }
+    .footer-area .footer_2 {
+        padding-top: 50px; /* tambah padding atas lebih untuk jarak */
+    }
 
-  .footer-area .footer_2 h4 {
-    margin-bottom: 20px; /* jarak antara judul dan ikon */
-  }
+    .footer-area .footer_2 h4 {
+        margin-bottom: 20px; /* jarak antara judul dan ikon */
+    }
 
-  .footer-area .social_icon {
-    text-align: center;
-    margin-top: 0; /* hapus margin atas, gunakan margin bottom h4 */
-  }
+    .footer-area .social_icon {
+        text-align: center;
+        margin-top: 0; /* hapus margin atas, gunakan margin bottom h4 */
+    }
 
-  .footer-area .contact_info {
-    text-align: center;
-    margin-top: 20px;
-  }
+    .footer-area .contact_info {
+        text-align: center;
+        margin-top: 20px;
+    }
 
-  .footer-area .rk-social-icon a {
-    width: 35px;
-    height: 35px;
-    margin-right: 8px;
-  }
+    .footer-area .rk-social-icon a {
+        width: 35px;
+        height: 35px;
+        margin-right: 8px;
+    }
 }

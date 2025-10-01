@@ -171,7 +171,11 @@
 
     .event-description {
         line-height: 1.6;
-        color: #666;
+        color: #a4a4a4ff !important;
+    }
+
+    .event-type-badge span {
+        color: #fff !important;
     }
 
     .price-highlight {
@@ -190,11 +194,11 @@
         border-radius: 10px;
     }
 
-    .title_top {
-        color: #2c3e50;
-        font-weight: 600;
-        margin-bottom: 15px;
-    }
+.title_top {
+    color: #ffffffff; /* Ubah warna ini sesuai keinginan Anda, contoh: merah */
+    font-weight: 600;
+    margin-bottom: 15px;
+}
 
     .sidebar_top {
         background: white;

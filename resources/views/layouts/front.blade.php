@@ -42,6 +42,7 @@
         [data-theme="dark"] .rk-dropdown-menu {
             background-color: #2c3136 !important;
             border-color: #555 !important;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5) !important;
         }
 
         [data-theme="dark"] .rk-dropdown-item {
@@ -56,6 +57,12 @@
 
         [data-theme="dark"] .dropdown-divider {
             border-color: #555 !important;
+        }
+
+        /* Ensure dropdown background is dark */
+        [data-theme="dark"] .dropdown-menu {
+            background-color: #2c3136 !important;
+            border: 1px solid #555 !important;
         }
 
         /* Dark Mode for Mobile Navbar */
@@ -87,6 +94,7 @@
 
         /* Dark Mode for bg-light sections */
         [data-theme="dark"] .bg-light {
+            background-color: #2c3136 !important;
             color: #e5e7eb !important;
         }
     </style>

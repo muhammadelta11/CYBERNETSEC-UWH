@@ -2,9 +2,9 @@
 @section('content')
 
 <style>
-    /* Override text-muted color for better readability on BrainLab page */
+    /* Override text-muted color for better readability on BrainLab page in bright mode */
     .text-muted {
-        color: #ced4da !important;
+        color: #495057 !important; /* Darker shade for better readability in bright mode */
     }
     /* Dark mode overrides for better text readability */
     body[data-theme="dark"] .text-muted {
@@ -15,6 +15,44 @@
     }
     body[data-theme="dark"] .card-title.fw-bold.rk-heading a.text-dark {
         color: #f8f9fa !important;
+    }
+    /* Ensure links in cards are readable in bright mode */
+    .card-title a.text-dark {
+        color: #212529 !important; /* Dark color for bright mode */
+    }
+    body[data-theme="dark"] .card-title a.text-dark {
+        color: #f8f9fa !important; /* Light color for dark mode */
+    }
+    /* Dark mode background fixes for better readability */
+    body[data-theme="dark"] .bg-light {
+        background-color: #2c3136 !important;
+        color: #e5e7eb !important;
+    }
+    body[data-theme="dark"] .rk-kelas-hero {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2c3136 100%) !important;
+    }
+    body[data-theme="dark"] .rk-info-section .alert.alert-info {
+        background-color: rgba(13, 110, 253, 0.1) !important;
+        border-color: rgba(13, 110, 253, 0.2) !important;
+        color: #e5e7eb !important;
+    }
+    body[data-theme="dark"] .rk-info-section .alert.alert-info .text-info {
+        color: #0dcaf0 !important;
+    }
+    body[data-theme="dark"] .rk-category-card .card-body,
+    body[data-theme="dark"] .rk-semester-card .card-body {
+        background-color: #2c3136 !important;
+        color: #e5e7eb !important;
+    }
+    body[data-theme="dark"] .rk-category-card .card-text.text-muted,
+    body[data-theme="dark"] .rk-semester-card .card-text.text-muted {
+        color: #adb5bd !important;
+    }
+    body[data-theme="dark"] .rk-empty-state {
+        color: #e5e7eb !important;
+    }
+    body[data-theme="dark"] .rk-empty-state i {
+        color: #6c757d !important;
     }
 </style>
 
@@ -225,7 +263,7 @@
                 <div class="row">
                     @forelse ($categories as $category)
                     <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                        <div class="rk-category-card rk-card h-100 border-0 rk-shadow-hover cursor-pointer" data-category-id="{{ $category->id }}">
+<div class="rk-category-card rk-card h-100 rk-shadow-hover" data-category-id="{{ $category->id }}">
                             <div class="card-body text-center p-4">
                                 <i class="fas fa-folder fa-3x text-warning mb-3"></i>
                                 <h5 class="card-title fw-bold mb-2">{{ $category->name }}</h5>
@@ -398,6 +436,18 @@
         border-radius: 50px;
         padding: 0.5rem 1.5rem;
     }
+
+    /* Dark mode styles for dropdown select */
+    body[data-theme="dark"] .rk-sort-filter .form-select {
+        background-color: #121212 !important;
+        color: #e5e7eb !important;
+        border-color: #333 !important;
+        /* For dropdown arrow color in some browsers */
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23e5e7eb' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 0.75rem center !important;
+        background-size: 8px 10px !important;
+    }
     
     /* CTA Section */
     .rk-cta-section {
@@ -459,21 +509,35 @@
     @media (max-width: 768px) {
         .rk-kelas-hero {
             padding: 80px 0 40px;
+            overflow: visible !important;
         }
         
+        .rk-kelas-hero > .container > .row > .col-lg-8 {
+            width: 100% !important;
+            padding: 0 15px !important;
+        }
+
+        .rk-kelas-search {
+            display: block !important;
+            width: 100% !important;
+        }
         .rk-kelas-search .input-group {
             flex-direction: column;
+            width: 100% !important;
         }
         
         .rk-kelas-search .form-control {
             border-radius: 50px;
             margin-bottom: 10px;
             border-right: 1px solid #ced4da !important;
+            width: 100% !important;
+            box-sizing: border-box;
         }
         
         .rk-kelas-search .btn {
             border-radius: 50px;
             width: 100%;
+            box-sizing: border-box;
         }
         
         .rk-kelas-categories,
@@ -507,6 +571,26 @@
         
         .rk-cta-section .btn {
             width: 100%;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .rk-kelas-hero > .container > .row > .col-lg-8 {
+            padding: 0 10px !important;
+        }
+        .rk-kelas-search .form-control,
+        .rk-kelas-search .btn {
+            border-radius: 30px !important;
+            font-size: 1rem !important;
+            padding: 0.5rem 1rem !important;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .rk-kelas-search .form-control,
+        .rk-kelas-search .btn {
+            font-size: 0.9rem !important;
+            padding: 0.4rem 0.8rem !important;
         }
     }
     
