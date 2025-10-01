@@ -42,7 +42,7 @@
                             <option value="1" {{ $kelas->type_kelas == 1 ? 'selected' : '' }}>Regular</option>
                             <option value="2" {{ $kelas->type_kelas == 2 ? 'selected' : '' }}>Premium</option>
                             <option value="3" {{ $kelas->type_kelas == 3 ? 'selected' : '' }}>Program Upskill</option>
-                            <option value="4" {{ $kelas->type_kelas == 4 ? 'selected' : '' }}>Brainlabs</option>
+                            <option value="4" {{ $kelas->type_kelas == 4 ? 'selected' : '' }}>Brainabs</option>
                         </select>
                         @error('type_kelas')
                         <small class="text-danger">{{ $message }}</small>

@@ -116,11 +116,11 @@
                             <a class="nav-link rk-nav-link {{ request()->routeIs('blog') ? 'active' : '' }}" href="{{ route('blog') }}">Artikel</a>
                         </li>
                         <li class="nav-item rk-nav-item">
-                            <a class="nav-link rk-nav-link {{ request()->routeIs('kelas') || request()->routeIs('upskill') ? 'active' : '' }}" href="{{ route('kelas') }}">BrainLab</a>
+<a class="nav-link rk-nav-link {{ request()->routeIs('kelas') ? 'active' : '' }}" href="{{ route('kelas') }}">BrainLab</a>
                         </li>
                         @if(auth()->check() && auth()->user()->isMahasiswa())
                         <li class="nav-item rk-nav-item">
-                            <a class="nav-link rk-nav-link {{ request()->routeIs('upskill') ? 'active' : '' }}" href="{{ route('upskill') }}">UPSKILL</a>
+<a class="nav-link rk-nav-link {{ request()->routeIs('upskill') ? 'active' : '' }}" href="{{ route('upskill') }}">UPSKILL</a>
                         </li>
                         @endif
                         <li class="nav-item rk-nav-item">

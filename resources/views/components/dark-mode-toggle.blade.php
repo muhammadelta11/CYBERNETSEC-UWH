@@ -242,7 +242,61 @@
     }
     
     [data-theme="dark"] .text-muted {
-        color: #9ca3af !important;
+        color: #d1d5db !important; /* lighter gray for better readability */
+    }
+
+    [data-theme="dark"] body,
+    [data-theme="dark"] .rk-body,
+    [data-theme="dark"] .rk-navbar,
+    [data-theme="dark"] .rk-card,
+    [data-theme="dark"] .card,
+    [data-theme="dark"] .card-body,
+    [data-theme="dark"] .card-footer,
+    [data-theme="dark"] .rk-kelas-card,
+    [data-theme="dark"] .rk-category-card {
+        background-color: #1f2937 !important; /* dark background */
+        color: #f9fafb !important; /* light text */
+    }
+
+    [data-theme="dark"] .card-title,
+    [data-theme="dark"] .rk-heading h1,
+    [data-theme="dark"] .rk-heading h2,
+    [data-theme="dark"] .rk-heading h3,
+    [data-theme="dark"] .rk-heading h4,
+    [data-theme="dark"] .rk-heading h5,
+    [data-theme="dark"] .rk-heading h6 {
+        color: #f9fafb !important; /* bright headings */
+    }
+
+    [data-theme="dark"] .btn-outline-primary {
+        border-color: #6366f1 !important;
+        color: #6366f1 !important;
+    }
+
+    [data-theme="dark"] .btn-outline-primary:hover {
+        background-color: #6366f1 !important;
+        border-color: #6366f1 !important;
+        color: white !important;
+    }
+
+    [data-theme="dark"] .badge.bg-success {
+        background-color: #22c55e !important;
+        color: white !important;
+    }
+
+    [data-theme="dark"] .badge.bg-primary {
+        background-color: #6366f1 !important;
+        color: white !important;
+    }
+
+    [data-theme="dark"] .badge.bg-warning {
+        background-color: #f59e0b !important;
+        color: black !important;
+    }
+
+    [data-theme="dark"] .badge.bg-secondary {
+        background-color: #6b7280 !important;
+        color: white !important;
     }
     
     [data-theme="dark"] .bg-light {

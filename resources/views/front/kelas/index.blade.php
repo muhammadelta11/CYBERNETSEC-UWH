@@ -1,6 +1,23 @@
 @extends('layouts.front')
 @section('content')
 
+<style>
+    /* Override text-muted color for better readability on BrainLab page */
+    .text-muted {
+        color: #ced4da !important;
+    }
+    /* Dark mode overrides for better text readability */
+    body[data-theme="dark"] .text-muted {
+        color: #adb5bd !important;
+    }
+    body[data-theme="dark"] .card-text.text-muted {
+        color: #adb5bd !important;
+    }
+    body[data-theme="dark"] .card-title.fw-bold.rk-heading a.text-dark {
+        color: #f8f9fa !important;
+    }
+</style>
+
 <!-- Hero Section -->
 <section class="rk-kelas-hero bg-light">
     <div class="container">

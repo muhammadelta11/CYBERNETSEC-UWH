@@ -31,6 +31,8 @@
                                 <td>{{ Str::limit($item->description, 50) }}</td>
                                 <td>{{ $item->upskillCategories->count() }}</td>
                                 <td>
+                                    <a href="{{ route('admin.semesters.detail', Crypt::encrypt($item->id)) }}"
+                                        class="btn btn-info btn-sm">Detail</a>
                                     <a href="{{ route('admin.semesters.edit', Crypt::encrypt($item->id)) }}"
                                         class="btn btn-warning btn-sm">Edit</a>
                                     <a href="{{ route('admin.semesters.hapus', Crypt::encrypt($item->id)) }}"
