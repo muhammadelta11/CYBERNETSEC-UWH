@@ -151,6 +151,10 @@
         border: none !important;
     }
 
+    /* [data-theme="dark"] .rk-login-card {
+        background-color: var(--rk-light) !important;
+    } */
+
     [data-theme="dark"] .rk-form-control,
     [data-theme="dark"] .rk-input-group-text,
     [data-theme="dark"] .rk-password-toggle {

@@ -33,7 +33,7 @@
                     <div class="card-body p-4">
                         <!-- Avatar and Basic Info -->
                         <div class="text-center mb-4">
-                            <div class="rk-profile-avatar mx-auto mb-3">
+                            <div class="rk-profile-avatar d-flex justify-content-center mb-3">
                                 <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
                                      style="width: 100px; height: 100px; font-size: 2.5rem;">
                                     <i class="fas fa-user"></i>
