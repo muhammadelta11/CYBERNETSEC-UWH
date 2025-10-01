@@ -55,8 +55,7 @@
 
         /* Dark Mode for Mobile Navbar */
         [data-theme="dark"] .rk-navbar {
-            background-color: #2c3136 !important;
-            border-bottom: 1px solid #555 !important;
+            background: transparent !important;
         }
 
         [data-theme="dark"] .rk-navbar-toggler {
@@ -79,6 +78,11 @@
         [data-theme="dark"] .rk-nav-link:hover,
         [data-theme="dark"] .rk-nav-link.active {
             color: var(--rk-primary) !important;
+        }
+
+        /* Dark Mode for bg-light sections */
+        [data-theme="dark"] .bg-light {
+            color: #e5e7eb !important;
         }
     </style>
 </head>

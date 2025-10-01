@@ -204,13 +204,20 @@
 
     /* Dark mode di navbar dan hero section */
     [data-theme="dark"] .rk-navbar {
-        background: rgba(17, 24, 39, 0.95) !important;
+        background: rgb(40,46,52) !important;
         backdrop-filter: blur(10px);
+        box-shadow: none !important;
+        border-bottom: none !important;
     }
 
     [data-theme="dark"] .rk-hero-section {
         background: rgba(17, 24, 39, 0.95) !important;
         backdrop-filter: blur(10px);
+    }
+
+    /* Dark mode for bg-light sections */
+    [data-theme="dark"] .bg-light {
+        color: #e5e7eb !important;
     }
     
     [data-theme="dark"] .rk-nav-link {
@@ -303,6 +310,11 @@
 [data-theme="dark"] .badge.bg-warning {
     background-color: #f59e0b !important;
     color: black !important;
+}
+
+[data-theme="dark"] .badge.bg-secondary {
+    background-color: #6b7280 !important;
+    color: white !important;
 }
 
 /* Specific for semi-transparent badges in about page */
