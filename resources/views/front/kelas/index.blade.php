@@ -271,6 +271,7 @@
     </div>
 </section>
 
+@if(!auth()->check())
 <!-- CTA Section -->
 <section class="rk-cta-section bg-primary py-5">
     <div class="container">
@@ -290,6 +291,7 @@
         </div>
     </div>
 </section>
+@endif
 
 <style>
     /* Kelas Hero Section */
