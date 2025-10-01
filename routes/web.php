@@ -229,7 +229,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin_all']], function () {
     Route::get('/admin/blog-categories/tambah', 'admin\BlogCategoryController@tambah')->name('admin.blog_categories.tambah');
     Route::post('/admin/blog-categories/simpan', 'admin\BlogCategoryController@simpan')->name('admin.blog_categories.simpan');
     Route::get('/admin/blog-categories/edit/{id}', 'admin\BlogCategoryController@edit')->name('admin.blog_categories.edit');
-    Route::post('/admin/blog-categories/update/{id}', 'admin\BlogCategoryController@update')->name('admin.blog_categories.update');
+    Route::put('/admin/blog-categories/update/{id}', 'admin\BlogCategoryController@update')->name('admin.blog_categories.update');
     Route::delete('/admin/blog-categories/hapus/{id}', 'admin\BlogCategoryController@hapus')->name('admin.blog_categories.hapus');
 });
 

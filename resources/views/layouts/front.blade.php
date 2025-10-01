@@ -33,6 +33,53 @@
         main {
             flex: 1;
         }
+
+        /* Dark Mode Styles for Navbar Dropdown */
+        [data-theme="dark"] .rk-dropdown-menu {
+            background-color: #2c3136 !important;
+            border-color: #555 !important;
+        }
+
+        [data-theme="dark"] .rk-dropdown-item {
+            color: #e2e8f0 !important;
+        }
+
+        [data-theme="dark"] .rk-dropdown-item:hover {
+            background-color: rgba(67, 97, 238, 0.2) !important;
+            color: var(--rk-primary) !important;
+        }
+
+        [data-theme="dark"] .dropdown-divider {
+            border-color: #555 !important;
+        }
+
+        /* Dark Mode for Mobile Navbar */
+        [data-theme="dark"] .rk-navbar {
+            background-color: #2c3136 !important;
+            border-bottom: 1px solid #555 !important;
+        }
+
+        [data-theme="dark"] .rk-navbar-toggler {
+            background-color: #555 !important;
+            border-color: #555 !important;
+        }
+
+        [data-theme="dark"] .rk-navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28226, 232, 240, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+
+        [data-theme="dark"] .rk-navbar-collapse {
+            background-color: #2c3136 !important;
+        }
+
+        [data-theme="dark"] .rk-nav-link {
+            color: #e2e8f0 !important;
+        }
+
+        [data-theme="dark"] .rk-nav-link:hover,
+        [data-theme="dark"] .rk-nav-link.active {
+            color: var(--rk-primary) !important;
+        }
     </style>
 </head>
 

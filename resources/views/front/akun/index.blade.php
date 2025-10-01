@@ -31,71 +31,62 @@
                 <!-- Profile Card -->
                 <div class="rk-kelas-card rk-card border-0 rk-shadow-hover mb-5" data-aos="fade-up">
                     <div class="card-body p-4">
-                        <div class="row align-items-center">
-                            <div class="col-md-3 text-center">
-                                <div class="rk-profile-avatar mx-auto mb-3">
-                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
-                                         style="width: 80px; height: 80px; font-size: 2rem;">
-                                        <i class="fas fa-user"></i>
-                                    </div>
+                        <!-- Avatar and Basic Info -->
+                        <div class="text-center mb-4">
+                            <div class="rk-profile-avatar mx-auto mb-3">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
+                                     style="width: 100px; height: 100px; font-size: 2.5rem;">
+                                    <i class="fas fa-user"></i>
                                 </div>
-                                <h5 class="mb-0 fw-bold">{{ Auth::user()->name }}</h5>
-                                <small class="text-muted">{{ Auth::user()->email }}</small>
                             </div>
-                            <div class="col-md-9">
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <div class="rk-profile-info">
-                                            <label class="form-label text-muted small mb-1">Nama Lengkap</label>
-                                            <p class="mb-0 fw-semibold">{{ Auth::user()->name }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="rk-profile-info">
-                                            <label class="form-label text-muted small mb-1">Email</label>
-                                            <p class="mb-0 fw-semibold">{{ Auth::user()->email }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="rk-profile-info">
-                                            <label class="form-label text-muted small mb-1">Tipe Akun</label>
-                                            <p class="mb-0">
-                                                @if(Auth::user()->role == 'admin')
-                                                    <span class="badge bg-danger">Administrator</span>
-                                                @elseif(Auth::user()->role == 'premium')
-                                                    <span class="badge bg-warning text-dark">Premium</span>
-                                                @else
-                                                    <span class="badge bg-primary">Regular</span>
-                                                @endif
-                                            </p>
-                                        </div>
-                                    </div>
+                            <h4 class="mb-1 fw-bold">{{ Auth::user()->name }}</h4>
+                            <p class="text-muted mb-0">{{ Auth::user()->email }}</p>
+                        </div>
+
+                        <!-- Profile Details Table -->
+                        <div class="table-responsive">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td class="ps-0 py-2 fw-semibold text-muted" style="width: 30%;">Nama Lengkap</td>
+                                        <td class="py-2">{{ Auth::user()->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-0 py-2 fw-semibold text-muted">Email</td>
+                                        <td class="py-2">{{ Auth::user()->email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-0 py-2 fw-semibold text-muted">Tipe Akun</td>
+                                        <td class="py-2">
+                                            @if(Auth::user()->role == 'admin')
+                                                <span class="badge bg-danger">Administrator</span>
+                                            @elseif(Auth::user()->role == 'premium')
+                                                <span class="badge bg-warning text-dark">Premium</span>
+                                            @else
+                                                <span class="badge bg-primary">Regular</span>
+                                            @endif
+                                        </td>
+                                    </tr>
                                     @if(Auth::user()->nim)
-                                    <div class="col-sm-6">
-                                        <div class="rk-profile-info">
-                                            <label class="form-label text-muted small mb-1">NIM</label>
-                                            <p class="mb-0 fw-semibold">{{ Auth::user()->nim }}</p>
-                                        </div>
-                                    </div>
+                                    <tr>
+                                        <td class="ps-0 py-2 fw-semibold text-muted">NIM</td>
+                                        <td class="py-2">{{ Auth::user()->nim }}</td>
+                                    </tr>
                                     @endif
                                     @if(Auth::user()->angkatan)
-                                    <div class="col-sm-6">
-                                        <div class="rk-profile-info">
-                                            <label class="form-label text-muted small mb-1">Angkatan</label>
-                                            <p class="mb-0 fw-semibold">{{ Auth::user()->angkatan }}</p>
-                                        </div>
-                                    </div>
+                                    <tr>
+                                        <td class="ps-0 py-2 fw-semibold text-muted">Angkatan</td>
+                                        <td class="py-2">{{ Auth::user()->angkatan }}</td>
+                                    </tr>
                                     @endif
                                     @if(Auth::user()->whatsapp)
-                                    <div class="col-sm-6">
-                                        <div class="rk-profile-info">
-                                            <label class="form-label text-muted small mb-1">WhatsApp</label>
-                                            <p class="mb-0 fw-semibold">{{ Auth::user()->whatsapp }}</p>
-                                        </div>
-                                    </div>
+                                    <tr>
+                                        <td class="ps-0 py-2 fw-semibold text-muted">WhatsApp</td>
+                                        <td class="py-2">{{ Auth::user()->whatsapp }}</td>
+                                    </tr>
                                     @endif
-                                </div>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -165,4 +156,60 @@
     </div>
 </section>
 <!--================ End Course Details Area =================-->
+<style>
+    /* Dark Mode Styles for Account Page */
+    [data-theme="dark"] .rk-kelas-hero {
+        background-color: #1a1e22 !important;
+    }
+
+    [data-theme="dark"] .rk-kelas-hero .text-muted {
+        color: #a0aec0 !important;
+    }
+
+    [data-theme="dark"] .rk-kelas-card {
+        background-color: #2c3136 !important;
+        color: #e2e8f0 !important;
+    }
+
+    [data-theme="dark"] .rk-kelas-card .text-muted {
+        color: #a0aec0 !important;
+    }
+
+    [data-theme="dark"] .table td {
+        color: #e2e8f0 !important;
+    }
+
+    [data-theme="dark"] .table .text-muted {
+        color: #a0aec0 !important;
+    }
+
+    [data-theme="dark"] .rk-stat-number h3 {
+        color: var(--rk-primary) !important;
+    }
+
+    [data-theme="dark"] .rk-stat-number small {
+        color: #a0aec0 !important;
+    }
+
+    [data-theme="dark"] .btn-outline-primary {
+        color: var(--rk-primary) !important;
+        border-color: var(--rk-primary) !important;
+    }
+
+    [data-theme="dark"] .btn-outline-primary:hover {
+        background-color: var(--rk-primary) !important;
+        color: white !important;
+    }
+
+    [data-theme="dark"] .btn-outline-warning {
+        color: #f6ad55 !important;
+        border-color: #f6ad55 !important;
+    }
+
+    [data-theme="dark"] .btn-outline-warning:hover {
+        background-color: #f6ad55 !important;
+        color: white !important;
+    }
+</style>
+
 @endsection

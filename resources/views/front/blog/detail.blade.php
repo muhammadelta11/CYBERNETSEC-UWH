@@ -21,25 +21,27 @@
                     <header class="rk-blog-detail-header mb-5" data-aos="fade-up">
                         <h1 class="display-5 fw-bold mb-3 rk-heading">{{ $blog->name_blog }}</h1>
                         
-                        <div class="rk-blog-meta d-flex flex-wrap align-items-center gap-4 mb-4">
-                            <div class="d-flex align-items-center">
-                                <div class="rk-author-avatar me-2">
-                                    <img src="https://ui-avatars.com/api/?name=Admin&background=4361ee&color=fff" alt="Author" class="rounded-circle" width="40">
+                        <div class="rk-blog-meta mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="rk-author-avatar me-3">
+                                    <img src="https://ui-avatars.com/api/?name=Admin&background=4361ee&color=fff" alt="Author" class="rounded-circle" width="50">
                                 </div>
                                 <div>
-                                    <p class="mb-0 fw-medium">Admin </p>
-                                    <small class="text-muted"> Penulis</small>
+                                    <p class="mb-1 fw-semibold fs-5">Admin</p>
+                                    <small class="text-muted">Penulis & Editor</small>
                                 </div>
                             </div>
-                            
-                            <div class="d-flex align-items-center">
-                                <i class="far fa-calendar-alt text-primary me-2"> .</i>
-                                <small class="text-muted"> {{ date('d F Y', strtotime($blog->created_at)) }} </small>
-                            </div>
-                            
-                            <div class="d-flex align-items-center">
-                                <i class="far fa-clock text-primary me-2"> .</i>
-                                <small class="text-muted"> 5 min read </small>
+
+                            <div class="d-flex flex-column gap-2">
+                                <div class="d-flex align-items-center">
+                                    <i class="far fa-calendar-alt text-primary me-4"></i>
+                                    <span class="text-muted fw-medium ms-3"><span>.         </span>{{ date('d F Y', strtotime($blog->created_at)) }}</span>
+                                </div>
+
+                                <div class="d-flex align-items-center">
+                                    <i class="far fa-clock text-primary me-4"></i>
+                                    <span class="text-muted fw-medium ms-3"><span>.         </span>5 min read</span> 
+                                </div>
                             </div>
                         </div>
                         
@@ -366,6 +368,7 @@
 
 .rk-blog-content p {
     margin-bottom: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .rk-blog-content img {
@@ -523,6 +526,28 @@ body.dark-mode .rk-newsletter-form .btn-light {
 }
 body.dark-mode .rk-newsletter-form .btn-light:hover {
     background-color: #666;
+}
+
+/* Additional Dark Mode Improvements for Author Info */
+[data-theme="dark"] .rk-blog-meta i {
+    color: var(--rk-primary) !important;
+}
+
+[data-theme="dark"] .rk-author-avatar img {
+    border: 2px solid #a0aec0;
+}
+
+[data-theme="dark"] .rk-author-profile img {
+    border: 3px solid #a0aec0;
+}
+
+[data-theme="dark"] .badge {
+    background-color: rgba(67, 97, 238, 0.2) !important;
+    color: var(--rk-primary) !important;
+}
+
+[data-theme="dark"] .rk-categories-list .text-dark {
+    color: #e2e8f0 !important;
 }
 
 /* Responsive Design */

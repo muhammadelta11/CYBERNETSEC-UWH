@@ -52,15 +52,15 @@
                         <div class="rk-blog-overlay position-absolute w-100 h-100"></div>
                     </div>
                     <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="rk-blog-author d-flex align-items-center">
-                                <div class="rk-author-avatar me-2">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="rk-blog-author d-flex align-items-center me-4">
+                                <div class="rk-author-avatar me-3">
                                     <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="Author" class="rounded-circle" width="30">
                                 </div>
                                 <small class="text-muted">By Admin</small>
                             </div>
-                            <span class="text-muted mx-2">•</span>
-                            <div class="rk-blog-read-time">
+                            <span class="text-muted mx-3">•</span>
+                            <div class="rk-blog-read-time ms-3">
                                 <small class="text-muted"><i class="far fa-clock me-1"></i> 5 min read</small>
                             </div>
                         </div>
@@ -402,6 +402,30 @@
     /* Memastikan konten tidak tertutup oleh fixed navbar */
     .rk-blog-hero {
         padding-top: calc(80px + 2rem);
+    }
+
+    /* Dark Mode Styles for Blog Index */
+    [data-theme="dark"] .rk-blog-author small,
+    [data-theme="dark"] .rk-blog-read-time small,
+    [data-theme="dark"] .rk-blog-author + span {
+        color: #a0aec0 !important;
+    }
+
+    [data-theme="dark"] .rk-blog-author .rk-author-avatar img {
+        border: 2px solid #a0aec0;
+    }
+
+    [data-theme="dark"] .rk-blog-card .text-dark {
+        color: #e2e8f0 !important;
+    }
+
+    [data-theme="dark"] .rk-blog-card .text-muted {
+        color: #a0aec0 !important;
+    }
+
+    [data-theme="dark"] .rk-blog-tags .badge {
+        background-color: rgba(67, 97, 238, 0.2) !important;
+        color: var(--rk-primary) !important;
     }
 </style>
 

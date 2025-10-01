@@ -199,4 +199,83 @@
 
 
 
+<style>
+    /* Dark Mode Styles for Podcast/Event Page */
+    [data-theme="dark"] .rk-podcast-hero {
+        background-color: #1a1e22 !important;
+    }
+
+    [data-theme="dark"] .rk-podcast-hero .text-muted {
+        color: #a0aec0 !important;
+    }
+
+    [data-theme="dark"] .rk-podcast-categories .btn-outline-primary {
+        color: var(--rk-primary) !important;
+        border-color: var(--rk-primary) !important;
+    }
+
+    [data-theme="dark"] .rk-podcast-categories .btn-outline-primary:hover,
+    [data-theme="dark"] .rk-podcast-categories .btn-outline-primary.active {
+        background-color: var(--rk-primary) !important;
+        color: white !important;
+    }
+
+    [data-theme="dark"] .rk-podcast-card .text-dark {
+        color: #e2e8f0 !important;
+    }
+
+    [data-theme="dark"] .rk-podcast-card .text-muted {
+        color: #a0aec0 !important;
+    }
+
+    [data-theme="dark"] .rk-podcast-card .btn-outline-primary {
+        color: var(--rk-primary) !important;
+        border-color: var(--rk-primary) !important;
+    }
+
+    [data-theme="dark"] .rk-podcast-card .btn-outline-primary:hover {
+        background-color: var(--rk-primary) !important;
+        color: white !important;
+    }
+
+    [data-theme="dark"] .rk-event-badge .badge {
+        background-color: rgba(67, 97, 238, 0.2) !important;
+        color: var(--rk-primary) !important;
+    }
+
+    [data-theme="dark"] .rk-event-info .text-muted {
+        color: #a0aec0 !important;
+    }
+
+    [data-theme="dark"] .rk-event-price .text-success {
+        color: #48bb78 !important;
+    }
+
+    [data-theme="dark"] .rk-empty-state .text-muted {
+        color: #a0aec0 !important;
+    }
+
+    [data-theme="dark"] .rk-cta-section {
+        background-color: var(--rk-primary) !important;
+    }
+
+    /* Pagination */
+    [data-theme="dark"] .pagination .page-link {
+        background-color: #2c3136 !important;
+        border-color: #555 !important;
+        color: #e2e8f0 !important;
+    }
+
+    [data-theme="dark"] .pagination .page-item.active .page-link {
+        background-color: var(--rk-primary) !important;
+        border-color: var(--rk-primary) !important;
+        color: white !important;
+    }
+
+    [data-theme="dark"] .pagination .page-link:hover {
+        background-color: rgba(67, 97, 238, 0.2) !important;
+        color: var(--rk-primary) !important;
+    }
+</style>
+
 @endsection

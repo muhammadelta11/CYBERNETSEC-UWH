@@ -108,7 +108,7 @@
         </div>
     </section>
 
-    <section class="rk-section"> {{-- Hapus py-5 --}}
+    <!-- <section class="rk-section"> {{-- Hapus py-5 --}}
         <div class="container"> {{-- Hapus py-5 --}}
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8 text-center" data-aos="fade-up">
@@ -156,5 +156,5 @@
                         class="fas fa-arrow-right ms-2"></i></a> {{-- Tambah btn-lg --}}
             </div>
         </div>
-    </section>
+    </section> -->
 @endsection
