@@ -195,7 +195,7 @@
     }
 
 .title_top {
-    color: #ffffffff; /* Ubah warna ini sesuai keinginan Anda, contoh: merah */
+    color: #f8f9fa; /* Warna putih sedikit lebih lembut untuk tampilan yang lebih baik */
     font-weight: 600;
     margin-bottom: 15px;
 }

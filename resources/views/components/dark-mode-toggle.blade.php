@@ -72,6 +72,14 @@
         --rk-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
     
+    /* Light mode body */
+    body {
+        background: #ffffff;
+        color: #374151;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Dark mode body */
     [data-theme="dark"] body {
         background: #111827;
         color: #e5e7eb;
@@ -230,6 +238,111 @@
     /* Dark mode for bg-light sections */
     [data-theme="dark"] .bg-light {
         color: #e5e7eb !important;
+    }
+
+    /* Footer styling for both themes */
+    .footer-area {
+        background: #f8f9fa;
+        color: #6c757d;
+        transition: all 0.3s ease;
+    }
+
+    .footer-area h4 {
+        color: #495057;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .footer-area p {
+        color: #6c757d;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-area .rk-footer-brand a {
+        color: #495057;
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-decoration: none;
+    }
+
+    .footer-area .rk-social-icon a {
+        color: #6c757d;
+        transition: color 0.3s ease;
+    }
+
+    .footer-area .rk-social-icon a:hover {
+        color: #007bff;
+    }
+
+    .footer-area .rk-contact-info p {
+        color: #6c757d;
+    }
+
+    .footer-area .rk-contact-info span {
+        color: #495057;
+        font-weight: 600;
+    }
+
+    .footer-area .rk-copyright {
+        background: #e9ecef;
+        color: #6c757d;
+        padding: 1rem 0;
+    }
+
+    .footer-area .rk-copyright .footer-text {
+        color: #6c757d;
+    }
+
+    .footer-area .rk-copyright a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    /* Dark mode footer */
+    [data-theme="dark"] .footer-area {
+        background: #1f2937;
+        color: #d1d5db;
+    }
+
+    [data-theme="dark"] .footer-area h4 {
+        color: #f9fafb;
+    }
+
+    [data-theme="dark"] .footer-area p {
+        color: #d1d5db;
+    }
+
+    [data-theme="dark"] .footer-area .rk-footer-brand a {
+        color: #f9fafb;
+    }
+
+    [data-theme="dark"] .footer-area .rk-social-icon a {
+        color: #d1d5db;
+    }
+
+    [data-theme="dark"] .footer-area .rk-social-icon a:hover {
+        color: #60a5fa;
+    }
+
+    [data-theme="dark"] .footer-area .rk-contact-info p {
+        color: #d1d5db;
+    }
+
+    [data-theme="dark"] .footer-area .rk-contact-info span {
+        color: #f9fafb;
+    }
+
+    [data-theme="dark"] .footer-area .rk-copyright {
+        background: #111827;
+        color: #d1d5db;
+    }
+
+    [data-theme="dark"] .footer-area .rk-copyright .footer-text {
+        color: #d1d5db;
+    }
+
+    [data-theme="dark"] .footer-area .rk-copyright a {
+        color: #60a5fa;
     }
     
     [data-theme="dark"] .rk-nav-link {

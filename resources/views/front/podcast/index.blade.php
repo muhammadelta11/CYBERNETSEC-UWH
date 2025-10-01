@@ -24,12 +24,12 @@
 
                     <!-- Category Filters -->
                     <div class="rk-podcast-categories mt-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="d-flex flex-wrap justify-content-center gap-3">
-                            <a href="#" class="btn btn-sm btn-outline-primary active w-auto">Semua</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary w-auto">Online</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary w-auto">Offline</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary w-auto">Hybrid</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary w-auto">Workshop</a>
+                        <div class="d-flex flex-wrap justify-content-center gap-3" style="gap: 4px !important;">
+                            <a href="#" class="btn btn-sm btn-outline-primary active w-auto" style="margin-right: 4px;">Semua</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary w-auto" style="margin-right: 4px;">Online</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary w-auto" style="margin-right: 4px;">Offline</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary w-auto" style="margin-right: 4px;">Hybrid</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary w-auto" style="margin-right: 4px;">Workshop</a>
                         </div>
                     </div>
                 </div>
@@ -183,6 +183,7 @@
 </section>
 
 <!-- CTA Section -->
+@if(!auth()->check())
 <section class="rk-cta-section bg-primary py-5">
     <div class="container">
         <div class="row justify-content-center">
@@ -196,6 +197,7 @@
         </div>
     </div>
 </section>
+@endif
 
 
 
@@ -219,6 +221,8 @@
         background-color: var(--rk-primary) !important;
         color: white !important;
     }
+
+
 
     [data-theme="dark"] .rk-podcast-card .text-dark {
         color: #e2e8f0 !important;

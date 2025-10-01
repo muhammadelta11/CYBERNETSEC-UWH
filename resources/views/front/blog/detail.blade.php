@@ -1,6 +1,17 @@
 @extends('layouts.front')
 @section('content')
 
+<style>
+.rk-content-body {
+    color: #c4c4c4ff!important;
+}
+
+/* Custom color for active "Semua" button text on Artikel page */
+.rk-article-categories .btn-outline-primary.active {
+    color: #ff0000ff !important; /* Red color */
+}
+</style>
+
 <section class="rk-blog-detail-hero">
     <div class="container pt-4 pb-4">
         <nav aria-label="breadcrumb blog-detail-breadcrumb">
@@ -21,29 +32,29 @@
                     <header class="rk-blog-detail-header mb-5" data-aos="fade-up">
                         <h1 class="display-5 fw-bold mb-3 rk-heading">{{ $blog->name_blog }}</h1>
                         
-                        <div class="rk-blog-meta mb-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="rk-author-avatar me-3">
-                                    <img src="https://ui-avatars.com/api/?name=Admin&background=4361ee&color=fff" alt="Author" class="rounded-circle" width="50">
-                                </div>
-                                <div>
-                                    <p class="mb-1 fw-semibold fs-5">Admin</p>
-                                    <small class="text-muted">Penulis & Editor</small>
-                                </div>
+                    <div class="rk-blog-meta mb-4 d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <div class="rk-author-avatar me-3">
+                                <img src="https://ui-avatars.com/api/?name=Admin&background=4361ee&color=fff" alt="Author" class="rounded-circle" width="50">
                             </div>
-
-                            <div class="d-flex flex-column gap-2">
-                                <div class="d-flex align-items-center">
-                                    <i class="far fa-calendar-alt text-primary me-4"></i>
-                                    <span class="text-muted fw-medium ms-3"><span>.         </span>{{ date('d F Y', strtotime($blog->created_at)) }}</span>
-                                </div>
-
-                                <div class="d-flex align-items-center">
-                                    <i class="far fa-clock text-primary me-4"></i>
-                                    <span class="text-muted fw-medium ms-3"><span>.         </span>5 min read</span> 
-                                </div>
+                            <div>
+                                <p class="mb-1 fw-semibold fs-5">Admin</p>
+                                <small class="text-muted">Penulis & Editor</small>
                             </div>
                         </div>
+
+                        <div class="d-flex flex-column gap-2">
+                            <div class="d-flex align-items-center">
+                                <i class="far fa-calendar-alt text-primary me-3"></i>
+                                <span class="text-muted fw-medium">{{ date('d F Y', strtotime($blog->created_at)) }}</span>
+                            </div>
+
+                            <div class="d-flex align-items-center">
+                                <i class="far fa-clock text-primary me-3"></i>
+                                <span class="text-muted fw-medium">5 min read</span> 
+                            </div>
+                        </div>
+                    </div>
                         
                         <div class="rk-blog-tags mb-3">
                             @if($blog->category)

@@ -67,7 +67,7 @@
                     <!-- Course Description -->
                     <div class="rk-kelas-description mb-5" data-aos="fade-up" data-aos-delay="200">
                         <h4 class="fw-bold mb-4 rk-heading">Deskripsi Kelas</h4>
-                        <div class="rk-content">
+                        <div class="rk-content" style="color: #a3a3a3ff !important;">
                             {!! $kelas->description_kelas !!}
                         </div>
                     </div>

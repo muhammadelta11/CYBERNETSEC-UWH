@@ -193,6 +193,8 @@
     .rk-blog-categories .btn {
         border-radius: 50px;
         transition: all 0.3s ease;
+        margin-right: 8px; /* Added spacing between buttons */
+        margin-bottom: 6px; /* Added spacing for wrapping rows */
     }
     
     .rk-blog-categories .btn.active,
@@ -200,6 +202,11 @@
         background: var(--rk-primary);
         color: white;
         border-color: var(--rk-primary);
+    }
+
+    /* Custom color for active "Semua" button text on Blog index page */
+    .rk-blog-categories .btn-outline-primary.active {
+        color: #ffffffff !important; /* Red color */
     }
     
     /* Blog Cards */

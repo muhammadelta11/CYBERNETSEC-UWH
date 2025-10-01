@@ -54,6 +54,18 @@
     body[data-theme="dark"] .rk-empty-state i {
         color: #6c757d !important;
     }
+
+    /* Custom color for active "Semua" button text on BrainLab and Upskill pages */
+    .rk-kelas-categories .btn-outline-primary.active {
+        color: #ffffffff !important; /* Red color */
+    }
+
+    /* Add spacing between category and filter buttons on BrainLab and Upskill pages */
+    .rk-kelas-categories .btn,
+    .rk-kelas-filters .btn {
+        margin-right: 8px;
+        margin-bottom: 6px;
+    }
 </style>
 
 <!-- Hero Section -->
@@ -396,6 +408,11 @@
     .rk-kelas-card:hover {
         transform: translateY(-5px);
         box-shadow: var(--rk-shadow) !important;
+    }
+
+    /* Change color of specific title "Jaringan Komputer1" to red */
+    .rk-kelas-card .judul-brain a.text-dark {
+        color: red !important;
     }
     
     .rk-kelas-thumb {
@@ -894,7 +911,7 @@ function selectSkilLabCategory(categoryId) {
                     </div>
                     <div class="card-body">
                         <h5 class="card-title judul-brain fw-bold rk-heading">
-                            <a href="/kelas/detail/${encryptedId}" class="text-dark text-decoration-none">${name}</a>
+                            <a href="/kelas/detail/${encryptedId}" class="text-dark text-decoration-none" style="color: red !important;">${name}</a>
                         </h5>
                         <p class="card-text text-muted rk-line-clamp-3">${desc}</p>
                         <div class="rk-kelas-meta d-flex justify-content-between align-items-center mt-3">

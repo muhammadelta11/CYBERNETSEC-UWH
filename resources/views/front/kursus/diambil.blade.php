@@ -47,7 +47,7 @@
                     <br>
                     <div class="card-body">
                         <h5 class="card-title fw-bold rk-heading">
-                            <a href="{{ route('kelas.detail', Crypt::encrypt($k->id)) }}" class="text-dark text-decoration-none">
+                            <a href="{{ route('kelas.detail', Crypt::encrypt($k->id)) }}" class="text-dark text-decoration-none" style="{{ $k->name_kelas == 'Jaringan Komputer1' ? 'color: white !important;' : '' }}">
                                 {{ $k->name_kelas }}
                             </a>
                         </h5>
