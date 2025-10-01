@@ -187,7 +187,9 @@
         color: #e5e7eb;
     }
 
-
+    rk-cta-section {
+        background: var(--rk-gradient) !important;
+    }
     /* Dark mode di deskripsi event */
     [data-theme="dark"] .event-details.mt-4{
         background: #1f2937;
@@ -200,6 +202,12 @@
     [data-theme="dark"] .event-registration.mt-4  {
         background: #1f2937;
         color: #e5e7eb;
+    }
+
+    /* Dark mode di deskripsi kelas */
+    [data-theme="dark"] .card-title.judul-brain.fw-bold.rk-heading{
+        background: #1f2937;
+        color: #e5e7eb !important;
     }
 
     /* Dark mode di navbar dan hero section */

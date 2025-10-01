@@ -34,6 +34,10 @@
             flex: 1;
         }
 
+        .rk-dropdown-item i {
+          margin-right: 10px;
+        }
+
         /* Dark Mode Styles for Navbar Dropdown */
         [data-theme="dark"] .rk-dropdown-menu {
             background-color: #2c3136 !important;
@@ -42,6 +46,7 @@
 
         [data-theme="dark"] .rk-dropdown-item {
             color: #e2e8f0 !important;
+            margin-right: 12px;
         }
 
         [data-theme="dark"] .rk-dropdown-item:hover {
@@ -68,7 +73,7 @@
         }
 
         [data-theme="dark"] .rk-navbar-collapse {
-            background-color: #2c3136 !important;
+            background-color: transparent !important;
         }
 
         [data-theme="dark"] .rk-nav-link {
@@ -140,7 +145,7 @@
                                 <i class="fas fa-user-circle me-1"></i> Hi {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu rk-dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item rk-dropdown-item" href="{{ route('kursus.diambil') }}"><i class="fas fa-book me-2"></i>Kursus Saya</a>
+                                <a class="dropdown-item rk-dropdown-item" href="{{ route('kursus.diambil') }}"><i class="fas fa-book me-3"></i>Kursus Saya</a>
                                 <a class="dropdown-item rk-dropdown-item" href="{{ route('akun') }}"><i class="fas fa-user me-2"></i>Akun</a>
                                 <a class="dropdown-item rk-dropdown-item" href="{{ route('sertifikat.index') }}"><i class="fas fa-certificate me-2"></i>E-Sertifikat</a>
                                 <a class="dropdown-item rk-dropdown-item" href="{{ route('event-registrations.index') }}"><i class="fas fa-calendar-check me-2"></i>Event Registrations</a>
@@ -188,7 +193,7 @@
                         <div class="social_icon rk-social-icon">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/cybernetsec.id?utm_source=ig_web_button_share_sheet&igsh=aDJpcWdweXJlc29q"><i class="fab fa-instagram"></i></a>
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
