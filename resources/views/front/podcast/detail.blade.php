@@ -30,7 +30,7 @@
                 </div>
                 <div class="content_wrapper">
                     <h4 class="title_top jadwal_event">{{ $podcast->name_podcast }}</h4>
-                    <div class="event-details mt-4">
+                    <div class="event-details ">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="event-info-item mb-3">

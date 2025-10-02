@@ -34,7 +34,7 @@
                         
                     <div class="rk-blog-meta mb-4 d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <div class="rk-author-avatar me-3">
+                            <div class="rk-author-avatar icon-spacing">
                                 <img src="https://ui-avatars.com/api/?name=Admin&background=4361ee&color=fff" alt="Author" class="rounded-circle" width="50">
                             </div>
                             <div>
@@ -45,12 +45,12 @@
 
                         <div class="d-flex flex-column gap-2">
                             <div class="d-flex align-items-center">
-                                <i class="far fa-calendar-alt text-primary me-3"></i>
+                                <i class="far fa-calendar-alt text-primary icon-spacing"></i>
                                 <span class="text-muted fw-medium">{{ date('d F Y', strtotime($blog->created_at)) }}</span>
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <i class="far fa-clock text-primary me-3"></i>
+                                <i class="far fa-clock text-primary icon-spacing"></i>
                                 <span class="text-muted fw-medium">5 min read</span> 
                             </div>
                         </div>
@@ -75,7 +75,7 @@
 
                     <div class="rk-blog-share mt-5 pt-4 border-top" data-aos="fade-up" data-aos-delay="300">
                         <h6 class="fw-bold mb-3">Bagikan Artikel</h6>
-                        <div class="d-flex flex-wrap gap-2">
+                        <div class="d-flex flex-wrap icon-spacing">
                             <a href="{{ 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode(url()->current()) . '&quote=' . urlencode($blog->name_blog) }}"
                                target="_blank"
                                class="btn btn-sm btn-outline-primary d-flex align-items-center"
@@ -143,7 +143,7 @@
                             @if(!empty($recentBlogs) && count($recentBlogs) > 0)
                                 @foreach($recentBlogs as $recent)
                                 <a href="{{ route('blog.detail', Crypt::encrypt($recent->id)) }}" class="rk-recent-post-item d-flex mb-3 text-decoration-none">
-                                    <div class="rk-post-thumb me-3">
+                                    <div class="rk-post-thumb icon-spacing">
                                         <img src="{{ asset('storage/'.$recent->thumbnail_blog) }}" alt="{{ $recent->name_blog }}" class="rounded" width="60" height="60" style="object-fit: cover;">
                                     </div>
                                     <div class="rk-post-content">
@@ -253,6 +253,15 @@
 .rk-blog-meta .d-flex {
     flex-shrink: 0; /* Mencegah item menyusut */
 }
+
+/* Perbaikan untuk jarak antara logo dengan kalimat */
+.icon-spacing {
+    margin-right: 0.5rem; /* Menambah jarak antara ikon dan teks */
+}
+.d-flex.align-items-center {
+    margin-right: 10px;
+}
+
 
 /* Perbaikan untuk Avatar Penulis */
 .rk-author-avatar {
