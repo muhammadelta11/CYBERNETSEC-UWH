@@ -412,7 +412,7 @@
 
     /* Change color of specific title "Jaringan Komputer1" to red */
     .rk-kelas-card .judul-brain a.text-dark {
-        color: red !important;
+        color: black !important;
     }
     
     .rk-kelas-thumb {

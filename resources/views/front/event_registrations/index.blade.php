@@ -69,7 +69,7 @@
                                                         <i class="fas fa-check me-1"></i>Dikonfirmasi
                                                     </span>
                                                 @elseif($registration->status == 'pending')
-                                                    <span class="badge bg-warning rk-status-badge">
+                                                    <span class="badge rk-badge-pending rk-status-badge">
                                                         <i class="fas fa-clock me-1"></i>Menunggu
                                                     </span>
                                                 @elseif($registration->status == 'rejected')
@@ -77,7 +77,7 @@
                                                         <i class="fas fa-times me-1"></i>Ditolak
                                                     </span>
                                                 @else
-                                                    <span class="badge bg-secondary rk-status-badge">
+                                                    <span class="badge rk-badge-cancelled rk-status-badge">
                                                         {{ ucfirst($registration->status) }}
                                                     </span>
                                                 @endif
@@ -435,4 +435,28 @@
         color: #ffffff;
         box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
     }
+.rk-badge-pending {
+    background-color: #facc15 !important; /* brighter yellow */
+    color: #92400e !important; /* darker text for contrast */
+    box-shadow: 0 0 8px #facc15;
+}
+
+.rk-badge-cancelled {
+    background-color: #6b7280 !important; /* brighter gray */
+    color: #f3f4f6 !important; /* lighter text */
+    box-shadow: 0 0 8px #6b7280;
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] .rk-badge-pending {
+    background-color: #ca8a04 !important;
+    color: #fef3c7 !important;
+    box-shadow: 0 0 8px #ca8a04;
+}
+
+[data-theme="dark"] .rk-badge-cancelled {
+    background-color: #9ca3af !important;
+    color: #1f2937 !important;
+    box-shadow: 0 0 8px #9ca3af;
+}
 </style>

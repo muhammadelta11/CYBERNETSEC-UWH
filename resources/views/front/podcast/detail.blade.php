@@ -29,7 +29,7 @@
                     @endif
                 </div>
                 <div class="content_wrapper">
-                    <h4 class="title_top">{{ $podcast->name_podcast }}</h4>
+                    <h4 class="title_top jadwal_event">{{ $podcast->name_podcast }}</h4>
                     <div class="event-details mt-4">
                         <div class="row">
                             <div class="col-md-6">
@@ -194,8 +194,8 @@
         border-radius: 10px;
     }
 
-.title_top {
-    color: #f8f9fa; /* Warna putih sedikit lebih lembut untuk tampilan yang lebih baik */
+.title_top.judul_event {
+    color: #000000ff; /* Warna putih sedikit lebih lembut untuk tampilan yang lebih baik */
     font-weight: 600;
     margin-bottom: 15px;
 }

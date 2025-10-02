@@ -177,6 +177,12 @@
         box-shadow: none !important;
     }
 
+    
+    [data-theme="dark"] .title_top.judul_event { /*Judul isi event*/
+        text-align: center;
+        background: white;
+        color: #111827;
+    }
     /* Dark mode di Pending-Approval */
 
     [data-theme="dark"] .card-header-text-center { /* kalimat Akun Anda telah berhasil dibuat*/
